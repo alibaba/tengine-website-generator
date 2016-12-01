@@ -8,14 +8,13 @@ Tengine is a web server originated by [Taobao](http://en.wikipedia.org/wiki/Taob
 
     Tengine has been an open source project since December 2011. It is being actively developed by the Tengine team, whose core members are from [Taobao](http://en.wikipedia.org/wiki/Taobao), [Sogou](http://en.wikipedia.org/wiki/Sogou) and other Internet companies. Tengine is a community effort and everyone is encouraged to [get involved](source.html).</div>
 
-[![](images/download.png)](download/tengine-2.1.2.tar.gz)
+[![](images/download.png)](download/tengine-2.2.0.tar.gz)
 
 ## Features
 
-*   All features of Nginx-1.6.2 are inherited, i.e., it is compatible with Nginx.
+*   All features of Nginx-1.8.1 are inherited, i.e., it is compatible with Nginx.
 *   [Dynamic module loading support (DSO)](document/dso.html). You don't have to recompile Tengine when adding new modules to it.
-*   SO_REUSEPORT support, so the connection setup speed could be [three times faster than Nginx](document/benchmark.html).
-*   support for both [HTTP v2 protocol](http://nginx.org/en/docs/http/ngx_http_v2_module.html) and [SPDY v3 protocol](http://nginx.org/en/docs/http/ngx_http_spdy_module.html), be able to use them [together](document/http_core.html).
+*   [HTTP/2 support](http://nginx.org/en/docs/http/ngx_http_v2_module.html). The ngx_http_v2_module supersedes the ngx_http_spdy_module module.
 *   Sends [unbuffered upload](document/http_core.html) directly to HTTP and FastCGI backend servers, which saves disk I/Os.
 *   More load balancing methods, e.g., [consistent hashing](document/http_upstream_consistent_hash.html), [session persistence](document/http_upstream_session_sticky.html), [upstream health check](document/http_upstream_check.html), and [resolving upstream domain names on the fly](document/http_upstream_dynamic.html).
 *   [Input body filter](http://blog.zhuzhaoyuan.com/2012/01/a-mechanism-to-help-write-web-application-firewalls-for-nginx/) support. It's quite handy to write Web Application Firewalls using this mechanism.
@@ -38,6 +37,7 @@ Tengine is a web server originated by [Taobao](http://en.wikipedia.org/wiki/Taob
 
 ## News
 
+*   [12/02/2016] [Tengine-2.2.0](download/tengine-2.2.0.tar.gz) development version released ([changes](changelog.html#2_2_0)).
 *   [12/31/2015] [Tengine-2.1.2](download/tengine-2.1.2.tar.gz) stable version released ([changes](changelog.html#2_1_2)).
 *   [08/12/2015] [Tengine-2.1.1](download/tengine-2.1.1.tar.gz) stable version released ([changes](changelog.html#2_1_1)).
 *   [12/19/2014] [Tengine-2.1.0](download/tengine-2.1.0.tar.gz) development version released ([changes](changelog.html#2_1_0)).

@@ -3,15 +3,14 @@
     Tengine是由淘宝网发起的Web服务器项目。它在[Nginx](http://nginx.org/)的基础上，针对大访问量网站的需求，添加了很多高级功能和特性。Tengine的性能和稳定性已经在大型的网站如[淘宝网](http://www.taobao.com/)，[天猫商城](http://www.tmall.com)等得到了很好的检验。它的最终目标是打造一个高效、稳定、安全、易用的Web平台。
     从2011年12月开始，Tengine成为一个开源项目，Tengine团队在积极地开发和维护着它。Tengine团队的核心成员来自于[淘宝](http://www.taobao.com/)、[搜狗](http://www.sogou.com/)等互联网企业。Tengine是社区合作的成果，我们欢迎大家[参与其中](source_cn.html)，贡献自己的力量。</div>
 
-[![](images/download.png)](download/tengine-2.1.2.tar.gz)
+[![](images/download.png)](download/tengine-2.2.0.tar.gz)
 
 
 ## 特性
 
-*   继承Nginx-1.6.2的所有特性，兼容Nginx的配置；
+*   继承Nginx-1.8.1的所有特性，兼容Nginx的配置；
 *   [动态模块加载（DSO）](document_cn/dso_cn.html)支持。加入一个模块不再需要重新编译整个Tengine；
-*   [支持SO_REUSEPORT选项](document_cn/core_cn.html)，建连性能提升为[官方nginx的三倍；](http://tengine.taobao.org/document_cn/benchmark_cn.html)
-*   同时支持[HTTP v2协议](http://nginx.org/en/docs/http/ngx_http_v2_module.html)和[SPDY v3协议](http://nginx.org/en/docs/http/ngx_http_spdy_module.html)，[可同时使用两种协议](document_cn/http_core_cn.html)；
+*   支持[HTTP/2协议](http://nginx.org/en/docs/http/ngx_http_v2_module.html)，HTTP/2模块替代SPDY模块；
 *   [流式上传](document_cn/http_core_cn.html)到HTTP后端服务器或FastCGI服务器，大量减少机器的I/O压力；
 *   更加强大的负载均衡能力，包括[一致性hash模块](document_cn/http_upstream_consistent_hash_cn.html)、[会话保持模块](document_cn/http_upstream_session_sticky_cn.html)，[还可以对后端的服务器进行主动健康检查](document_cn/http_upstream_check_cn.html)，根据服务器状态自动上线下线，以及[动态解析upstream中出现的域名](document_cn/http_upstream_dynamic_cn.html)；
 *   [输入过滤器机制](http://blog.zhuzhaoyuan.com/2012/01/a-mechanism-to-help-write-web-application-firewalls-for-nginx/)支持。通过使用这种机制Web应用防火墙的编写更为方便；
@@ -36,6 +35,7 @@
 
     <ul>
 
+*   [2016-12-02] [Tengine-2.2.0](download/tengine-2.2.0.tar.gz) 开发版正式发布 ([变更列表](changelog_cn.html#2_2_0))
 *   [2015-12-31] [Tengine-2.1.2](download/tengine-2.1.2.tar.gz) 稳定版正式发布 ([变更列表](changelog_cn.html#2_1_2))
 *   [2015-08-12] [Tengine-2.1.1](download/tengine-2.1.1.tar.gz) 稳定版正式发布 ([变更列表](changelog_cn.html#2_1_1))
 *   [2014-12-19] [Tengine-2.1.0](download/tengine-2.1.0.tar.gz) 开发版正式发布 ([变更列表](changelog_cn.html#2_1_0))
