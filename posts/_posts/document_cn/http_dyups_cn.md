@@ -1,8 +1,4 @@
----
-title: "ngx_http_dyups_module"
-date: "2016-12-01 23:16:42"
----
-
+# ngx_http_dyups_module
 
 ## Description
 
@@ -20,9 +16,9 @@ But it can not be compiled as a '.so'.
 
 ## Example
 
+```
 file: conf/nginx.conf
 
-```
 daemon off;
 error_log logs/error.log debug;
 
@@ -31,51 +27,53 @@ events {
 
 http {
 
-    dyups_upstream_conf  conf/upstream.conf;
+dyups_upstream_conf  conf/upstream.conf;
 
-    include conf/upstream.conf;
+include conf/upstream.conf;
 
-    server {
-        listen   8080;
+server {
+listen   8080;
 
-        location / {
-            proxy_pass http://$host;
-        }
-    }
+location / {
+proxy_pass http://$host;
+}
+}
 
-    server {
-        listen 8088;
-        location / {
-            echo 8088;
-        }
-    }
+server {
+listen 8088;
+location / {
+echo 8088;
+}
+}
 
-    server {
-        listen 8089;
-        location / {
-            echo 8089;
-        }
-    }
+server {
+listen 8089;
+location / {
+echo 8089;
+}
+}
 
-    server {
-        listen 8081;
-        location / {
-            dyups_interface;
-        }
-    }
+server {
+listen 8081;
+location / {
+dyups_interface;
+}
+}
 }
 ```
 
+```
 file: conf/upstream.conf
+```
 
 ```
 upstream host1 {
-        server 127.0.0.1:8088;
-    }
+server 127.0.0.1:8088;
+}
 
-    upstream host2 {
-        server 127.0.0.1:8089;
-    }
+upstream host2 {
+server 127.0.0.1:8089;
+}
 ```
 
 ## Directives
@@ -112,7 +110,7 @@ This directive set the size of share memory which used to store the commands.
 
 This directive set the path of file which you dumped all of upstreams' configs, it will be loaded in `init process` after process respwan to restore upstreams.
 
-**Syntax**: _dyups_trylock on | off_ 
+**Syntax**: _dyups_trylock on | off_
 
 **Default**: _off_
 
@@ -147,7 +145,7 @@ Other code means you should modify your commands and call the interface again.
 <html>
 <head><title>502 Bad Gateway</title></head>
 <body bgcolor="white">
-<center><div class="dh">502 Bad Gateway</div></center>
+<center>## 502 Bad Gateway</center>
 
 * * *
 <center>nginx/1.3.13</center>
@@ -190,33 +188,33 @@ server 127.0.0.1:8089
 ```
 extern ngx_flag_t ngx_http_dyups_api_enable;
 ngx_int_t ngx_dyups_update_upstream(ngx_str_t *name, ngx_buf_t *buf,
-    ngx_str_t *rv);
+ngx_str_t *rv);
 ngx_int_t ngx_dyups_delete_upstream(ngx_str_t *name, ngx_str_t *rv);
 ```
 
 NOTICE:
-    you should add the directive `dyups_interface` into your config file to active this feature
+you should add the directive `dyups_interface` into your config file to active this feature
 
 ```
 content_by_lua '
-    local dyups = require "ngx.dyups"
+local dyups = require "ngx.dyups"
 ```
 
 ```
 local status, rv = dyups.update("test", [[server 127.0.0.1:8088;]]);
-    ngx.print(status, rv)
-    if status ~= 200 then
-        ngx.print(status, rv)
-        return
-    end
-    ngx.print("update success")
+ngx.print(status, rv)
+if status ~= 200 then
+ngx.print(status, rv)
+return
+end
+ngx.print("update success")
 
-    status, rv = dyups.delete("test")
-    if status ~= 200 then
-        ngx.print(status, rv)
-        return
-    end
-    ngx.print("delete success")
+status, rv = dyups.delete("test")
+if status ~= 200 then
+ngx.print(status, rv)
+return
+end
+ngx.print("delete success")
 
 ';
 
