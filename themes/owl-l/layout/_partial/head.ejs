@@ -1,0 +1,87 @@
+<head>
+
+  <meta charset="utf-8"/>
+
+  <meta name="renderer" content="webkit"/>
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <meta name="author" content="<%= theme.OWL.author %>"<% // 设置二套域名
+  var current_domain_setting = null;
+  if (theme.OWL.DOMAIN_SETTING) {
+      current_domain_setting = {}//OWL_GET_DOMAIN_SETTING();
+  } else {
+      current_domain_setting = {
+          "domain"    : "",
+          "assets"    : "assets.soulteary.com",
+          "attachment": "attachment.soulteary.com"
+      };
+  }
+  current_domain_setting["theme"] = current_domain_setting['assets'] + '/theme';
+  var current_page_classes = "page-is-loading";
+  %>/>
+
+  <meta name="robots"<%
+          var robots_action = "none";
+          // 这里要修正以转向为开头
+          if (page.path.indexOf('redirect') === -1) robots_action = "index, follow";
+            <!--if (strpos($_SERVER["REQUEST_URI"], 'redirect', 1) === false && !is_404() && !is_search()) {-->
+  %> content="<%= robots_action %>"/>
+
+  <link rel="dns-prefetch" href="//<%= current_domain_setting['assets'] %>" />
+  <link rel="dns-prefetch" href="//<%= current_domain_setting['attachment'] %>" />
+
+  <link rel="shortcut icon" href="//<%= current_domain_setting['assets'] %>/favicon.ico?v=<%= theme.OWL.PROJECT_VERSION %>&t=<%= theme.OWL.CSS_TIMESTAMP %>" />
+
+  <% if (theme.OWL.NO_SCRIPT_REDIRECT){ %>
+  <noscript><meta http-equiv="refresh" content="0;URL='http://NOSCRIPT'"></noscript>
+  <% } %>
+
+  <title<%
+    // todo 重新封装
+  var title = page.title;
+
+  if (is_archive()){
+    title = __('archive_a');
+
+    if (is_month()){
+      title += ': ' + page.year + '/' + page.month;
+    } else if (is_year()){
+      title += ': ' + page.year;
+    }
+  } else if (is_category()){
+    title = __('category') + ': ' + page.category;
+  } else if (is_tag()){
+    title = __('tag') + ': ' + page.tag;
+  }
+  %>><% if (title){ %><%= title %> - <% } %><%= theme.OWL.TPL_SITE_NAME %></title>
+
+  <%- open_graph({twitter_id: theme.twitter, google_plus: theme.google_plus, fb_admins: theme.fb_admins, fb_app_id: theme.fb_app_id}) %>
+
+
+  <!--"-->
+  <!--<%= page.permalink %>-->
+  <!--<%= page.path %>-->
+  <!--<%= page.current_url %>-->
+  <!--<%= page.link %>-->
+  <!--<%= page.permalink %>-->
+  <!--"-->
+
+
+  <% if (theme.rss){ %>
+    <link rel="alternate" href="<%- theme.rss %>" title="<%= config.title %>" type="application/atom+xml">
+  <% } %>
+  <% if (theme.favicon){ %>
+    <link rel="icon" href="<%- theme.favicon %>">
+  <% } %>
+  <!--<% if (config.highlight.enable){ %>-->
+    <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  <!--<% } %>-->
+  <%- css('css/style') %>
+  <%- partial('google-analytics') %>
+
+  <!--todo canonical link-->
+
+</head>

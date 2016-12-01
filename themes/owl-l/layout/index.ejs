@@ -1,0 +1,11 @@
+<% if (is_homepage()){ %>
+
+    <!-- 网站首页 -->
+    <%- partial('_partial/homepage', {show_post_count: 3}) %>
+
+<% } else { %>
+
+    <!-- 文章分页 -->
+    <%- partial('_partial/post-index', {pagination: 2, index: true}) %>
+
+<% } %>

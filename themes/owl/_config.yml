@@ -1,0 +1,93 @@
+# Header
+menu:
+  下载: /download.html
+  源码: /source.html
+  文档: /documentation.html
+  FAQ: /faq.html
+  联系我们: /contact.html
+  教程: http://tengine.taobao.org/book/
+
+rss: /atom.xml
+
+# Content
+excerpt_link: Read More
+fancybox: true
+
+# Sidebar
+sidebar: right
+widgets:
+- category
+- tag
+- tagcloud
+- archive
+- recent_posts
+
+# display widgets at the bottom of index pages (pagination == 2)
+index_widgets:
+# - category
+# - tagcloud
+# - archive
+
+# widget behavior
+archive_type: 'monthly'
+show_count: false
+
+# Miscellaneous
+google_analytics:
+favicon: /favicon.png
+twitter:
+google_plus:
+fb_admins:
+fb_app_id:
+
+
+
+# -------------------
+# OWL 主题配置项
+#
+# @DATE: 2014-09-09
+# -------------------
+OWL:
+  author:         "Designed by 阿里云UED AX"
+
+  CSS_TIMESTAMP:  "20150120-2R"     # 样式文件的时间戳
+  JS_TIMESTAMP:   "20150120-2R"     # 脚本文件的时间戳
+
+  PROJECT_VERSION:  "s"             # 版本定义
+  JS_DEBUG:         false           # 是否开启脚本调试，如开启，页面不加载合并后的脚本
+
+  SHOW_PAGE_ENV:    true            # 是否显示页面环境，如开启，HTML文档属性data-env则显示prod
+                                    # PHP 原始数值 true && OWL_JS_DEBUG
+  JS_SWITCH_THEME:  false           # 是否使用前端换肤，如果为`false`，则需要指定下面的主题名称
+  DEF_THEME:        "united"        # 是否使用前端换肤，如果为`false`，则需要指定下面的主题名称
+
+  JS_DEBUG_LEVEL:   5               # 页面调试输出信息等级，依赖`OWL_JS_DEBUG`，调试可以写`5`，禁用后自动置`0`
+
+  OWL_TPL_ROOT_DIR: ""              # 主题文件的根目录
+                                    # PHP 原始数值 get_bloginfo( 'template_directory' )
+  # 使用 `config.title` 代替
+  #TPL_SITE_NAME:    "苏洋博客"       # 站点名称  get_option( 'blogname' )
+  SITE_URL: "http://www.soulteary.com"    # 站点地址 get_option( 'siteurl' )
+
+  SEC_SALT:         "soulteary"     # 某些操作需要的盐，请修改来为自己代盐
+
+  # 收集页面出错信息的REST接口，如果你不是开发者，请保持它为 `false`
+  # JS_ERROR_TRACKER: "http://test.soulteary.com/?r.gif"
+  JS_ERROR_TRACKER: false
+
+  USE_CUSTOM_NAV: true              # 是否使用自定义菜单
+
+  CURRENT_YEAR: 2016                # 当前年份 date( 'Y' )
+
+  # 设置二套环境域名，如果不需要，请保持为`false`
+  # OWL_DOMAIN_SETTING: '{"product": {"site":"","attachment": "7u2j6a.com1.z0.glb.clouddn.com", "assets": "7u2mwv.com1.z0.glb.clouddn.com"}, "dev": {"site":"", "attachment.soulteary.com": "attachment", "assets": "assets.soulteary.com"}}'
+  DOMAIN_SETTING: false
+
+  ENV: "product"                    # 设置当前环境方案，(product|dev)
+
+  WEB_PREF: false                   # 是否开启性能收集
+
+  FEATURE_COVER: true               # 焦点图全局开关
+
+  # 无脚本跳转，如果开启，请填写要跳转的地址，否则请保持`false`
+  NO_SCRIPT_REDIRECT: false

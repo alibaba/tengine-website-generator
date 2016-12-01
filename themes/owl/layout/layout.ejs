@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="cn" dir="ltr" class="no-js"<% if (theme.OWL.SHOW_PAGE_ENV){ %> data-env="dev-env"<% }%>>
+
+<%- partial('_component/head') %>
+
+<body class="page-is-loading">
+
+  <%- partial('_partial/header', null, {cache: !config.relative_link}) %>
+  <div class="outer">
+    <section id="main"><%- body %></section>
+  </div>
+  <%- partial('_partial/footer', null, {cache: !config.relative_link}) %>
+
+  <%- partial('_partial/after-footer') %>
+
+</body>
+</html>
