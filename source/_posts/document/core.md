@@ -7,6 +7,23 @@ date: "2016-12-01 19:12:57"
 ## Directives
 
 ```
+Syntax: **force_exit** _exit_time;_
+
+Default: —
+
+Context: main
+```
+
+force worker processes to exit after _exit_time_.
+
+The force_exit support is not enabled by default. You should compile it explicitly:
+
+```
+ ./configure --with-force-exit
+```
+
+
+```
 Syntax: **worker_processes** [num | auto]
 
 Default: worker_processes auto

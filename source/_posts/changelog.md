@@ -4,8 +4,29 @@ date: "2016-12-01 18:54:15"
 ---
 
 
+#### Tengine-2.2.0 [02 Dec 2016]
+*   Security: a segmentation fault might occur in a worker process while writing a specially crafted request body to a temporary file (CVE-2016-4450) (0x7E)
+*   Feature: the "force_exit" directive. (aholic, chobits)
+*   Feature: debug pool module which can get memory usage of nginx memory pool. (chobits)
+*   Change: merged HTTP/2 module, SPDY module is removed. (PeterDaveHello)
+*   Change: merged changes from nginx-1.8.1. (lhanjian, magicbear, chobits)
+*   Change: support for EPOLL_EXCLUSIVE. (cfsego)
+*   Change: export api: ngx_http_upstream_check_upstream_down. (detailyang)
+*   Change: disable "check_keepalive_requests" feature for TCP health check. (cynron)
+*   Change: updated reqstatus module. (cfsego)
+*   Bugfix: remove duplicate code in ngx_http_named_location (innomentats)
+*   Bugfix: fixed bug of session-sticky module. (detailyang)
+*   Bugfix: fixed bug of resolve.conf parser. (zuopucuen)
+*   Bugfix: fixed the compile warning of tfs module. (monadbobo)
+*   Bugfix: fixed a segmentation fault of dynamic_resolver feature when variable is used in proxy_pass directive. (chobits)
+*   Bugfix: fixed bug of invalid Set-Cookie value in session-sticky module. (YanagiEiichi)
+*   Bugfix: fixed bug of uninitialized 'cf' variable in dyups module. (wangfakang)
+*   Bugfix: fixed bug of duplicate peers in health check module. (FqqCS, taoyuanyuan)
+*   Bugfix: fixed bug of wrong javascript content-type in concat module. (IYism)
 
-#### Tengine-2.1.2 [31 Dec 2015]*   Feature: ngx_http_reqstat_module now will trace requests if they are redirected internally by 'rewrite' or 'error_page'. (cfsego)
+
+#### Tengine-2.1.2 [31 Dec 2015]
+*   Feature: ngx_http_reqstat_module now will trace requests if they are redirected internally by 'rewrite' or 'error_page'. (cfsego)
 *   Feature: porting HTTP/2 from nginx v1.9.7, and support for SPDY v3 fallback. (PeterDaveHello, cfsego)
 *   Feature: added ngx_debug_pool module to check nginx memory. (chobits)
 *   Feature: porting $upstream_cookie from nginx.
@@ -14,7 +35,8 @@ date: "2016-12-01 18:54:15"
 *   Bugfix: fixed ngx_http_concat_module that took no effect on javascript. (IYism)
 
 
-#### Tengine-2.1.1 [12 Aug 2015]*   Feature: support for dynamic upstream update. (yzprofile)
+#### Tengine-2.1.1 [12 Aug 2015]
+*   Feature: support for dynamic upstream update. (yzprofile)
 *   Feature: enchanced ngx_http_reqstat_module. (cfsego)
 *   Feature: added ssl_verify_client_exception directive. (InfoHunter)
 *   Change: Reduced memory usage while parsing configuration. (ilexshen)
@@ -29,7 +51,8 @@ date: "2016-12-01 18:54:15"
 *   Bugfix: fixed bug of reuseport. (mnadbobo)
 
 
-#### Tengine-2.1. [19 Dec 2014]*   Feature: added support for collectng the running status of Tengine according to specific key (domain, url, etc). (cfsego)
+#### Tengine-2.1. [19 Dec 2014]
+*   Feature: added support for collectng the running status of Tengine according to specific key (domain, url, etc). (cfsego)
 *   Feature: support the SO_REUSEPORT ption, to improve performance on multicore systems. (monadbobo)
 *   Feature: support for resolving upsream domain names on the fly. (InfoHunter)
 *   Feature: support for rewriting to amed locations. (yzprofile)
@@ -52,7 +75,8 @@ date: "2016-12-01 18:54:15"
 *   Bugfix: upstream rbtree bugfix. (taoyuanyuan)
 
 
-#### Tengine-2.0.3 [30 May 2014]*   Feature: added support for collecting the running status of Tengine according to specific key (domain, url, etc). (cfsego)
+#### Tengine-2.0.3 [30 May 2014]
+*   Feature: added support for collecting the running status of Tengine according to specific key (domain, url, etc). (cfsego)
 *   Feature: added support for generating package of debian/ubuntu format(*.deb). (betetrpm, szepeviktmr)
 *   Change: merged changes between nginx-1.4.6 and nginx-1.4.7. (chobits)
 *   Change: optimized the parsing and searching strategy of upstream by using rbtree. (SarahWang)
@@ -62,11 +86,13 @@ date: "2016-12-01 18:54:15"
 *   Bugfix: fixed bugs of SPDY protocol. (chobits)
 
 
-#### Tengine-2.0.2 [28 Mar 2014]*   Bugfix: send output queue after processing of read event in SPDY. (chobits)
+#### Tengine-2.0.2 [28 Mar 2014]
+*   Bugfix: send output queue after processing of read event in SPDY. (chobits)
 *   Bugfix: CVE-2014-0133 and CVE-2014-0088. (chobits)
 
 
-#### Tengine-2.0.1 [06 Mar 2014]*   Feature: now non-buffering request body mechanism supports chunked
+#### Tengine-2.0.1 [06 Mar 2014]
+*   Feature: now non-buffering request body mechanism supports chunked
       input. (yaoweibin)
 *   Feature: trim module added more rules, and now can be enabled according
       to variables. (taoyuanyuan)
@@ -83,7 +109,8 @@ date: "2016-12-01 18:54:15"
 *   Bugfix: disabled redirects to named locations if URI is not set.
 
 
-#### Tengine-2.0.0 [08 Jan 2014]*   Feature: now DSO module does not need the original source code or
+#### Tengine-2.0.0 [08 Jan 2014]
+*   Feature: now DSO module does not need the original source code or
       compiler options when compiling a new module. (monadbobo)
 *   Feature: added support for SPDY v3, and SPDY/HTTP servers can listen on
       the same port. (lilbedwin、chobits)
@@ -122,7 +149,8 @@ date: "2016-12-01 18:54:15"
 *   Bugfix: fixed a compilation warning of Lua module. (diwayou)
 
 
-#### Tengine-1.5.2 [22 Nov 2013]*   Security: a character following an unescaped space in a request line
+#### Tengine-1.5.2 [22 Nov 2013]
+*   Security: a character following an unescaped space in a request line
       was handled incorrectly (CVE-2013-4547); the bug had appeared in
       0.8.41. Thanks to Ivan Fratric of the Google Security Team.
 *   Bugfix: fix a bug of 'nodelay' might be ignored in limit_req module.
@@ -131,7 +159,8 @@ date: "2016-12-01 18:54:15"
       (taoyuanyuan)
 
 
-#### Tengine-1.5.1 [29 Aug 2013]*   Feature: added the directive 'retry_cached_connection' which could
+#### Tengine-1.5.1 [29 Aug 2013]
+*   Feature: added the directive 'retry_cached_connection' which could
       disable unconditional retries with a cached backend connection.
       (yaoweibin)
 *   Feature: added the argument of 'ncpu' to 'sysguard_load' directive.
@@ -145,7 +174,8 @@ date: "2016-12-01 18:54:15"
 *   Bugfix: fixed two compile warnings. (zzjin, diwayou)
 
 
-#### Tengine-1.5.0 [31 Jul 2013]*   Feature: added ABI compatibility verification for DSO modules.
+#### Tengine-1.5.0 [31 Jul 2013]
+*   Feature: added ABI compatibility verification for DSO modules.
       (monadbobo)*   Feature: added non-buffering request body mechanism. Now the http proxy
       and fastcgi module can send requests to backend servers when it receives
       part of a request body. (yaoweibin)
@@ -161,11 +191,13 @@ date: "2016-12-01 18:54:15"
       in the direct mode. (dinic)
 
 
-#### Tengine-1.4.6 [14 May 2013]*   Bugfix: merged the changes of Nginx-1.2.9 and fixed the security
+#### Tengine-1.4.6 [14 May 2013]
+*   Bugfix: merged the changes of Nginx-1.2.9 and fixed the security
       problem CVE-2013-2070. This bug had appeared in 1.4.0. (yaoweibin)
 
 
-#### Tengine-1.4.5 [01 May 2013]*   Feature: added the consistent_hash module which dispatches requests
+#### Tengine-1.4.5 [01 May 2013]
+*   Feature: added the consistent_hash module which dispatches requests
       to upstream servers based on consistent hashing algorithm of a
       variable specified. (dinic)*   Feature: added the "keepalive_timeout" directive to set timeout for
       the upstream keepalive connections. (jinglong)*   Feature: now the configure script supports compilation of all modules
@@ -173,7 +205,8 @@ date: "2016-12-01 18:54:15"
       modules in GCC-4.4.5. (magicbear)
 
 
-#### Tengine-1.4.4 [21 Mar 2013]*   Feature: added the session_sticky module by using which one client
+#### Tengine-1.4.4 [21 Mar 2013]
+*   Feature: added the session_sticky module by using which one client
       can be always served by the same upstream server. (dinic)*   Feature: now the sysguard module can protect the server based on
       the amount of free memory. (lifeibo)*   Feature: added support for geoip regional database in geoip module.
       (jasonlfunk)
@@ -187,7 +220,8 @@ date: "2016-12-01 18:54:15"
       (zhcn381)
 
 
-#### Tengine-1.4.3 [21 Jan 2013]*   Feature: added the TFS module which provides a RESTful API to Taobao
+#### Tengine-1.4.3 [21 Jan 2013]
+*   Feature: added the TFS module which provides a RESTful API to Taobao
       File System. (zhcn381, monadbobo)*   Feature: added a $sent_cookie_XXX variable which could be used to get
       the value of cookie XXX from the Set-Cookie headers. (skoo87)
 *   Feature: now the syslog logging supports host name and domain name as
@@ -199,7 +233,8 @@ date: "2016-12-01 18:54:15"
       (lizi)
 
 
-#### Tengine-1.4.2 [22 Nov 2012]*   Feature: added the option '--dso-tool-path' to configure script, which can specify the installation path for the dso_tool script. (monadbobo)
+#### Tengine-1.4.2 [22 Nov 2012]
+*   Feature: added the option '--dso-tool-path' to configure script, which can specify the installation path for the dso_tool script. (monadbobo)
 *   Feature: added a new variable '$unix_time', whose value is the current number of seconds since unix epoch time. (yaoweibin)
 *   Feature: added the 'make test' target to run test cases. (yaoweibin)
 *   Feature: now the sysguard module can be used in a location block. (lifeibo)
@@ -213,11 +248,13 @@ date: "2016-12-01 18:54:15"
           Thanks to Jianbin Xiao and Ren Xiaolei.
 
 
-#### Tengine-1.4.1 [10 Oct 2012]*   Feature: added jemalloc library support. (fanjizhao)
+#### Tengine-1.4.1 [10 Oct 2012]
+*   Feature: added jemalloc library support. (fanjizhao)
 *   Feature: added a new variable '$dollar', whose value is the dollar sign ('$'). (zhuzhaoyuan)*   Feature: added the option 'off' to 'worker_cpu_affinity' directive. (cfsego)*   Change: disable CPU affinity when a new worker process is forked as an old one exits abnormally. (cfsego)*   Bugfix: fixed compile error with shared Lua module when using LuaJIT in Mac OS. (monadbobo)*   Bugfix: fixed the wrong module execution order with the third party shared filter module. (monadbobo)
 
 
-#### Tengine-1.4.0 [05 Sep 2012]*   Feature: added the dynamic module loading support (a.k.a. DSO), so we don't have to recompile tengine when we want to add a new module. (monadbobo)
+#### Tengine-1.4.0 [05 Sep 2012]
+*   Feature: added the dynamic module loading support (a.k.a. DSO), so we don't have to recompile tengine when we want to add a new module. (monadbobo)
 *   Feature: updated the Lua module to the latest stable version. (chaoslawful, agentzh, jinglong)
 *   Feature: added json and csv format output for the upstream_check module. (yaoweibin)
 *   Feature: added the 'log_empty_request' directive which could be used to turn off logs from a connection without HTTP data. (zhuzhaoyuan)
@@ -238,7 +275,8 @@ date: "2016-12-01 18:54:15"
 *   Bugfix: fixed a compile error if the perl module was used with procs. (yzprofile)
 
 
-#### Tengine-1.3.0 [25 May 2012]*   Feature: added the Lua module which embeds the power of Lua into Tengine. (chaoslawful, agentzh)
+#### Tengine-1.3.0 [25 May 2012]
+*   Feature: added the Lua module which embeds the power of Lua into Tengine. (chaoslawful, agentzh)
 *   Feature: Feature: added the procs module which provides a mechanism to support
        standalone processes. (yzprofile)
 *   Change: renamed the parameter from nongreedy to greedy in the user_agent module. (dinic)
@@ -246,7 +284,8 @@ date: "2016-12-01 18:54:15"
 *   Bugfix: fixed a compile error in syslog with --with-ipv6 configuration parameter. (cfsego)
 
 
-#### Tengine-1.2.5 [09 May 2012]*   Feature: added the upstream_check module which could be used to do proactive
+#### Tengine-1.2.5 [09 May 2012]
+*   Feature: added the upstream_check module which could be used to do proactive
        health checks of upstream servers. (yaoweibin)
 *   Feature: now allow to specify program identifiers with syslogs. (cfsego)
 *   Change: merged changes between nginx-1.0.14 and nginx-1.0.15. (zhuzhaoyuan)
@@ -256,14 +295,16 @@ date: "2016-12-01 18:54:15"
 *   Bugfix: fixed the bug of 'access_log' might not be compatible with the 'buffer' parameter. (cfsego)
 
 
-#### Tengine-1.2.4 [30 Mar 2012]*   Feature: added the user_agent module. (dinic)
+#### Tengine-1.2.4 [30 Mar 2012]
+*   Feature: added the user_agent module. (dinic)
 *   Feature: added the 'log_escape' directive. (agentzh, skoo87)
 *   Change: merged changes between nginx-1.0.12 and nginx-1.0.14. (zhuzhaoyuan)
 *   Bugfix: fixed a bug in the limit_req module. (liseen.wan)
 *   Bugfix: fixed a bug in subrequest. (lifeibo)
 
 
-#### Tengine-1.2.3 [27 Feb 2012]*   Feature: added the 'request_time_cache' directive to get more precise
+#### Tengine-1.2.3 [27 Feb 2012]
+*   Feature: added the 'request_time_cache' directive to get more precise
        $request_time/$request_time_msec/$request_time_usec. (yzprofile)
 *   Feature: added the slice module. (zhuzhaoyuan)
 *   Change: merged changes between nginx-1.0.11 and nginx-1.0.12. (zhuzhaoyuan)
@@ -272,7 +313,8 @@ date: "2016-12-01 18:54:15"
 *   Bugfix: fixed a bug in 'expires_by_types'. (lifeibo)
 
 
-#### Tengine-1.2.2 [11 Jan 2012]*   Feature: added the input body filter mechanism. (cfsego)
+#### Tengine-1.2.2 [11 Jan 2012]
+*   Feature: added the input body filter mechanism. (cfsego)
 *   Feature: added SSL dialog support to the mail module. (cfsego)
 *   Change: merged changes between nginx-1.0.10 and nginx-1.0.11. (zhuzhaoyuan)
 *   Change: turned 'lingering_close' off by default. (zhuzhaoyuan)
@@ -284,11 +326,13 @@ date: "2016-12-01 18:54:15"
 
 
 
-#### Tengine-1.2.1 [06 Dev 2011]*   Bugfix: fixed a segmentation fault bug when using default error log or access
+#### Tengine-1.2.1 [06 Dev 2011]
+*   Bugfix: fixed a segmentation fault bug when using default error log or access
       log. (yzprofile)
 
 
-#### Tengine-1.2.0 [29 Nov 2011]*   The first public release.
+#### Tengine-1.2.0 [29 Nov 2011]
+*   The first public release.
 *   Feature: added syslog support to error_log and access_log. (cfsego)
 *   Feature: added pipe support to error_log and access_log. (cfsego)
 *   Feature: added realloc() related APIs. (gongyuan)
