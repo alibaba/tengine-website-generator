@@ -1,7 +1,8 @@
 ---
 title: "Core functionality"
-date: "2016-12-01 19:12:57"
+date: "2016-12-02 00:35:16"
 ---
+
 
 
 ## Directives
