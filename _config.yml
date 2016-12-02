@@ -37,17 +37,12 @@ render_drafts: false
 post_asset_folder: false
 relative_link: false
 future: true
+
 highlight:
   enable: true
-  line_number: true
+  line_number: false
   auto_detect: false
   tab_replace:
-
-# Category & Tag
-default_category: uncategorized
-category_map:
-tag_map:
-
 
 # RSS
 feed:
@@ -83,28 +78,6 @@ deploy:
   type:
 
 
-index_generator:
-  per_page:        10     # 索引页面每页10篇内容
-  diff:            3      # 展示内容从第三篇后开始, 对应首页展示数量
-  idx_prefix:      "blog" # 首页外的索引的目录
-  pagination_dir:  blog/page
-
-
-archive_generator:
-  per_page:       0       # 页面不限制文章数量
-  yearly:         true    # 按照年归档
-  monthly:        true    # 按照月归档
-  #  按日归档目测有BUG, 毕竟日归档冗余, 先不改了
-  #  daily:          true    # 按照日归档
-
-#tag_generator:
-#  per_page: 10 ##標籤分類頁面默認10篇文章
-#category_generator:
-#   per_page: 10 ###分類頁面默認10篇文章
-#feed:
-#  type: atom ##feed類型 atom或者rss2
-#  path: atom.xml ##feed路徑
-#  limit: 20  ##feed文章最小數量
 #deploy:
 #  type: git ##部署類型 其他類型自行google之
 #  repo: <repository url> ##git倉庫地址
@@ -123,9 +96,7 @@ auto_spacing:
   title:    true
   content:  false
 
-toc:
-  enable:   false
-  maxdepth: 3
+
 
 nofollow:
   enable:   true
@@ -134,9 +105,11 @@ nofollow:
             - exclude2.com
 
 html_minifier:
-  enable:             false
+  enable:             true
   collapseWhitespace: true
   exclude:
+
+
 
 marked:
   gfm: true
@@ -144,5 +117,6 @@ marked:
   sanitize: false
   tables: true
   breaks: true
-  smartLists: true
-  smartypants: true
+  smartLists: false
+  smartypants: false
+
