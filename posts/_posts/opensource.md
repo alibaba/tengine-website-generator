@@ -1,10 +1,8 @@
 ## Tengine, goes to open source
 
-We're glad to announce that [Tengine](http://tengine.taobao.org), our hacked-up version of Nginx at Taobao now becomes an open source project. 
-
-[Taobao](http://www.taobao.com) is the largest e-commerce website in Asia and ranked #12 on Alexa’s top global sites list. Our website serves billions of pageviews per day. For busy website as us, Nginx is obviously the best choice. Thanks to Nginx's high performance, small footprint and flexibility, we have done more with less. 
-
-We first learned the Nginx internals by using it as a traditional web server and developing dozens of modules. Then from June of this year we started hacking the Nginx core to expand its capabilities. As some of the features we have developed may also benefit other Nginx users and websites, so why not open source them? We do not want to be just open source software users, but also open source contributors. That's why the Tengine open source project came out.
+> We're glad to announce that [Tengine](http://tengine.taobao.org), our hacked-up version of Nginx at Taobao now becomes an open source project. 
+> [Taobao](http://www.taobao.com) is the largest e-commerce website in Asia and ranked #12 on Alexa’s top global sites list. Our website serves billions of pageviews per day. For busy website as us, Nginx is obviously the best choice. Thanks to Nginx's high performance, small footprint and flexibility, we have done more with less. 
+> We first learned the Nginx internals by using it as a traditional web server and developing dozens of modules. Then from June of this year we started hacking the Nginx core to expand its capabilities. As some of the features we have developed may also benefit other Nginx users and websites, so why not open source them? We do not want to be just open source software users, but also open source contributors. That's why the Tengine open source project came out.
 
 Tengine is based on the latest stable version of Nginx (Nginx-1.0.10). Here are a few features and bug fixes you may be interested in Tengine:
 

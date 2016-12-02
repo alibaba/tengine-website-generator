@@ -1,8 +1,7 @@
 ## ChangeLog
 
-
-
 #### Tengine-2.2.0 [02 Dec 2016]
+
 *   Security: a segmentation fault might occur in a worker process while writing a specially crafted request body to a temporary file (CVE-2016-4450) (0x7E)
 *   Feature: the "force_exit" directive. (aholic, chobits)
 *   Feature: debug pool module which can get memory usage of nginx memory pool. (chobits)
@@ -24,6 +23,7 @@
 
 
 #### Tengine-2.1.2 [31 Dec 2015]
+
 *   Feature: ngx_http_reqstat_module now will trace requests if they are redirected internally by 'rewrite' or 'error_page'. (cfsego)
 *   Feature: porting HTTP/2 from nginx v1.9.7, and support for SPDY v3 fallback. (PeterDaveHello, cfsego)
 *   Feature: added ngx_debug_pool module to check nginx memory. (chobits)
@@ -34,6 +34,7 @@
 
 
 #### Tengine-2.1.1 [12 Aug 2015]
+
 *   Feature: support for dynamic upstream update. (yzprofile)
 *   Feature: enchanced ngx_http_reqstat_module. (cfsego)
 *   Feature: added ssl_verify_client_exception directive. (InfoHunter)
@@ -50,6 +51,7 @@
 
 
 #### Tengine-2.1. [19 Dec 2014]
+
 *   Feature: added support for collectng the running status of Tengine according to specific key (domain, url, etc). (cfsego)
 *   Feature: support the SO_REUSEPORT ption, to improve performance on multicore systems. (monadbobo)
 *   Feature: support for resolving upsream domain names on the fly. (InfoHunter)
@@ -74,6 +76,7 @@
 
 
 #### Tengine-2.0.3 [30 May 2014]
+
 *   Feature: added support for collecting the running status of Tengine according to specific key (domain, url, etc). (cfsego)
 *   Feature: added support for generating package of debian/ubuntu format(*.deb). (betetrpm, szepeviktmr)
 *   Change: merged changes between nginx-1.4.6 and nginx-1.4.7. (chobits)
@@ -85,11 +88,13 @@
 
 
 #### Tengine-2.0.2 [28 Mar 2014]
+
 *   Bugfix: send output queue after processing of read event in SPDY. (chobits)
 *   Bugfix: CVE-2014-0133 and CVE-2014-0088. (chobits)
 
 
 #### Tengine-2.0.1 [06 Mar 2014]
+
 *   Feature: now non-buffering request body mechanism supports chunked
       input. (yaoweibin)
 *   Feature: trim module added more rules, and now can be enabled according
