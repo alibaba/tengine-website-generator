@@ -128,56 +128,66 @@ module
 
 ##### 空白符
 
-*   正文中的 '\r' 直接删除。*   正文中的 '\t' 替换为空格，然后重复的空格保留一个。*   正文中重复的 '\n' 保留一个。*   标签中的 '\t'，'\n' 替换为空格，重复的空格保留一个，'=' 前后的空格直接删除，'>' 前面的空格直接删除。*   标签的双引号和单引号内的空白符不做删除。\<div class="no &nbsp; &nbsp; &nbsp;  trim"\>
-    *   `pre` 和 `texterea` 标签的内容不做删除。*   支持 `pre` 嵌套使用。*   `script` 和 `style` 标签的内容不做删除。*   ie条件注释的内容不做删除。*   ssi/esi注释的内容不做删除。
+- 正文中的 `\r` 直接删除。
+- 正文中的 `\t` 替换为空格，然后重复的空格保留一个。
+- 正文中重复的 `\n` 保留一个。
+- 标签中的 `\t`，`\n` 替换为空格，重复的空格保留一个，`=` 前后的空格直接删除，`>` 前面的空格直接删除。
+- 标签的双引号和单引号内的空白符不做删除。
+- `pre` 和 `texterea` 标签的内容不做删除。
+- 支持 `pre` 嵌套使用。
+- `script` 和 `style` 标签的内容不做删除。
+- ie条件注释的内容不做删除。
+- ssi/esi注释的内容不做删除。
 
-    ##### 注释
+##### 注释
 
-    *   如果是ie条件注释不做删除。
+- 如果是ie条件注释不做删除。
     判断规则：`&lt;!--[if &lt;![endif]--&gt;`  之间的内容判断为ie条件注释。
-    *   如果是ssi/esi注释的内容不做删除。
+- 如果是ssi/esi注释的内容不做删除。
     判断规则：`&lt;!--# --&gt;`  `&lt;!--esi --&gt;`  之间的内容分别判断为ssi和esi注释。
-    *   其他正常html注释直接删除.  `&lt;!--  --&gt;`
+- 其他正常html注释直接删除.  `&lt;!--  --&gt;`
 
-    ### javascript
+### javascript
 
-    借鉴 jsmin 的处理规则 (http://www.crockford.com/javascript/jsmin.html)
+借鉴 jsmin 的处理规则 (http://www.crockford.com/javascript/jsmin.html)
 
-    `&lt;script type="text/javascript"&gt;` 或者 `&lt;script&gt;` 标签认为是javascript。
+`&lt;script type="text/javascript"&gt;` 或者 `&lt;script&gt;` 标签认为是javascript。
 
-    ##### 空白符
+##### 空白符
 
-    *   '('，'['，'{'，';'，','，'>'，'=' 后的 '\n'，'\t'，空格 直接删除。
-    *   '\r' 直接删除。*   其他情况 重复的 '\n'，'\t'，空格 保留第一个。*   单引号和双引号内不删除。
-    如下不做操作：
-    "hello   &nbsp;   \\"  &nbsp;   world"
-    'hello  &nbsp;       \'  &nbsp;   world'*   正则表达式的内容不删除。
-    判断规则：'/' 前的非空字符是 ','，'('，'=' 三种的即认为是正则表达式。( 同jsmin的判断)
-    如下不做操作：
-    var re=/1 &nbsp; &nbsp; &nbsp;2/;
-    data.match(/1  &nbsp;  &nbsp; 2/);
+- '('，'['，'{'，';'，','，'>'，'=' 后的 '\n'，'\t'，空格 直接删除。
+- '\r' 直接删除。- 其他情况 重复的 '\n'，'\t'，空格 保留第一个。- 单引号和双引号内不删除。
 
-    ##### 注释
+如下不做操作：
+"hello   &nbsp;   \\"  &nbsp;   world"
+'hello  &nbsp;       \'  &nbsp;   world'- 正则表达式的内容不删除。
+判断规则：'/' 前的非空字符是 ','，'('，'=' 三种的即认为是正则表达式。( 同jsmin的判断)
+如下不做操作：
+var re=/1 &nbsp; &nbsp; &nbsp;2/;
+data.match(/1  &nbsp;  &nbsp; 2/);
 
-    *   删除单行注释。  `//`*   删除多行注释。  `/*   */`
-    注意：javascript也有一种条件注释，不过貌似用得很少，jsmin直接删除的，trim也是直接删除。
-    http://en.wikipedia.org/wiki/Conditional_comment
+##### 注释
 
-    ### css
+- 删除单行注释。  `//`- 删除多行注释。  `/- */`
+注意：javascript也有一种条件注释，不过貌似用得很少，jsmin直接删除的，trim也是直接删除。
+http://en.wikipedia.org/wiki/Conditional_comment
 
-    借鉴 YUI Compressor 的处理规则 (http://yui.github.io/yuicompressor/css.html)
+### css
 
-    `&lt;style type="text/css"&gt;` 或者 `&lt;style&gt;` 标签认为是css。
+借鉴 YUI Compressor 的处理规则 (http://yui.github.io/yuicompressor/css.html)
 
-    ##### 空白符
+`&lt;style type="text/css"&gt;` 或者 `&lt;style&gt;` 标签认为是css。
 
-    *   ';'，'>'，'{'，'}'，':'，',' 前后的 '\n'，'\t'，空格 直接删除。*   '\r' 直接删除。*   其他情况 连续的 '\n'， '\t' 和 空格 保留为一个空格。*   单引号和双引号内不删除。
-    如下不做操作：
-    "hello   &nbsp;  \\\"  &nbsp;    world"
-    'hello  &nbsp;   \'   &nbsp;  &nbsp;   world'
+##### 空白符
 
-    ##### 注释
+- ';'，'>'，'{'，'}'，':'，',' 前后的 '\n'，'\t'，空格 直接删除。- '\r' 直接删除。- 其他情况 连续的 '\n'， '\t' 和 空格 保留为一个空格。- 单引号和双引号内不删除。
 
-    *   child seletor hack的注释不删除。
-    `html&gt;/**/body p{color:blue}`*   IE5 /Mac hack 的注释不删除。
-    `/*\*/.selector{color:khaki}/**/`*   其他情况删除注释。  `/*    */`
+如下不做操作：
+"hello   &nbsp;  \\\"  &nbsp;    world"
+'hello  &nbsp;   \'   &nbsp;  &nbsp;   world'
+
+##### 注释
+
+- child seletor hack的注释不删除。
+`html&gt;/**/body p{color:blue}`- IE5 /Mac hack 的注释不删除。
+`/*\*/.selector{color:khaki}/**/`- 其他情况删除注释。  `/-  */`

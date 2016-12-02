@@ -2,12 +2,11 @@
 
 To install Tengine, just follow these three steps:
 
-```
+```bash
 $ ./configure
-
 $ make
-
 # make install
+
 ```
 
 
