@@ -1,8 +1,10 @@
 ## Documentation
 
-Most of the configuration options are the same as Nginx's. We just list some notable features here.
+Most of the configuration options are the same as Nginx's.
+ 
+We just list some notable features here.
 
-> For a full list of changes in Tengine, see the [ChangeLog](changelog.html).
+For a full list of changes in Tengine, see the [ChangeLog](changelog.html).
 
 ### Options
 

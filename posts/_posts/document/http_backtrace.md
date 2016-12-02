@@ -12,11 +12,9 @@ This module requires the backtrace(3) function in glibc. You can't enable it on 
 
 ## Directives
 
-Syntax: **backtrace_log** log_path
-
-Default: backtrace_log error.log
-
-Context: main
+> Syntax: **backtrace_log** log_path
+> Default: backtrace_log error.log
+> Context: main
 
 Specify the log file name of backtrace.
 
@@ -24,11 +22,11 @@ Specify the log file name of backtrace.
 backtrace_log /path/to/backtrace.log
 ```
 
-Syntax: **backtrace_max_stack_size** size
+---
 
-Default: backtrace_max_stack_size 30
-
-Context: main
+> Syntax: **backtrace_max_stack_size** size
+> Default: backtrace_max_stack_size 30
+> Context: main
 
 Specify the maximum stack depth for backtrace
 

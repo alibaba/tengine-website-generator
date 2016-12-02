@@ -1,7 +1,10 @@
 <div class="fluid-container global-header">
     <div class="container">
-        <div class="header clearfix">
-            <nav id="nav-menu">
+        <div class="header row clearfix">
+            <div class="col-sm-4 col-lg-2">
+                <h1 class="text-muted site-logo"><a href="<%- url_for() %>" id="logo" class="text-hide"><%= config.title %></a></h1>
+            </div>
+            <nav id="nav-menu" class="clearfix col-sm-8 col-lg-10 hide">
                 <ul class="nav nav-pills pull-right">
                     <% for (var i in theme.menu){ %>
                     <li role="presentation"><a class="menu-item" href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
@@ -9,7 +12,6 @@
                     <li role="presentation" class="hide"><a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
                 </ul>
             </nav>
-            <h1 class="text-muted site-logo"><a href="<%- url_for() %>" id="logo"><%= config.title %></a></h1>
         </div>
     </div>
 </div>

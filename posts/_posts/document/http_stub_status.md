@@ -12,4 +12,6 @@ Reading: 0 Writing: 1 Waiting: 0
 ```
 
 
-If you want to use tsar with Tengine/Nginx, you can use the module for tsar.([quick start](module_for_tsar.html))
+If you want to use tsar with Tengine/Nginx, you can use the module for tsar.
+
+[quick start](module_for_tsar.html)

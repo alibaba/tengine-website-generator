@@ -14,11 +14,11 @@
 
 *   It can dispatch requests to backend servers on average according to nginx configuration parameter.
 
-`consistent_hash $remote_addr`: mapping via client ip address
+   - `consistent_hash $remote_addr`: mapping via client ip address
 
-`consistent_hash $request_uri`: mapping via request-uri
+   - `consistent_hash $request_uri`: mapping via request-uri
 
-`consistent_hash $args`: mapping via url query string
+   - `consistent_hash $args`: mapping via url query string
 
 ## Example
 
@@ -26,38 +26,35 @@
 worker_processes  1;
 
 http {
-upstream test {
-consistent_hash $request_uri;
+    upstream test {
+        consistent_hash $request_uri;
 
-server 127.0.0.1:9001 id=1001 weight=3;
-server 127.0.0.1:9002 id=1002 weight=10;
-server 127.0.0.1:9003 id=1003 weight=20;
-}
+        server 127.0.0.1:9001 id=1001 weight=3;
+        server 127.0.0.1:9002 id=1002 weight=10;
+        server 127.0.0.1:9003 id=1003 weight=20;
+    }
 }
 ```
 
 ## Directives
 
-**Syntax**: _consistent_hash variable_name_
-
-**Default**: _none_
-
-**Context**: _upstream_
+> **Syntax**: _consistent_hash variable_name_
+> **Default**: _none_
+> **Context**: _upstream_
 
 This directive causes requests to be distributed between upstreams based on consistent hashing alogrithm. And it uses nginx variables, specified by variable_name, as input data of hash function.
 
 ## Installation
 
-```
 *   This module is built by default, it can be disabled with the `--without-http_upstream_consistent_hash_module` configuration parameter.
-
+```
 $ ./configure
-
+```
 *   compile
-
+```
 $ make
-
+```
 *   install
-
+```
 $ make install
 ```

@@ -1,22 +1,20 @@
 # Ngx_http_trim_filter
 
-The ngx_http_trim_filter module is a filter that modifies a response by removing unnecessary whitespaces
-(spaces, tabs, newlines) and comments from HTML (including inline javascript and css). Trim module parses
-HTML with a state machine.
+The ngx_http_trim_filter module is a filter that modifies a response by removing unnecessary whitespaces (spaces, tabs, newlines) and comments from HTML (including inline javascript and css). Trim module parses HTML with a state machine.
 
 ```
 location / {
-trim on;
-trim_js on;
-trim_css on;
+    trim on;
+    trim_js on;
+    trim_css on;
 }
 ```
 
-**trim** `on` | `off`
+## Directives
 
-**Default:** `trim off`
-
-**Context:** `http, server, location`
+> **trim** `on` | `off`
+> **Default:** `trim off`
+> **Context:** `http, server, location`
 
 Enable or disable trim module for pure HTML.
 
@@ -34,31 +32,31 @@ set $flag "on";
 trim $flag;
 ```
 
-**trim_js** `on` | `off`
+---
 
-**Default:** `trim_js off`
-
-**Context:** `http, server, location`
+> **trim_js** `on` | `off`
+> **Default:** `trim_js off`
+> **Context:** `http, server, location`
 
 Enable or disable trim module for inline javascript.
 
 Parameter value can contain variables too.
 
-**trim_css** `on` | `off`
+---
 
-**Default:** `trim_css off`
-
-**Context:** `http, server, location`
+> **trim_css** `on` | `off`
+> **Default:** `trim_css off`
+> **Context:** `http, server, location`
 
 Enable or disable trim module for inline css.
 
 Parameter value can contain variables too.
 
-**trim_types** `MIME types`
+---
 
-**Default:** `trim_types: text/html`
-
-**Context:** `http, server, location`
+> **trim_types** `MIME types`
+> **Default:** `trim_types: text/html`
+> **Context:** `http, server, location`
 
 Enable trim module for the specified MIME types in addition to "text/html". Responses with the “text/html” type are always processed.
 
@@ -69,25 +67,25 @@ e.g.  `http://www.xxx.com/index.html?http_trim=off`
 original:
 
 ```
-&lt;!DOCTYPE html&gt;
-&lt;textarea  &gt;
+<!DOCTYPE html>
+<textarea  >
 trim
 module
-&lt;/textarea  &gt;
-&lt;!--remove all--&gt;
-&lt;!--[if IE]&gt; trim module &lt;![endif]--&gt;
-&lt;!--[if !IE ]&gt;--&gt; trim module  &lt;!--&lt;![endif]--&gt;
-&lt;!--# ssi--&gt;
-&lt;!--esi--&gt;
-&lt;pre    style  =
-"color:   blue"  &gt;Welcome    to    nginx!&lt;/pre  &gt;
-&lt;script type="text/javascript"&gt;
+</textarea  >
+<!--remove all-->
+<!--[if IE]> trim module <![endif]-->
+<!--[if !IE ]>--> trim module  <!--<![endif]-->
+<!--# ssi-->
+<!--esi-->
+<pre    style  =
+"color:   blue"  >Welcome    to    nginx!</pre  >
+<script type="text/javascript">
 /***  muitl comment
 ***/
 //// single comment
 str.replace(/     /,"hello");
-&lt;/script&gt;
-&lt;style   type="text/css"  &gt;
+</script>
+<style   type="text/css"  >
 /*** css comment
 ! ***/
 body
@@ -95,24 +93,25 @@ body
 font-size:  20px ;
 line-height: 150% ;
 }
-&lt;/style&gt;
+</style>
 ```
 
 result:
 
 ```
-&lt;!DOCTYPE html&gt;
-&lt;textarea&gt;
+<!DOCTYPE html>
+<textarea>
 trim
 module
-&lt;/textarea&gt;
-&lt;!--[if IE]&gt; trim module &lt;![endif]--&gt;
-&lt;!--[if !IE ]&gt;--&gt; trim module  &lt;!--&lt;![endif]--&gt;
-&lt;!--# ssi--&gt;
-&lt;!--esi--&gt;
-&lt;pre style="color:   blue"&gt;Welcome    to    nginx!&lt;/pre&gt;
-&lt;script type="text/javascript"&gt;str.replace(/     /,"hello");&lt;/script&gt;
-&lt;style type="text/css"&gt;body{font-size:20px;line-height:150%;}&lt;/style&gt;
+</textarea>
+<!--[if IE]> trim module <![endif]-->
+<!--[if !IE ]>--> trim module  <!--<![endif]-->
+<!--# ssi-->
+<!--esi-->
+<pre style="color:   blue">Welcome    to    nginx!</pre>
+<script type="text/javascript">str.replace(/     /,"hello");</script>
+<style type="text/css">body{font-size:20px;line-height:150%;}</style>
+```
 
 ### Html
 

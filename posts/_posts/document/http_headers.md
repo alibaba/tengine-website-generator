@@ -15,11 +15,9 @@ expires_by_types       epoch text/xml;
 
 ## Directives
 
-Syntax: expires_by_types [[modified] time | @time-of-day | epoch | max | off] content-type1 [content-type2] ...
-
-Default: none
-
-Context: http, server, location
+> Syntax: expires_by_types [[modified] time | @time-of-day | epoch | max | off] content-type1 [content-type2] ...
+> Default: none
+> Context: http, server, location
 
 Specify an expiration time according to some MIME types.<p/>
 The format of an expiration time is the same as nginx's 'expires'. You can add one or more MIME types after the time parameter. 

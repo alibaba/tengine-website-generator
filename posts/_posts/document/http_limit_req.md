@@ -4,11 +4,10 @@ This is the enhanced version of nginx's limit_req module with white list support
 
 ## Directives
 
-Syntax: **limit_req_zone** $session_variable1 $session_variable2 ... zone=name_of_zone:size rate=rate
 
-Default: none
-
-Context: http
+> Syntax: **limit_req_zone** $session_variable1 $session_variable2 ... zone=name_of_zone:size rate=rate
+> Default: none
+> Context: http
 
 Support more than one limit variables. For example:
 
@@ -19,11 +18,11 @@ limit_req_zone $binary_remote_addr $request_uri zone=two:3m rate=1r/s;
 
 The last line of the above example indicates a client can access a specific URI only once in a second.
 
-Syntax: **limit_req** [on | off] | zone=zone_name burst=burst [forbid_action=action] [nodelay]
+---
 
-Default: none
-
-Context: http, server, location
+> Syntax: **limit_req** [on | off] | zone=zone_name burst=burst [forbid_action=action] [nodelay]
+> Default: none
+> Context: http, server, location
 
 Multiple limit conditions are allowed in a single block. And all the conditions are examined in order.
 
@@ -56,11 +55,11 @@ location @test2 {
 }
 ```
 
-Syntax: **limit_req_whitelist** geo_var_name=var_name geo_var_value=var_value
+---
 
-Default: none
-
-Context: http, server, location
+> Syntax: **limit_req_whitelist** geo_var_name=var_name geo_var_value=var_value
+> Default: none
+> Context: http, server, location
 
 Set the whitelist.
 

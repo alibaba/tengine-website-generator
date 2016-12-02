@@ -60,14 +60,12 @@ http {
     ```
     www.example.com,127.0.0.1:80,162,6242,1,1,1,0,0,0,0,10,1,10,1....
     ```
-
-        *   Each line shows the status infomation of a "$host,$server_addr:$server_port".
+    *   Each line shows the status infomation of a "$host,$server_addr:$server_port".
     *   Default line format:
     ```
     kv,bytes_in,bytes_out,conn_total,req_total,http_2xx,http_3xx,http_4xx,http_5xx,http_other_status,rt,ups_req,ups_rt,ups_tries,http_200,http_206,http_302,http_304,http_403,http_404,http_416,http_499,http_500,http_502,http_503,http_504,http_508,http_other_detail_status,http_ups_4xx,http_ups_5xx
     ```
-
-                *   **kv**                value of the variable defined by the directive 'req_status_zone'. The maximun key length is configurable, 152B by default, and overlength will be cut off
+        *   **kv**                value of the variable defined by the directive 'req_status_zone'. The maximun key length is configurable, 152B by default, and overlength will be cut off
         *   **bytes_in**          total number of bytes received from client
         *   **bytes_out**         total number of bytes sent to client
         *   **conn_total**        total number of accepted connections
@@ -102,11 +100,11 @@ http {
 
 ## Directives
 
-**Syntax**: _req_status_zone zone_name value size_
+---
 
-**Default**: _none_
-
-**Context**: _http_
+> **Syntax**: _req_status_zone zone_name value size_
+> **Default**: _none_
+> **Context**: _http_
 
 create shared memory for this module. 'zone_name' is the name of memory block.
 'value' defines the key, in which variables can be used.
@@ -122,53 +120,53 @@ the memory is 10MB, the key is "$host,$server_addr:$server_port", and the name i
 
 *   Notice, if you want to use tsar to monitor, you should not use comma in the key.
 
-**Syntax**: _req_status zone_name1 [zone_name2 [zone_name3 [...]]]_
+---
 
-**Default**: _none_
-
-**Context**: _http、srv、loc_
+> **Syntax**: _req_status zone_name1 [zone_name2 [zone_name3 [...]]]_
+> **Default**: _none_
+> **Context**: _http、srv、loc_
 
 Enable monitoring. You can specify multiple zones to monitor.
 
-**Syntax**: _req_status_show [zone_name1 [zone_name2 [...]]]_
+---
 
-**Default**: _all the targets defined by 'req_status_zone'_
-
-**Context**: _loc_
+> **Syntax**: _req_status_show [zone_name1 [zone_name2 [...]]]_
+> **Default**: _all the targets defined by 'req_status_zone'_
+> **Context**: _loc_
 
 Display the status information. You can specify zones to display.
 
-**Syntax**: _req_status_show_field field_name1 [field_name2 [field_name3 [...]]]_
+---
 
-**Default**: _all the fields, including user defined fields_
-
+> **Syntax**: _req_status_show_field field_name1 [field_name2 [field_name3 [...]]]_> 
+**Default**: _all the fields, including user defined fields_> 
 **Context**: _loc_
 
 Define output format, used with the directive 'req_status_show'. You can use names
 to define internal supported fields, see it above. And also you can use variables
 to define user defined fields. 'kv' is always the first field in a line.
 
-**Syntax**: _req_status_zone_add_indecator zone_name $var1 [$var2 [...]]_
+---
 
-**Default**: _none_
-
-**Context**: _http_
+> **Syntax**: _req_status_zone_add_indecator zone_name $var1 [$var2 [...]]_
+> **Default**: _none_
+> **Context**: _http_
 
 Add user-defined status by using nginx variables. The status will be appended at the end of each line on display.
 
-**Syntax**: _req_status_zone_key_length zone_name length_
+---
 
-**Default**: _none_
-
-**Context**: _http_
+> **Syntax**: _req_status_zone_key_length zone_name length_
+> **Default**: _none_
+> **Context**: _http_
 
 Define the maximun length of key for a zone. The default is 104.
 
-**Syntax**: _req_status_zone_recycle zone_name times seconds_
+---
 
-**Default**: _none_
-
-**Context**: _http_
+> **Syntax**: _req_status_zone_recycle zone_name times seconds_
+> **Default**: _none_
+> **Context**: _http_
 
 Define the recycle threshold for a zone. Recycle will be switched on when the shared memory is exhausted,
 and will only take effect on imformation whose visit frequency is lower than the setting.

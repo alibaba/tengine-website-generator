@@ -1,11 +1,11 @@
 # Header
 menu:
-  下载: /download.html
-  源码: /source.html
-  文档: /documentation.html
+  Download: /download.html
+  Source: /source.html
+  Document: /documentation.html
   FAQ: /faq.html
-  联系我们: /contact.html
-  教程: http://tengine.taobao.org/book/
+  Contact: /contact.html
+  Guilde: http://tengine.taobao.org/book/
 
 rss: /atom.xml
 

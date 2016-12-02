@@ -4,35 +4,27 @@ Tengine added SPDY/3 support to this module. The new directives are listed below
 
 ## Directives
 
-
-
-Syntax: **spdy_version** [2|3]
-
-Default: 3
-
-Context: http, server
+> Syntax: **spdy_version** [2|3]
+> Default: 3
+> Context: http, server
 
 
 Specify the version of current SPDY protocol.
 
+---
 
-
-Syntax: **spdy_flow_control** on|off
-
-Default: on
-
-Context: http, server
+> Syntax: **spdy_flow_control** on|off
+> Default: on
+> Context: http, server
 
 
 Turn on or off with SPDY flow control.
 
+---
 
-
-Syntax: **spdy_init_recv_window_size** size
-
-Default: 64k
-
-Context: http, server
+> Syntax: **spdy_init_recv_window_size** size
+> Default: 64k
+> Context: http, server
 
 
 Specify the receiving window size for SPDY. By default, it's 64K. It will send a WINDOW UPDATE frame when it receives half of the window size data every time.

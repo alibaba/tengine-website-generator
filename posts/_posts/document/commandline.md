@@ -1,6 +1,6 @@
 # Command line options
 
-## the '-m' option
+## the `'-m'` option
 
 Show all compiled-in modules then exit. Tengine supports DSO modules since 1.4.0. The tag 'static' means static module. The tag 'shared' means dynamic shared module which is also attached with major and minor version of this modules. e.g:
 
@@ -63,7 +63,7 @@ loaded modules:
 
 ```
 
-## the '-l' option
+## the `'-l'` option
 
 Show all supported directives then exit. e.g:
 
@@ -131,7 +131,7 @@ memcached_next_upstream
 [snip]
 ```
 
-## the '-d' option
+## the `'-d'` option
 
 Dump the contents of the configuration file, including the contents of 'include'd files. e.g:
 
@@ -152,18 +152,18 @@ error_log  logs/error.log  debug;
 
 events {
 
-worker_connections  1024;
+    worker_connections  1024;
 
 }
 
 http {
 
-include       mime.types;
-
-default_type  application/octet-stream;
-
-access_log  logs/access.log combined;
-
-[snip]
+    include       mime.types;
+    
+    default_type  application/octet-stream;
+    
+    access_log  logs/access.log combined;
+    
+    [snip]
 
 ```

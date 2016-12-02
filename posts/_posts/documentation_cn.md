@@ -1,7 +1,10 @@
 ## 文档
 
->    Tengine完全兼容Nginx，因此可以参照Nginx的方式来配置Tengine。我们在此只列出Tengine中值得注意的功能。 
->    关于详细的Tengine的相对于Nginx的差别，可以访问[变更列表](changelog_cn.html)。
+Tengine完全兼容Nginx，因此可以参照Nginx的方式来配置Tengine。
+
+我们在此只列出Tengine中值得注意的功能。 
+
+关于详细的Tengine的相对于Nginx的差别，可以访问[变更列表](changelog_cn.html)。
 
 ### Nginx官方文档中文版（不断翻译中）
 

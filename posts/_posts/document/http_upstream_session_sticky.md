@@ -7,36 +7,35 @@ This module is a load balancing module. It sticks the session between client and
 ```
 # default: cookie=route mode=insert fallback=on
 upstream foo {
-server 192.168.0.1;
-server 192.168.0.2;
-session_sticky;
+    server 192.168.0.1;
+    server 192.168.0.2;
+    session_sticky;
 }
 
 server {
-location / {
-proxy_pass http://foo;
-}
+    location / {
+        proxy_pass http://foo;
+    }
 }
 ```
 
 ## Example 2
 
-
 ```
 # insert + indirect mode:
 upstream test {
-session_sticky session_sticky cookie=uid domain=www.xxx.com fallback=on path=/ mode=insert option=indirect;
-server  127.0.0.1:8080;
+    session_sticky session_sticky cookie=uid domain=www.xxx.com fallback=on path=/ mode=insert option=indirect;
+    server  127.0.0.1:8080;
 }
 
 server {
-location / {
-# You need configure session_sticky_hide_cookie in insert + indirect mode or prefix mode.
-# It removes the cookie before sending to backend server, and the backend server will not
-# receive and process this extra cookie.
-session_sticky_hide_cookie upstream=test;
-proxy_pass http://test;
-}
+    location / {
+        # You need configure session_sticky_hide_cookie in insert + indirect mode or prefix mode.
+        # It removes the cookie before sending to backend server, and the backend server will not
+        # receive and process this extra cookie.
+        session_sticky_hide_cookie upstream=test;
+        proxy_pass http://test;
+    }
 }
 ```
 
@@ -44,11 +43,10 @@ proxy_pass http://test;
 
 
 
-Syntax: **session_sticky** `[cookie=name] [domain=your_domain] [path=your_path] [maxage=time] [mode=insert|rewrite|prefix] [option=indirect] [maxidle=time] [maxlife=time] [fallback=on|off] [hash=plain|md5]`
-
-Default: `session_sticky cookie=route mode=insert fallback=on`
-
-Context: `upstream`
+> Syntax: **session_sticky** `[cookie=name] [domain=your_domain] [path=your_path
+] [maxage=time] [mode=insert|rewrite|prefix] [option=indirect] [maxidle=time] [> maxlife=time] [fallback=on|off] [hash=plain|md5]`
+> Default: `session_sticky cookie=route mode=insert fallback=on`
+> Context: `upstream`
 
 
 Description:
@@ -72,12 +70,11 @@ This directive will turn on the session sticky module. Specific parameters are a
 *   `hash` sets whether server flag in cookie is passed through plaintext or md5. By default, md5 is used.
 
 
+> 
 
-Syntax: **session_sticky_hide_cookie** upstream=name;
-
-Default: none
-
-Context: server, location
+> Syntax: **session_sticky_hide_cookie** upstream=name;
+> Default: none
+> Context: server, location
 
 
 Description:

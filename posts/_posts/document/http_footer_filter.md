@@ -12,27 +12,23 @@ location / {
 
 ## Directives
 
-Syntax: **footer** format
-
-Default: none
-
-Context: http, server, location
+> Syntax: **footer** format
+> Default: none
+> Context: http, server, location
 
 Set a string to append to the end of the response body. <p/>
     The parameter can contain variables. For example:
 
 ```
 location / {
-    footer "&lt;!-- $hostname, $year/$month/$day $hour:$minute:$second, $request --&gt;";
+    footer "<!-- $hostname, $year/$month/$day $hour:$minute:$second, $request -->";
     index index.html;
 }
 ```
+---
 
-
-Syntax: **footer_types** type1 [type2] [type3]
-
-Default: footer_types text/html
-
-Context: http, server, location
+> Syntax: **footer_types** type1 [type2] [type3]
+> Default: footer_types text/html
+> Context: http, server, location
 
 Specify the MIME types the footer will append on.

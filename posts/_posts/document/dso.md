@@ -1,4 +1,4 @@
-#   Dynamic Module Loading Support (**DSO**)
+#   Dynamic Module Loading Support (DSO)
 
 ## Description
 
@@ -31,27 +31,25 @@ events {
 ## Directives
 
 
-**Syntax**: _path path_
-
-**Default**: _NGX_PREFIX/modules_
-
-**Context**: _dso_
+> **Syntax**: _path path_
+> **Default**: _NGX_PREFIX/modules_
+> **Context**: _dso_
 
 This directive specifies the default path (prefix) of DSO modules.
 
-Example:
+### Example:
 
 ```
-path /home/dso/module;
+path /home/dso/module/;
 ```
 
-Sets the default path to _/home/dso/module_.
+Sets the default path to `_/home/dso/module/`.
 
-**Syntax**: _load [module_name] [module_path]_
+---
 
-**Default**: _none_
-
-**Context**: _dso_
+> **Syntax**: _load [module_name] [module_path]_
+> **Default**: _none_
+> **Context**: _dso_
 
 The **load** directive loads the shared object file and enables the module. _module_name_ is the name of the DSO module, and _module_path_ is the path of the DSO module.
 
@@ -61,7 +59,7 @@ The order in which the module is searched is as follows:
 *   relative path to the prefix specified by the 'path' directive.
 *   relative path to the default path (NGX_PREFIX/modules or path which is specified by the '--dso-path' configure option).
 
-Example:
+### Example:
 
 ```
 load ngx_http_empty_gif_module  ngx_http_empty_gif_module.so;
@@ -71,15 +69,15 @@ load ngx_http_test2_module.so;
 
 It will load the ngx_http_empty_gif_module from ngx_http_empty_gif_module.so, ngx_http_test_module and ngx_http_test2_module from ngx_http_test_module.so and ngx_http_test2_module.so.
 
-**Syntax**: _module_stub module_name_
+---
 
-**Default**: _none_
-
-**Context**: _dso_
+> **Syntax**: _module_stub module_name_
+> **Default**: _none_
+> **Context**: _dso_
 
 This directive can insert a module into nginx's module array in order (see conf/module_stubs for more details). Note it will change the module runtime order. This directive does not need to be used in most cases. Don't use it or edit the _conf/module_stubs_ file unless you know what you are doing.
 
-Example:
+### Example:
 
 ```
 module_stub ngx_core_module;
@@ -98,15 +96,15 @@ module_stub ngx_http_my_filter_module;
 
 It will place ngx_http_my_filter_module before ngx_http_addition_filter_module.
 
-**Syntax**: _include file_name_
+---
 
-**Default**: _none_
-
-**Context**: _dso_
+> **Syntax**: _include file_name_
+> **Default**: _none_
+> **Context**: _dso_
 
 Specifies a file which contains the module stubs (via the **module_stub** directive).
 
-Example:
+### Example:
 
 ```
 include module_stubs;
@@ -118,18 +116,24 @@ It will load conf/module_stubs and define the loading order of the modules (via 
 
 If you want to enable a standard module after you compiled and installed tengine, you can take these steps as following.
 
-*   enable the standard module you wanted in shared mode, for example:
+*   enable the standard module you wanted in shared mode, for ### example:
+```
     $ ./configure --with-http_sub_module=shared
+```
 *   compile it:
+```
     $ make
+```
 *   install the shared object (*.so):
+```
     $ make dso_install
+```
 
 It will copy the *.so files to the destination, or you can copy the files you want (in objs/modules) manually to the modules directory.
 
 You can use the **dso_tool** located in the directory of nginx binary to compile a third party module.
 
-Example:
+### Example:
 
 ```
 ./dso_tool --add-module=/home/dso/lua-nginx-module

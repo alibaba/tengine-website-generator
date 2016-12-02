@@ -130,12 +130,16 @@ include module_stubs
 
 如果你想要在安装完Tengine之后，编译官方模块为动态模块，那么你需要按照如下的步骤:
 
-```
 *   在configure的时候打开你想要编译的模块.
+```
 $ ./configure --with-http_sub_module=shared
+```
 *   编译它.
+```
 $ make
+```
 *   安装动态模块.
+```
 $ make dso_install
 ```
 
