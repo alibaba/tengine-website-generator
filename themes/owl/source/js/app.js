@@ -122,6 +122,7 @@ $(function () {
             case 'cn':
                 switch (location.pathname) {
                     case '/':
+                    case '/index_en.html':
                     case '/index.html':
                         location.pathname = 'index_cn.html';
                         break;
@@ -141,7 +142,7 @@ $(function () {
                     case '/':
                         break;
                     case '/index_cn.html':
-                        location.pathname = 'index.html';
+                        location.pathname = 'index_en.html';
                         break;
                     default:
 
