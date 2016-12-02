@@ -1,41 +1,5 @@
 $(function () {
 
-
-    var hc = function () {
-        var trim_indent = true;
-        var line_number = true;
-        // enable highlight
-        $('pre code').each(function (i, block) {
-            var texts = $(this).text().split('\n');
-            // trim indent
-            if (trim_indent) {
-                var tab = texts[0].match(/^\s{0,}/);
-                if (tab) {
-                    var arr = [];
-                    texts.forEach(function (temp) {
-                        arr.push(temp.replace(tab, ''));
-                    });
-                    $(this).text(arr.join('\n'));
-                }
-            }
-            // add line number
-            if (line_number) {
-                console.log("show line number in front-end");
-                var lines = texts.length - 1;
-                var $numbering = $('<ul/>').addClass('pre-numbering');
-                $(this).addClass('has-numbering').parent().append($numbering);
-                for (i = 1; i <= lines; i++) {
-                    $numbering.append($('<li/>').text(i));
-                }
-            }
-            // hightlight
-            hljs.highlightBlock(block);
-        });
-    };
-
-    hljs && hc();
-
-
     $('#particles-js').length && particlesJS('particles-js', {
         "particles": {
             "number": {
@@ -153,6 +117,72 @@ $(function () {
         }
     });
 
+    function updateURL(lang) {
+        switch (lang) {
+            case 'cn':
+                switch (location.pathname) {
+                    case '/':
+                    case '/index.html':
+                        location.pathname = 'index_cn.html';
+                        break;
+                    default:
+                        if (location.pathname.match(/^(\/)(.+)(\/)(.+)(\.html)$/) && !location.pathname.match(/^(\/)(.+)(_cn)(\/)(.+)(_cn\.html)$/)) {
+                            location.pathname = location.pathname.replace(/^(\/)(.+)(\/)(.+)(\.html)$/, "$1$2_cn$3$4_cn$5");
+                            return;
+                        } else if (!location.pathname.match(/^(\/)(.+)(_cn\.html)$/)) {
+                            location.pathname = location.pathname.replace(/^(\/)(.+)(\.html)$/, "$1$2_cn$3");
+                        }
+                        break;
+                }
+                break;
+            case 'en':
+            default:
+                switch (location.pathname) {
+                    case '/':
+                        break;
+                    case '/index_cn.html':
+                        location.pathname = 'index.html';
+                        break;
+                    default:
+
+                        if (location.pathname.match(/^(\/)(.+)(_cn)(\/)(.+)(_cn\.html)$/)) {
+                            // location.pathname = location.pathname.replace(/^(\/)(.+)(_cn)(\/)(.+)(_cn\.html)$/, "$1$2$4$5.html");
+                            return;
+                        }
+
+                        if (location.pathname.match(/^(\/)(.+)(_cn\.html)$/)) {
+                            location.pathname = location.pathname.replace(/^(\/)(.+)(_cn\.html)$/, "$1$2.html")
+                        }
+                        break;
+                }
+                break;
+        }
+    }
+
+    var cur = location.pathname.match(/^(\/)(.+)(_cn\.html)$/) ? 'cn' : 'en';
+    if ($.cookie('lang') !== cur) {
+        updateURL($.cookie('lang'));
+    }
+
+    (function (control) {
+        if (!control.length) {
+            return;
+        }
+        switch ($.cookie('lang')) {
+            case 'cn':
+                control.append('<option value="cn" selected>China</option><option value="en">English</option>')
+                break;
+            case 'en':
+            default:
+                control.append('<option value="cn">China</option><option value="en" selected>English</option>')
+                break;
+        }
+        control.on('change', function () {
+            $.cookie('lang', this.value, {expires: 30, path: '/'});
+            location.reload();
+        });
+
+    })($('.lang-switch'));
 
 });
 

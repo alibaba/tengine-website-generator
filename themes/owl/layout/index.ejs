@@ -1,4 +1,4 @@
-<% if (is_homepage()){ %>
+<% if (is_homepage() ){ %>
 
     <!-- 网站首页 -->
     <%- partial('_page/homepage') %>
@@ -7,5 +7,4 @@
 
     <!-- 文章分页 -->
     <%- partial('_page/posts-index', {pagination: 2, index: true}) %>
-
 <% } %>
