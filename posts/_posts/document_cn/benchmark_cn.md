@@ -144,9 +144,8 @@ Tengine/2.1.0配置文件：
   }
 ```
 
-Tengine和Nginx只有reuse_port和accept_mutex两处配置不同。
-
-      Tengine的worker_cpu_affinity等同于Nginx的相应配置。
+    Tengine和Nginx只有reuse_port和accept_mutex两处配置不同。
+    Tengine的worker_cpu_affinity等同于Nginx的相应配置。
 
 ## 测试结果
 
@@ -155,4 +154,4 @@ Tengine和Nginx只有reuse_port和accept_mutex两处配置不同。
 1.  Tengine相比Nginx默认配置，提升200%的处理能力。
 2.  Tengine相比Nginx优化配置，提升60%的处理能力。
 
-[1] SO_REUSEPORT套接字属性：[https://lwn.net/Articles/542629/](https://lwn.net/Articles/542629/)
+<sup>[1]</sup> SO_REUSEPORT套接字属性：[https://lwn.net/Articles/542629/](https://lwn.net/Articles/542629/)

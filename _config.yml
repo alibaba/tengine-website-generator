@@ -146,15 +146,3 @@ marked:
   breaks: true
   smartLists: true
   smartypants: true
-
-
-
-hljs:
-  enable: true #true to enable the plugin
-  line_number: frontend # add line_number in frontend or backend
-  trim_indent: backend # trim the indent of code block to prettify output. backend or front-end (recommend)
-  copy_code: true # show copy code in caption.
-  label:
-    left: Code
-    right: ':'
-    copy: Copy Code
