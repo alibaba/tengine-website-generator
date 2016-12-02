@@ -15,7 +15,7 @@
 ```
 
 ## 测试环境
-``
+
 ```
   Intel(R)Xeon(R)E5-2650v2@2.60GHz 32core
   Intel Corporation 82599EB 10-Gigabit SFI/SFP+ Network Connection
@@ -143,6 +143,7 @@ Tengine/2.1.0配置文件：
     }
   }
 ```
+
 
     Tengine和Nginx只有reuse_port和accept_mutex两处配置不同。
     Tengine的worker_cpu_affinity等同于Nginx的相应配置。
