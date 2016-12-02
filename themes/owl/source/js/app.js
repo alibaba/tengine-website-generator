@@ -191,6 +191,25 @@ $(function () {
     })($('.lang-switch'));
 
 
+    // changelog hash
+    (function (enable) {
+        if (!enable) return false;
+        $('#main .article-entry > h4 > a').each(function (k, item) {
+            var target = $(item);
+            var title = target.attr('title');
+            if (title) {
+                var version = title.match(/^Tengine\-(.*)\s\[.*/);
+                if (version) {
+                    version = version[1];
+                    target.attr('href', version.replace(/\./g, '_') + '');
+                }
+            }
+        });
+
+
+    })(location.pathname.match(/\/changelog(_cn)?\.html/))
+
+
 });
 
 
