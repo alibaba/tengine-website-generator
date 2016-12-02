@@ -4,18 +4,17 @@
 
 ```
 location / {
-trim on;
-trim_js on;
-trim_css on;
+    trim on;
+    trim_js on;
+    trim_css on;
 }
 ```
 
+## 指令
 
-**trim** `on` | `off`
-
-**默认:** `trim off`
-
-**上下文:** `http, server, location`
+> **trim** `on` | `off`
+> **默认:** `trim off`
+> **上下文:** `http, server, location`
 
 使模块有效（失效），删除 html 的注释以及重复的空白符（\n，\r，\t，' '）。
 
@@ -33,11 +32,11 @@ set $flag "on";
 trim $flag;
 ```
 
-**trim_js** `on` | `off`
+---
 
-**默认:** `trim_js off`
-
-**上下文:** `http, server, location`
+> **trim_js** `on` | `off`
+> **默认:** `trim_js off`
+> **上下文:** `http, server, location`
 
 使模块有效（失效），删除 html 内嵌 javascript 的注释以及重复的空白符（\n，\r，\t，' '）。
 
@@ -45,11 +44,11 @@ trim $flag;
 
 参数值可以包含变量。
 
-**trim_css** `on` | `off`
+---
 
-**默认:** `trim_css off`
-
-**上下文:** `http, server, location`
+> **trim_css** `on` | `off`
+> **默认:** `trim_css off`
+> **上下文:** `http, server, location`
 
 使模块有效（失效），删除 html 内嵌 css 的注释以及重复的空白符（\n，\r，\t，' ')。
 
@@ -57,11 +56,11 @@ trim $flag;
 
 参数值可以包含变量。
 
-**trim_types** `MIME types`
+---
 
-**默认:** `trim_types: text/html`
-
-**上下文:** `http, server, location`
+> **trim_types** `MIME types`
+> **默认:** `trim_types: text/html`
+> **上下文:** `http, server, location`
 
 定义哪些[MIME types](http://en.wikipedia.org/wiki/MIME_type)类型的响应可以被处理。
 
@@ -78,25 +77,25 @@ trim $flag;
 原始:
 
 ```
-&lt;!DOCTYPE html&gt;
-&lt;textarea  &gt;
+<!DOCTYPE html>
+<textarea  >
 trim
 module
-&lt;/textarea  &gt;
-&lt;!--remove all--&gt;
-&lt;!--[if IE]&gt; trim module &lt;![endif]--&gt;
-&lt;!--[if !IE ]&gt;--&gt; trim module  &lt;!--&lt;![endif]--&gt;
-&lt;!--# ssi--&gt;
-&lt;!--esi--&gt;
-&lt;pre    style  =
-"color:   blue"  &gt;Welcome    to    nginx!&lt;/pre  &gt;
-&lt;script type="text/javascript"&gt;
+</textarea  >
+<!--remove all-->
+<!--[if IE]> trim module <![endif]-->
+<!--[if !IE ]>--> trim module  <!--<![endif]-->
+<!--# ssi-->
+<!--esi-->
+<pre    style  =
+"color:   blue"  >Welcome    to    nginx!</pre  >
+<script type="text/javascript">
 /***  muitl comment
 ***/
 //// single comment
 str.replace(/     /,"hello");
-&lt;/script&gt;
-&lt;style   type="text/css"  &gt;
+</script>
+<style   type="text/css"  >
 /*** css comment
 ! ***/
 body
@@ -104,24 +103,24 @@ body
 font-size:  20px ;
 line-height: 150% ;
 }
-&lt;/style&gt;
+</style>
 ```
 
 结果:
 
 ```
-&lt;!DOCTYPE html&gt;
-&lt;textarea&gt;
+<!DOCTYPE html>
+<textarea>
 trim
 module
-&lt;/textarea&gt;
-&lt;!--[if IE]&gt; trim module &lt;![endif]--&gt;
-&lt;!--[if !IE ]&gt;--&gt; trim module  &lt;!--&lt;![endif]--&gt;
-&lt;!--# ssi--&gt;
-&lt;!--esi--&gt;
-&lt;pre style="color:   blue"&gt;Welcome    to    nginx!&lt;/pre&gt;
-&lt;script type="text/javascript"&gt;str.replace(/     /,"hello");&lt;/script&gt;
-&lt;style type="text/css"&gt;body{font-size:20px;line-height:150%;}&lt;/style&gt;
+</textarea>
+<!--[if IE]> trim module <![endif]-->
+<!--[if !IE ]>--> trim module  <!--<![endif]-->
+<!--# ssi-->
+<!--esi-->
+<pre style="color:   blue">Welcome    to    nginx!</pre>
+<script type="text/javascript">str.replace(/     /,"hello");</script>
+<style type="text/css">body{font-size:20px;line-height:150%;}</style>
 ```
 
 ### html
@@ -142,52 +141,55 @@ module
 ##### 注释
 
 - 如果是ie条件注释不做删除。
-    判断规则：`&lt;!--[if &lt;![endif]--&gt;`  之间的内容判断为ie条件注释。
+    判断规则：`<!--[if <![endif]-->`  之间的内容判断为ie条件注释。
 - 如果是ssi/esi注释的内容不做删除。
-    判断规则：`&lt;!--# --&gt;`  `&lt;!--esi --&gt;`  之间的内容分别判断为ssi和esi注释。
-- 其他正常html注释直接删除.  `&lt;!--  --&gt;`
+    判断规则：`<!--# -->`  `<!--esi -->`  之间的内容分别判断为ssi和esi注释。
+- 其他正常html注释直接删除.  `<!--  -->`
 
 ### javascript
 
-借鉴 jsmin 的处理规则 (http://www.crockford.com/javascript/jsmin.html)
+- 借鉴 jsmin 的处理规则 (http://www.crockford.com/javascript/jsmin.html)
 
-`&lt;script type="text/javascript"&gt;` 或者 `&lt;script&gt;` 标签认为是javascript。
+- `<script type="text/javascript">` 或者 `<script>` 标签认为是javascript。
 
-##### 空白符
+### 空白符
 
 - '('，'['，'{'，';'，','，'>'，'=' 后的 '\n'，'\t'，空格 直接删除。
 - '\r' 直接删除。- 其他情况 重复的 '\n'，'\t'，空格 保留第一个。- 单引号和双引号内不删除。
 
-如下不做操作：
-"hello   &nbsp;   \\"  &nbsp;   world"
-'hello  &nbsp;       \'  &nbsp;   world'- 正则表达式的内容不删除。
-判断规则：'/' 前的非空字符是 ','，'('，'=' 三种的即认为是正则表达式。( 同jsmin的判断)
-如下不做操作：
-var re=/1 &nbsp; &nbsp; &nbsp;2/;
-data.match(/1  &nbsp;  &nbsp; 2/);
+#### 如下不做操作：
 
-##### 注释
+- "hello   &nbsp;   \\"  &nbsp;   world"
+- 'hello  &nbsp;       \'  &nbsp;   world'- 正则表达式的内容不删除。
+- 判断规则：'/' 前的非空字符是 ','，'('，'=' 三种的即认为是正则表达式。( 同jsmin的判断)
+
+#### 如下不做操作：
+
+- `var re=/1 &nbsp; &nbsp; &nbsp;2/;`
+- `data.match(/1  &nbsp;  &nbsp; 2/);`
+
+### 注释
 
 - 删除单行注释。  `//`- 删除多行注释。  `/- */`
-注意：javascript也有一种条件注释，不过貌似用得很少，jsmin直接删除的，trim也是直接删除。
-http://en.wikipedia.org/wiki/Conditional_comment
+- 注意：javascript也有一种条件注释，不过貌似用得很少，jsmin直接删除的，trim也是直接删除。
+- http://en.wikipedia.org/wiki/Conditional_comment
 
 ### css
 
-借鉴 YUI Compressor 的处理规则 (http://yui.github.io/yuicompressor/css.html)
+- 借鉴 YUI Compressor 的处理规则 (http://yui.github.io/yuicompressor/css.html)
 
-`&lt;style type="text/css"&gt;` 或者 `&lt;style&gt;` 标签认为是css。
+- `<style type="text/css">` 或者 `<style>` 标签认为是css。
 
 ##### 空白符
 
 - ';'，'>'，'{'，'}'，':'，',' 前后的 '\n'，'\t'，空格 直接删除。- '\r' 直接删除。- 其他情况 连续的 '\n'， '\t' 和 空格 保留为一个空格。- 单引号和双引号内不删除。
 
-如下不做操作：
-"hello   &nbsp;  \\\"  &nbsp;    world"
-'hello  &nbsp;   \'   &nbsp;  &nbsp;   world'
+#### 如下不做操作：
+- "hello   &nbsp;  \\\"  &nbsp;    world"
+- 'hello  &nbsp;   \'   &nbsp;  &nbsp;   world'
 
 ##### 注释
 
 - child seletor hack的注释不删除。
-`html&gt;/**/body p{color:blue}`- IE5 /Mac hack 的注释不删除。
-`/*\*/.selector{color:khaki}/**/`- 其他情况删除注释。  `/-  */`
+- `html>/**/body p{color:blue}`- IE5 /Mac hack 的注释不删除。
+- `/*\*/.selector{color:khaki}/**/`- 其他情况删除注释。  `/-  */`
