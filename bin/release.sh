@@ -1,4 +1,5 @@
 #!/bin/bash
 
-rm -rf public/2016
-rm -rf public/archives
+rm -rf public/page/
+rm -rf public/taocode_ad*
+rm -rf public/tengine_ad*

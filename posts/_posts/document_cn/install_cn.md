@@ -39,7 +39,7 @@ Tengine默认将安装在/usr/local/nginx目录。你可以用'--prefix'来指�
 
 设置jemalloc库的源代码路径，Tengine可以静态编译和链接该库。
 
-## `make的目标选项`
+## make的目标选项
 
 大部分的目标选项跟Nginx是兼容的。下面列出的是Tengine特有的选项。
 

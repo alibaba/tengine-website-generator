@@ -29,19 +29,6 @@
 
   <meta name="author" content="<%= theme.OWL.author %>"/>
 
-  <%
-  var robots_action = "none";
-  if (!is_redirect() && !is_404() && !is_search()) {
-    robots_action = "index, follow";
-  }
-  %>
-  <meta name="robots" content="<%= robots_action %>"/>
-
-  <link rel="dns-prefetch" href="//<%= current_domain_setting['assets'] %>" />
-  <link rel="dns-prefetch" href="//<%= current_domain_setting['attachment'] %>" />
-
-  <link rel="shortcut icon" href="//<%= current_domain_setting['assets'] %>/favicon.ico?v=<%= theme.OWL.PROJECT_VERSION %>&t=<%= theme.OWL.CSS_TIMESTAMP %>" />
-
   <% if (theme.OWL.NO_SCRIPT_REDIRECT){ %>
   <noscript><meta http-equiv="refresh" content="0;URL='http://NOSCRIPT'"></noscript>
   <% } %>

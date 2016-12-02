@@ -164,6 +164,11 @@ $(function () {
     if ($.cookie('lang') !== cur) {
         updateURL($.cookie('lang'));
     }
+    if ($.cookie('lang') === 'cn') {
+        $('#nav-menu .menu-item').each(function (k, item) {
+            $(item).attr('href', item.href.replace('.html', '_cn.html'));
+        });
+    }
 
     (function (control) {
         if (!control.length) {
@@ -184,6 +189,7 @@ $(function () {
         });
 
     })($('.lang-switch'));
+
 
 });
 
