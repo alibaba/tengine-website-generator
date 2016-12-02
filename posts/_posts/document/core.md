@@ -5,7 +5,7 @@
 
 ---
 
-> Syntax: **force_exit** _exit_time;_
+> Syntax: **force_exit** _exit_time_;
 > Default: —
 > Context: main
 
