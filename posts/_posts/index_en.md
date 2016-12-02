@@ -15,8 +15,7 @@
 *   Sends [unbuffered upload](document/http_core.html) directly to HTTP and FastCGI backend servers, which saves disk I/Os.
 *   More load balancing methods, e.g., [consistent hashing](document/http_upstream_consistent_hash.html), [session persistence](document/http_upstream_session_sticky.html), [upstream health check](document/http_upstream_check.html), and [resolving upstream domain names on the fly](document/http_upstream_dynamic.html).
 *   [Input body filter](http://blog.zhuzhaoyuan.com/2012/01/a-mechanism-to-help-write-web-application-firewalls-for-nginx/) support. It's quite handy to write Web Application Firewalls using this mechanism.
-*   [Dynamic scripting language (Lua)](http://wiki.nginx.org/HttpLuaModule) support, which is very efficient and makes it easy to extend core functionalities.
-*   [Logging enhancements](document/http_log.html). Syslog (local and remote), pipe logging and log sampling are supported.
+*   [Dynamic scripting language (Lua)](https://github.com/alibaba/tengine/blob/master/modules/ngx_http_lua_module/README.markdown) support, which is very efficient and makes it easy to extend core functionalities.
 *   Support [collecting the running status of Tengine](document/http_reqstat.html) according to specific key (domain, url, etc).
 *   [Limits retries for upstream servers](document/ngx_limit_upstream_tries.html) (proxy, memcached, fastcgi, scgi, uwsgi).
 *   Includes a mechanism to support [standalone processes](document/proc.html).

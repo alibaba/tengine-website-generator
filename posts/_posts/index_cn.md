@@ -16,8 +16,7 @@
 *   更加强大的负载均衡能力，包括[一致性hash模块](document_cn/http_upstream_consistent_hash_cn.html)、[会话保持模块](document_cn/http_upstream_session_sticky_cn.html)，[还可以对后端的服务器进行主动健康检查](document_cn/http_upstream_check_cn.html)，根据服务器状态自动上线下线，以及[动态解析upstream中出现的域名](document_cn/http_upstream_dynamic_cn.html)；
 *   [输入过滤器机制](http://blog.zhuzhaoyuan.com/2012/01/a-mechanism-to-help-write-web-application-firewalls-for-nginx/)支持。通过使用这种机制Web应用防火墙的编写更为方便；
 *   支持设置proxy、memcached、fastcgi、scgi、uwsgi[在后端失败时的重试次数](document_cn/ngx_limit_upstream_tries_cn.html)
-*   [动态脚本语言Lua](http://wiki.nginx.org/HttpLuaModule)支持。扩展功能非常高效简单；
-*   [支持管道（pipe）和syslog（本地和远端）形式的日志以及日志抽样](document_cn/http_log_cn.html)；
+*   [动态脚本语言Lua](https://github.com/alibaba/tengine/blob/master/modules/ngx_http_lua_module/README.markdown)支持。扩展功能非常高效简单；
 *   支持按指定关键字(域名，url等)[收集Tengine运行状态](document_cn/http_reqstat_cn.html)；
 *   [组合多个CSS、JavaScript文件的访问请求变成一个请求](document_cn/http_concat_cn.html)；
 *   [自动去除空白字符和注释](document_cn/http_trim_filter_cn.html)从而减小页面的体积
