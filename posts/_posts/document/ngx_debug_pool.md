@@ -1,13 +1,12 @@
-ngx_debug_pool
-==============
+# ngx_debug_pool
+
 
 This module provides access to information of memory usage for nginx/tengine memory pool.
 
-Example
-=======
+## Example
 
-get information of worker process
----------------------------------
+### get information of worker process
+
 
 ```
  http {
@@ -21,7 +20,7 @@ get information of worker process
  }
 ```
 
-Requesting URI /debug_pool, you will get information of memory usage for worker process which gets this request.  
+Requesting URI /debug_pool, you will get information of memory usage for worker process which gets this request.
 The output page may look like as follows:
 
 ```
@@ -39,11 +38,10 @@ size:       228KB num:          15 cnum:           3 lnum:          26 [SUMMARY]
 ```
 
 
-get information of specific process
------------------------------------
+### get information of specific process
 
-Also you can use gdb script [debug_pool.gdb](https://github.com/alibaba/tengine/blob/master/modules/ngx_debug_pool/debug_pool.gdb) to get information of specific process.  
-Some process cannot handle HTTP request, such as master process or [tengine Proc process](https://github.com/alibaba/tengine/blob/master/docs/modules/ngx_procs_module.md).  
+Also you can use gdb script [debug_pool.gdb](https://github.com/alibaba/tengine/blob/master/modules/ngx_debug_pool/debug_pool.gdb) to get information of specific process.
+Some process cannot handle HTTP request, such as master process or [tengine Proc process](https://github.com/alibaba/tengine/blob/master/docs/modules/ngx_procs_module.md).
 The following example shows how to get information of master process.
 
 ```
@@ -55,12 +53,11 @@ size:      150312 num:           2 cnum:           1 lnum:          13 ngx_init_
 size:      166696 num:           4 cnum:           2 lnum:          13 [SUMMARY]
 ```
 
-Data
-====
+## Data
 
 Every line except the last one of output content has the same format, as follows:
 
-"__size__: %12u __num__: %12u __cnum__: %12u __lnum__: %12u __\<function name\>__"
+`"__size__: %12u __num__: %12u __cnum__: %12u __lnum__: %12u __\<function name\>__"`
 
 * __size__: size of current used memory of this pool
 * __num__:  number of created pool (including current used pool and destroyed pool)
@@ -77,27 +74,22 @@ Every line except the last one of output content has the same format, as follows
 
 Last line of output content summarizes the information of all memory pools.
 
-Install
-=======
+## Install
 
 ```
 $ ./configure --add-module=./modules/ngx_debug_pool
 $ make && make install
 ```
 
-Directive
-=========
+## Directive
 
-Syntax: **debug_pool**
-
-Default: `none`
-
-Context: `server, location`
+> Syntax: **debug_pool**
+> Default: `none`
+> Context: `server, location`
 
 The information of nginx/tengine memory pool usage will be accessible from the surrounding location.
 
-Exception
-=========
+## Exception
 
-Memory allocated without using memory pool does not get taken into account with this module.  
+Memory allocated without using memory pool does not get taken into account with this module.
 For example, ngx_http_spdy_module allocates a temporary buffer via malloc(ngx_alloc) for raw data of SYN_REPLY frame. After being compressed, this buffer will be freed immediately.
