@@ -5,11 +5,11 @@
 
 ---
 
-> Syntax: **force_exit** _exit_time_;
+> Syntax: **force_exit** exit_time;
 > Default: —
 > Context: main
 
-force worker processes to exit after _exit_time_.
+force worker processes to exit after exit_time.
 
 The force_exit support is not enabled by default. You should compile it explicitly:
 

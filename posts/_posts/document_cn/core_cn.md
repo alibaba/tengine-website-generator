@@ -2,11 +2,11 @@
 
 ## 指令
 
-> Syntax: **force_exit** _exit_time_;
+> Syntax: **force_exit** exit_time;
 > Default: —
 > Context: main
 
-强制worker进程在接受到QUIT信号后 _exit_time_ 时间退出。
+强制worker进程在接受到QUIT信号后 exit_time 时间退出。
 
 force_exit功能默认没有编译开启。需要编译时开启:
 
