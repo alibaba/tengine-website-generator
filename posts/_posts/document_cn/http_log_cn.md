@@ -8,27 +8,23 @@ syslog模块兼容syslogd。使用syslog-ng需要修改配置文件以支持udp�
 
 ```
 source s_sys {
-file ("/proc/kmsg" program_override("kernel: "));
-unix-dgram ("/dev/log");
-internal();
-udp(ip(0.0.0.0) port(514));
+    file ("/proc/kmsg" program_override("kernel: "));
+    unix-dgram ("/dev/log");
+    internal();
+    udp(ip(0.0.0.0) port(514));
 };
 ```
 
 
-
 ## 指令
 
-Syntax: **access_log** log_target [format [ratio=ratio] [buffer=size]] | off
-
-Default: access_log logs/access.log combined ratio=1
-
-Context: http, server, location
-
+> Syntax: **access_log** log_target [format [ratio=ratio] [buffer=size]] | off
+> Default: access_log logs/access.log combined ratio=1
+> Context: http, server, location
 
 format（含）前面的各参数顺序固定，后面的参数可乱序。此格式兼容nginx原有access_log格式。
 
-log_target
+`log_target`
 
 兼容以前的log_file参数，并添加下面三种日志类型：
 
@@ -39,7 +35,7 @@ syslog:facility[:[loglevel][:[target_ip:[target_port] | target_udgram_addr][:ide
 ```
 
 
-ratio
+`ratio`
 
 在buffer参数前，指定tengine以固定的采样率记录日志。例如：ratio=0.0001，那么每经过10000条记录，tengine会记录一条。
 
@@ -47,13 +43,9 @@ ratio
 
 下面介绍下支持的三种log_target：
 
-*   file
+*   `file`    与nginx的log_file对应的类型；
 
-与nginx的log_file对应的类型；
-
-*   syslog
-
-支持通过syslog方式记录日志；
+*   `syslog`  支持通过syslog方式记录日志；
 
 ```
 facility := auth | authpriv | cron | daemon | ftp | kern | lpr | mail | mark | news | security | syslog
@@ -85,7 +77,6 @@ syslog:user:debug                             以user类型和debug级别将日�
 syslog:user                                   以user类型和info级别将日志发送给本机Unix dgram(/dev/log)，并使用默认标记
 ```
 
-
 *   pipe
 
 因为pipe命令行中含有空格的缘故，pipe需要使用双引号引用，命令行中的双引号需要转义。
@@ -93,32 +84,29 @@ syslog:user                                   以user类型和info级别将日�
 另外pipe进程的(user, group)遵循tengine指令user的配置，如果没有使用user指令配置的话，pipe进程将遵循tengine的默认用户设置，在编译时没有制定的情况下，默认设置是(nobody, nobody)。请注意给与pipe进程适当的权限。
 
 
+---
 
-Syntax: **error_log** log_target [debug | info | notice | warn | error | crit]
-
-Default: error_log logs/error.log
-
-Context: core, http, server, location
-
+> Syntax: **error_log** log_target [debug | info | notice | warn | error | crit]
+> Default: error_log logs/error.log
+> Context: core, http, server, location
 
 为error_log增加syslog和pipe支持，使用同access_log。
 
 
-Syntax: **syslog_retry_interval** seconds
+---
 
-Default: syslog_retry_interval 1800
-
-Context: core
+> Syntax: **syslog_retry_interval** seconds
+> Default: syslog_retry_interval 1800
+> Context: core
 
 
 建立连接失败后，下一次重试的时间间隔，单位：秒。
 
+---
 
-Syntax: **log_escape ** on | off | ascii
-
-Default: log_escape on
-
-Context: core, http, server, location
+> Syntax: **log_escape ** on | off | ascii
+> Default: log_escape on
+> Context: core, http, server, location
 
 
 *   'on': access日志里面对特殊字符(除了[保留或者非保留字符](http://en.wikipedia.org/wiki/Percent-encoding#Types_of_URI_characters)) 编码。

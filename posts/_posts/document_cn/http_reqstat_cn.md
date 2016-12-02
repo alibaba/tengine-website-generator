@@ -21,6 +21,7 @@
 ## 编译
 
 默认编入Tengine，可通过--without-http_reqstat_module不编译此模块，或通过--with-http_reqstat_module=shared编译为so模块。
+
 使用so模块加载的话，请确保其顺序在"ngx_http_lua_module"之后。可以借助"nginx -m"来确认。
 
 ## 例子
@@ -28,29 +29,28 @@
 ```
 http {
 
-req_status_zone server "$host,$server_addr:$server_port" 10M;
-req_status_zone_add_indicator server $limit;
+    req_status_zone server "$host,$server_addr:$server_port" 10M;
+    req_status_zone_add_indicator server $limit;
+    
+    server {
+        location /us {
+            req_status_show;
+            req_status_show_field req_total $limit;
+        }
 
-server {
-location /us {
-req_status_show;
-req_status_show_field req_total $limit;
-}
+        set $limit 0;
 
-set $limit 0;
+        if ($arg_limit = '1') {
+            set $limit 1;
+        }
 
-if ($arg_limit = '1') {
-set $limit 1;
-}
-
-req_status server;
-}
+        req_status server;
+    }
 }
 
 ```
 
 *   以上例，通过访问/us得到统计结果
-
 *   每行对应一个server
 *   每行的默认格式
 
@@ -95,11 +95,9 @@ kv,bytes_in,bytes_out,conn_total,req_total,http_2xx,http_3xx,http_4xx,http_5xx,h
 
 ## 指令
 
-**Syntax**: _req_status_zone zone_name value size_
-
-**Default**: _none_
-
-**Context**: _main_
+> **Syntax**: _req_status_zone zone_name value size_
+> **Default**: _none_
+> **Context**: _main_
 
 创建统计使用的共享内存。zone_name是共享内存的名称，value用于定义key，支持变量。size是共享内存的大小。
 
@@ -107,58 +105,62 @@ kv,bytes_in,bytes_out,conn_total,req_total,http_2xx,http_3xx,http_4xx,http_5xx,h
 
 ```
 req_status_zone server "$host,$server_addr:$server_port" 10M;
+```
 
 创建名为“server”的共享内存，大小10M，使用“$host,$server_addr:$server_port”计算key。
 
 *   注意，如果希望用tsar来监控的话，key的定义中请不要使用逗号。
 
-**Syntax**: _req_status zone_name1 [zone_name2 [zone_name3 [...]]]_
+---
 
-**Default**: _none_
-
-**Context**: _http、srv、loc_
+> **Syntax**: _req_status zone_name1 [zone_name2 [zone_name3 [...]]]_
+> **Default**: _none_
+> **Context**: _http、srv、loc_
 
 开启统计，可以指定同时统计多个目标，每一个zone_name对应一个目标。
 
-**Syntax**: _req_status_show [zone_name1 [zone_name2 [...]]]_
+---
 
-**Default**: _所有建立的共享内存目标_
-
-**Context**: _loc_
+> **Syntax**: _req_status_show [zone_name1 [zone_name2 [...]]]_
+> **Default**: _所有建立的共享内存目标_
+> **Context**: _loc_
 
 按格式返回统计结果。可指定返回部分目标的统计结果。
 
-**Syntax**: _req_status_show_field field_name1 [field_name2 [field_name3 [...]]]_
+---
 
-**Default**: _all the fields, including user defined fields_
-
-**Context**: _loc_
+> **Syntax**: _req_status_show_field field_name1 [field_name2 [field_name3 [...]]]_
+> **Default**: _all the fields, including user defined fields_
+> **Context**: _loc_
 
 定义输出格式。可以使用的字段：内置字段，以上面的名字来表示；自定义字段，用变量表示。
 'kv'总是每行的第一个字段。
 
-**Syntax**: _req_status_zone_add_indecator zone_name $var1 [$var2 [...]]_
+---
 
-**Default**: _none_
-
-**Context**: _http_
+> **Syntax**: _req_status_zone_add_indecator zone_name $var1 [$var2 [...]]_
+> **Default**: _none_
+> **Context**: _http_
 
 通过变量增加自定义字段，新增加的字段目前会展现在每行的末尾。
 
-**Syntax**: _req_status_zone_key_length zone_name length_
+---
 
-**Default**: _none_
-
-**Context**: _http_
+> **Syntax**: _req_status_zone_key_length zone_name length_
+> **Default**: _none_
+> **Context**: _http_
 
 定义某个共享内存块中key的最大长度，默认值104。key中超出的部分会被截断。
 
-**Syntax**: _req_status_zone_recycle zone_name times seconds_
+---
 
-**Default**: _none_
-
-**Context**: _http_
+> **Syntax**: _req_status_zone_recycle zone_name times seconds_
+> **Default**: _none_
+> **Context**: _http_
 
 定义某个共享内存块过期数据的回收。回收在共享内存耗尽时自动开启。只会回收访问频率低于设置值的监控数据。
 频率定义为 times / seconds，默认值为10r/min，即
+
+```
 req_status_zone_recycle demo_zone 10 60;
+```

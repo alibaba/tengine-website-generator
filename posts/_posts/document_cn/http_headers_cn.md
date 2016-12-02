@@ -15,13 +15,9 @@ expires_by_types       epoch text/xml;
 
 ## 指令
 
-Syntax: expires_by_types [[modified] time | @time-of-day | epoch | max | off] content-type1
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[content-type2] [content-type3] ...
-
-Default: -
-
-Context: http, server, location
+> Syntax: expires_by_types [[modified] time | @time-of-day | epoch | max | off] content-type1 [content-type2] [content-type3] ...
+> Default: -
+> Context: http, server, location
 
 
 该指令配置过期时间及其对应的content-type。过期时间的配置可参考expires的配置。在配置时间之后，可加上一到多个content-type。
@@ -32,6 +28,7 @@ Context: http, server, location
 *   当本级别与上一级别都没有配置expires off时，expires与expires_by_types当本级别没有配置时分配继承上一级别的配置信息，然后再按照规则一执行；
 *   当本级别配置有expires off时，此时模块会忽略expires_by_types的所有配置，并禁用掉expires；
 *   当本级别没有配置expires，而上一级别有配置expires off时，本级别的expires_by_types将不受上一级别的expires的影响。
+
 如：
 
 ```

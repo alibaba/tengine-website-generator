@@ -7,15 +7,15 @@
 ```
 # 默认配置：cookie=route mode=insert fallback=on
 upstream foo {
-server 192.168.0.1;
-server 192.168.0.2;
-session_sticky;
+    server 192.168.0.1;
+    server 192.168.0.2;
+    session_sticky;
 }
 
 server {
-location / {
-proxy_pass http://foo;
-}
+    location / {
+        proxy_pass http://foo;
+    }
 }
 ```
 
@@ -24,27 +24,25 @@ proxy_pass http://foo;
 ```
 #insert + indirect模式：
 upstream test {
-session_sticky cookie=uid domain=www.xxx.com fallback=on path=/ mode=insert option=indirect;
-server  127.0.0.1:8080;
+    session_sticky cookie=uid domain=www.xxx.com fallback=on path=/ mode=insert option=indirect;
+    server  127.0.0.1:8080;
 }
 
 server {
-location / {
-#在insert + indirect模式或者prefix模式下需要配置session_sticky_hide_cookie
-#这种模式不会将保持会话使用的cookie传给后端服务，让保持会话的cookie对后端透明
-session_sticky_hide_cookie upstream=test;
-proxy_pass http://test;
-}
+    location / {
+        #在insert + indirect模式或者prefix模式下需要配置session_sticky_hide_cookie
+        #这种模式不会将保持会话使用的cookie传给后端服务，让保持会话的cookie对后端透明
+        session_sticky_hide_cookie upstream=test;
+        proxy_pass http://test;
+    }
 }
 ```
 
 ## 指令
 
-语法：**session_sticky** `[cookie=name] [domain=your_domain] [path=your_path] [maxage=time] [mode=insert|rewrite|prefix] [option=indirect] [maxidle=time] [maxlife=time] [fallback=on|off] [hash=plain|md5]`
-
-默认值：`session_sticky cookie=route mode=insert fallback=on`
-
-上下文：`upstream`
+> 语法：**session_sticky** `[cookie=name] [domain=your_domain] [path=your_path] [maxage=time] [mode=insert|rewrite|prefix] [option=indirect] [maxidle=time] [maxlife=time] [fallback=on|off] [hash=plain|md5]`
+> 默认值：`session_sticky cookie=route mode=insert fallback=on`
+> 上下文：`upstream`
 
 说明:
 
@@ -66,11 +64,11 @@ proxy_pass http://test;
 *   `fallback`设置是否重试其他机器，当sticky的后端机器挂了以后，是否需要尝试其他机器
 *   `hash` 设置cookie中server标识是用明文还是使用md5值，默认使用md5
 
-语法: **session_sticky_hide_cookie** upstream=name;
+---
 
-默认值: none
-
-上下文： server, location
+> 语法: **session_sticky_hide_cookie** upstream=name;
+> 默认值: none
+> 上下文： server, location
 
 说明：
 
