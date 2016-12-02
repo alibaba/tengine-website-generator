@@ -9,6 +9,9 @@
                     <% for (var i in theme.menu){ %>
                     <li role="presentation"><a class="menu-item" href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
                     <% } %>
+                    <li role="presentation">
+                        <select class="lang-switch pull-right"></select>
+                    </li>
                     <li role="presentation" class="hide"><a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
                 </ul>
             </nav>
