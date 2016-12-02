@@ -51,15 +51,68 @@
     height: 600px;
 }
 
-.homepage-intro h2 {
+.homepage-intro .lead-label,
+.homepage-item-list #info-feature .lead-label,
+.homepage-item-list #info-recent .lead-label {
     position: relative;
     z-index: 1;
-    background: url(/img/home-intro.png) no-repeat;
-    height: 80px;
+    height: 68px;
     width: 200px;
-    text-indent: -100%;
-    overflow: hidden;
     margin: 120px auto 40px;
+    overflow: hidden;
+    cursor: default;
+}
+
+.homepage-intro .lead-label h2,
+.homepage-item-list #info-feature .lead-label h2,
+.homepage-item-list #info-recent .lead-label h2 {
+    z-index: 2;
+    margin: 0;
+    font-size: 35px;
+    line-height: 62px;
+    text-align: center;
+    color: #a6d4d7;
+}
+
+.homepage-intro .lead-label h2 .fa,
+.homepage-item-list #info-feature .lead-label h2 .fa,
+.homepage-item-list #info-recent .lead-label h2 .fa {
+    margin-left: 8px;
+    font-size: 50px;
+    line-height: 68px;
+    vertical-align: middle;
+    margin-right: 14px;
+}
+
+.homepage-intro .lead-label h2 span,
+.homepage-item-list #info-feature .lead-label h2 span,
+.homepage-item-list #info-recent .lead-label h2 span {
+    line-height: 68px;
+    font-size: 35px;
+    vertical-align: middle;
+}
+
+.homepage-intro .bg-border-container,
+.homepage-item-list #info-feature .bg-border-container,
+.homepage-item-list #info-recent .bg-border-container {
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    left: 17px;
+    transform: rotate(7deg);
+}
+
+.homepage-intro .bg-border,
+.homepage-item-list #info-feature .bg-border,
+.homepage-item-list #info-recent .bg-border {
+    border: 1px solid #fff;
+    height: 67px;
+    margin: 0 auto;
+    width: 172px;
+    transform: skewY(173deg);
+    text-indent: 0;
+    line-height: 69px;
+    font-size: 35px;
 }
 
 .homepage-intro p {
@@ -158,15 +211,14 @@
     line-height: 2em;
 }
 
-.homepage-item-list #info-recent h2,
-.homepage-item-list #info-feature h2 {
-    position: relative;
-    z-index: 1;
-    height: 80px;
-    width: 200px;
-    text-indent: -100%;
-    overflow: hidden;
-    margin: 120px auto 40px;
+.homepage-item-list #info-feature .lead-label h2,
+.homepage-item-list #info-recent .lead-label h2 {
+    color: #214f62;
+}
+
+.homepage-item-list #info-feature .bg-border,
+.homepage-item-list #info-recent .bg-border {
+    border: 1px solid #214f62;
 }
 
 .homepage-item-list #info-feature2 a,
@@ -177,14 +229,6 @@
 .homepage-item-list #info-feature2 a:hover,
 .homepage-item-list #info-recent2 a:hover {
     color: #50c7c4;
-}
-
-.homepage-item-list #info-feature h2 {
-    background: url("/img/home-feature.png") no-repeat;
-}
-
-.homepage-item-list #info-recent h2 {
-    background: url("/img/home-recent.png") no-repeat;
 }
 
 .homepage-item-list #info-feature2,
