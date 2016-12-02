@@ -2,6 +2,21 @@
 
 ## 指令
 
+> Syntax: **force_exit** _exit_time_;
+> Default: —
+> Context: main
+
+强制worker进程在接受到QUIT信号后 _exit_time_ 时间退出。
+
+force_exit功能默认没有编译开启。需要编译时开启:
+
+```
+ ./configure --with-force-exit
+```
+
+
+---
+
 > Syntax: **worker_processes** [num | auto]
 > Default: worker_processes auto
 > Context: core
