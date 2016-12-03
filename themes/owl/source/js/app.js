@@ -1,6 +1,5 @@
 $(function () {
-
-    function swicthMenu(){
+    function swicthMenu() {
         $('#nav-menu .menu-item').each(function (k, item) {
             var target = $(item);
 
@@ -9,7 +8,7 @@ $(function () {
                 'Source': '源码',
                 'Document': '文档',
                 'FAQ': 'FAQ',
-                'Concats': '联系我们',
+                'Contact': '联系我们',
                 'Guilde': '教程'
             };
 
@@ -86,11 +85,11 @@ $(function () {
         }
         switch ($.cookie('lang')) {
             case 'cn':
-                control.append('<option value="cn" selected>China</option><option value="en">English</option>');
+                control.append('<option value="cn" selected>中文</option><option value="en">English</option>');
                 break;
             case 'en':
             default:
-                control.append('<option value="cn">China</option><option value="en" selected>English</option>');
+                control.append('<option value="cn">中文</option><option value="en" selected>English</option>');
                 break;
         }
         control.on('change', function () {
@@ -228,10 +227,6 @@ $(function () {
             }
         });
 
-    }($('.homepage-intro')))
-
+    }($('.homepage-intro')));
 
 });
-
-
-
