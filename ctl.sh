@@ -5,9 +5,9 @@
 # * 	@author soulteary
 # **/
 
-BUILD_SCRIPT='/scripts/build.sh';
-RUN_SCRIPT='/scripts/run.sh';
-RELEASE_SCRIPT='/scripts/release.sh';
+BUILD_SCRIPT='/bin/scripts/build.sh';
+RUN_SCRIPT='/bin/scripts/run.sh';
+RELEASE_SCRIPT='/bin/scripts/release.sh';
 
 echo $PWD;
 

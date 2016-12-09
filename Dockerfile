@@ -61,6 +61,8 @@ WORKDIR /tengine-website-generator
 
 RUN ./bin/install.sh --use-cnpm-mirror
 
-RUN npm install hexo -g --registry=https://registry.npm.taobao.org
+RUN npm install -g hexo --registry=https://registry.npm.taobao.org
+
+RUN npm install -g hexo-cli --registry=https://registry.npm.taobao.org
 
 EXPOSE 4000:4000
