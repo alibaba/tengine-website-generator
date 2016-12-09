@@ -18,7 +18,7 @@
                             <nav id="nav-menu" class="navbar-collapse collapse" aria-expanded="false">
                                 <ul class="nav navbar-nav navbar-right">
                                     <% for (var i in theme.menu){ %>
-                                    <li role="presentation"><a class="menu-item" href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
+                                    <li role="presentation"><a class="menu-item" href="<%- url_for(theme.menu[i]) %>" <% if (theme.menu[i].indexOf('http')===0){ %>target="_blank"<%}%> ><%= i %></a></li>
                                     <% } %>
                                     <li role="presentation" class="col-hide-xs">
                                         <select class="lang-switch pull-right"></select>

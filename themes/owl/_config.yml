@@ -49,10 +49,6 @@ OWL:
   OWL_TPL_ROOT_DIR: ""              # 主题文件的根目录
                                     # PHP 原始数值 get_bloginfo( 'template_directory' )
   # 使用 `config.title` 代替
-  #TPL_SITE_NAME:    "苏洋博客"       # 站点名称  get_option( 'blogname' )
-  SITE_URL: "http://www.soulteary.com"    # 站点地址 get_option( 'siteurl' )
-
-  SEC_SALT:         "soulteary"     # 某些操作需要的盐，请修改来为自己代盐
 
   # 收集页面出错信息的REST接口，如果你不是开发者，请保持它为 `false`
   # JS_ERROR_TRACKER: "http://test.soulteary.com/?r.gif"
@@ -60,10 +56,7 @@ OWL:
 
   USE_CUSTOM_NAV: true              # 是否使用自定义菜单
 
-  CURRENT_YEAR: 2016                # 当前年份 date( 'Y' )
-
   # 设置二套环境域名，如果不需要，请保持为`false`
-  # OWL_DOMAIN_SETTING: '{"product": {"site":"","attachment": "7u2j6a.com1.z0.glb.clouddn.com", "assets": "7u2mwv.com1.z0.glb.clouddn.com"}, "dev": {"site":"", "attachment.soulteary.com": "attachment", "assets": "assets.soulteary.com"}}'
   DOMAIN_SETTING: false
 
   ENV: "product"                    # 设置当前环境方案，(product|dev)

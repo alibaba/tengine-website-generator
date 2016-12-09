@@ -5,10 +5,13 @@
   "hexo": {
     "version": "3.2.2"
   },
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "dependencies": {
     "cheerio": "^0.22.0",
     "hexo": "^3.2.0",
-    "hexo-extend-plugin": "^0.1.8",
+    "hexo-extend-plugin": "^0.1.10",
     "hexo-generator-index": "^0.2.0",
     "hexo-html-minifier": "0.0.1",
     "hexo-renderer-ejs": "^0.2.0",
@@ -41,6 +44,10 @@
     "archive_dirs_structure_in_source_dir": [
       "on",
       "源文件目录使用年月日方式保持目录结构"
+    ],
+    "remove_date_prefix_in_post_url": [
+      "on",
+      "去掉文档页面URL中存在的日期字符串"
     ]
   }
 }

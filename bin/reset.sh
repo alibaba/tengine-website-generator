@@ -1,5 +1,7 @@
 #!/bin/bash
 
+hexo clean
+
 if [ -d "./source/" ]; then
     rm -rf ./source
     echo 'source removed.';

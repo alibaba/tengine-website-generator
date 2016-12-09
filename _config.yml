@@ -109,8 +109,6 @@ html_minifier:
   collapseWhitespace: true
   exclude:
 
-
-
 marked:
   gfm: true
   pedantic: false
