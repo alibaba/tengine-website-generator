@@ -6,6 +6,7 @@ if [ ! -d "./node_modules/" ]; then
             case $ARGV in
                 '--use-cnpm-mirror')
                     npm install --production --registry=https://registry.npm.taobao.org
+                    npm install -g hexo --registry=https://registry.npm.taobao.org
                 ;;
                 *)
                     npm install --production
