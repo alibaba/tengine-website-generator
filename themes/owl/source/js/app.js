@@ -1,21 +1,26 @@
 $(function () {
     function swicthMenu() {
+        var map = {
+            'Download': '下载',
+            'Source': '源码',
+            'Document': '文档',
+            'FAQ': 'FAQ',
+            'Contact': '联系我们',
+            'Guide': '教程',
+            'Buy Server': '购买服务器',
+
+            'Advertisement': '推广活动'
+        };
+
         $('#nav-menu .menu-item').each(function (k, item) {
             var target = $(item);
-
-            var map = {
-                'Download': '下载',
-                'Source': '源码',
-                'Document': '文档',
-                'FAQ': 'FAQ',
-                'Contact': '联系我们',
-                'Guilde': '教程'
-            };
-
             var text = target.text();
             target.text(map[text]);
             target.attr('href', item.href.replace('.html', '_cn.html'));
         });
+
+        var postAD = $('.article-inner .article-entry .advertisement h3');
+        postAD.text(map[postAD.text()]);
 
         $('.container-en-us').addClass('hide');
         $('.container-zh-cn').removeClass('hide');
@@ -228,5 +233,16 @@ $(function () {
         });
 
     }($('.homepage-intro')));
+
+    // 非本站链接还是新窗口打开吧
+    $('body a').each(function (item) {
+        $(item).attr('target', '_blank');
+    });
+
+    // cnzz
+    (function (cnzz) {
+        cnzz.src = "http://s95.cnzz.com/z_stat.php?id=1259464492&web_id=1259464492&t=" + (new Date - 0);
+        document.body.appendChild(cnzz);
+    }(document.createElement('script')));
 
 });
