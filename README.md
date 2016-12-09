@@ -2,9 +2,17 @@
 
 ## 准备环境
 
-自动构建docker 环境。
+为了考虑多数人不熟悉js，使用docker自动构建需要操作的环境。
+
+Mac OSx，需要使用 https://download.docker.com/mac/stable/Docker.dmg 或老的docker tools来准备本地环境。 
+
+Ubuntu／Centos就比较简单了，随便安一个能起docker的内核和软件包就好了。
+
 
 ```
+# 准备源码
+git clone git@github.com:soulteary/tengine-website-generator.git
+# 构建镜像
 ./ctl build
 ```
 
@@ -12,6 +20,7 @@
 ## 开发模式
 
 ```
+# 方便一边修改文档&脚本，一边预览网站结果
 ./ctl dev
 ```
 
@@ -22,7 +31,7 @@
 
 ## 生成模式
 
-目前有点屎，稍后修正下。
+目前有点屎，稍后修正下，估计目录哪里的bash写错了，百阿结束搞吧。
 
 ```
 docker run --rm -it -p 4000:4000 -v /Users/suyang.sy/code/tengine/tengine-temp/public/:/tengine-website-generator/public tengine/website-builder bash
