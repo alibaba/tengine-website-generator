@@ -1,5 +1,14 @@
 # Tengine WebSite
 
+## 准备环境
+
+自动构建docker 环境。
+
+```
+./ctl build
+```
+
+
 ## 开发模式
 
 ```
