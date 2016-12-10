@@ -31,8 +31,6 @@ git clone git@github.com:soulteary/tengine-website-generator.git
 
 ## 生成模式
 
-目前有点屎，稍后修正下，估计目录哪里的bash写错了，百阿结束搞吧。
-
 ```
 ./ctl release
 
@@ -42,4 +40,11 @@ hexo g
 # CTRL+D
 # 把public内容都扔tengine-website即可。
 ```
+
+## 部署网站
+
+```
+./ctl deploy
+```
+
 

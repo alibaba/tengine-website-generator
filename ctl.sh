@@ -8,6 +8,7 @@
 BUILD_SCRIPT='/bin/scripts/build.sh';
 RUN_SCRIPT='/bin/scripts/run.sh';
 RELEASE_SCRIPT='/bin/scripts/release.sh';
+DEPLOY_SCRIPT='/bin/scripts/deploy.sh';
 
 echo $PWD;
 
@@ -24,6 +25,9 @@ for ARGV in "$@"
             ;;
             'release')
                 ACTION='RELEASE';
+            ;;
+            'deploy')
+                ACTION='DEPLOY';
             ;;
         esac
 done
@@ -44,6 +48,12 @@ case $ACTION in
     'RELEASE')
 		echo "[INFO] Try to release website";
 		[ -s "${PWD}${RELEASE_SCRIPT}" ] && . "${PWD}${RELEASE_SCRIPT}" && exit 0;
+        echo "[ERROR] Start Docker Container Failed.";
+        exit 1;
+    ;;
+    'DEPLOY')
+		echo "[INFO] Try to deploy website";
+		[ -s "${PWD}${DEPLOY_SCRIPT}" ] && . "${PWD}${DEPLOY_SCRIPT}" && exit 0;
         echo "[ERROR] Start Docker Container Failed.";
         exit 1;
     ;;
