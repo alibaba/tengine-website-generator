@@ -16,7 +16,7 @@ ACTION='';
 for ARGV in "$@"
     do
         case $ARGV in
-            'build')
+            'build-image')
                 ACTION='BUILD';
             ;;
             'dev')

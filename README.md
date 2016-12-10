@@ -13,7 +13,7 @@ Ubuntu／Centos就比较简单了，随便安一个能起docker的内核和软�
 # 准备源码
 git clone git@github.com:soulteary/tengine-website-generator.git
 # 构建镜像
-./ctl build
+./ctl build-image
 ```
 
 
@@ -34,7 +34,7 @@ git clone git@github.com:soulteary/tengine-website-generator.git
 目前有点屎，稍后修正下，估计目录哪里的bash写错了，百阿结束搞吧。
 
 ```
-docker run --rm -it -p 4000:4000 -v /Users/suyang.sy/code/tengine/tengine-temp/public/:/tengine-website-generator/public tengine/website-builder bash
+./ctl release
 
 #进容器后输入
 hexo g
