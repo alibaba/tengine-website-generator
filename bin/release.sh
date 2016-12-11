@@ -2,8 +2,8 @@
 
 rm -rf public
 
-hexo generate
-hexo generate
+./node_modules/.bin/hexo generate
+./node_modules/.bin/hexo generate
 
 rm -rf public/page/
 rm -rf public/taocode_ad*

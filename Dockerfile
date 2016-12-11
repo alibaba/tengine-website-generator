@@ -8,13 +8,17 @@ RUN sed -i s/archive.ubuntu.com/mirrors.aliyun.com/ /etc/apt/sources.list
 
 RUN apt-get update && apt-get install -y git
 
-COPY ./ /tengine-website-generator
+COPY ./bin /tengine-website-generator/bin
+COPY ./posts /tengine-website-generator/posts
+COPY ./scaffolds /tengine-website-generator/scaffolds
+COPY ./themes /tengine-website-generator/themes
+COPY ./_config.yml /tengine-website-generator/_config.yml
+COPY ./ctl.sh /tengine-website-generator/ctl.sh
+COPY ./package.json /tengine-website-generator/package.json
 
 WORKDIR /tengine-website-generator
 
 RUN ./bin/install.sh --use-cnpm-mirror
-
-RUN npm install -global hexo hexo-cli --registry=https://registry.npm.taobao.org --silent
 
 EXPOSE 4000:4000
 
