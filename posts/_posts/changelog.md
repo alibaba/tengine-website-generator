@@ -30,6 +30,7 @@
 *   Feature: the "force_exit" directive. (aholic, chobits)
 *   Feature: debug pool module which can get memory usage of nginx memory pool. (chobits)
 *   Change: merged HTTP/2 module, SPDY module is removed. (PeterDaveHello)
+*   Change: official nginx syslog support, tengine syslog support is removed.
 *   Change: merged changes from nginx-1.8.1. (lhanjian, magicbear, chobits)
 *   Change: support for EPOLL_EXCLUSIVE. (cfsego)
 *   Change: export api: ngx_http_upstream_check_upstream_down. (detailyang)
