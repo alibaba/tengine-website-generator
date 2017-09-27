@@ -42,6 +42,7 @@ For a full list of changes in Tengine, see the [ChangeLog](changelog.html).
 *   [Consistent hash module](document/http_upstream_consistent_hash.html)
 *   [Session sticky module](document/http_upstream_session_sticky.html)
 *   [Debug pool module](document/ngx_debug_pool.html)
+*   [slab stat module](document/ngx_slab_stat.html)
 
 ### Articles
 

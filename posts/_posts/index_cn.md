@@ -4,7 +4,7 @@
 
 >   从2011年12月开始，Tengine成为一个开源项目，Tengine团队在积极地开发和维护着它。Tengine团队的核心成员来自于[淘宝](http://www.taobao.com/)、[搜狗](http://www.sogou.com/)等互联网企业。Tengine是社区合作的成果，我们欢迎大家[参与其中](source_cn.html)，贡献自己的力量。</div>
 
-[下载](download/tengine-2.2.0.tar.gz)
+[下载](download/tengine-2.2.1.tar.gz)
 
 
 ## 特性
@@ -31,6 +31,7 @@
 
 ## 动态
 
+*   [2017-09-27] [Tengine-2.2.1](download/tengine-2.2.1.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_2_1))
 *   [2016-12-02] [Tengine-2.2.0](download/tengine-2.2.0.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_2_0))
 *   [2015-12-31] [Tengine-2.1.2](download/tengine-2.1.2.tar.gz) 稳定版正式发布 ([changelog](changelog_cn.html#2_1_2))
 *   [2015-08-12] [Tengine-2.1.1](download/tengine-2.1.1.tar.gz) 稳定版正式发布 ([changelog](changelog_cn.html#2_1_1))
@@ -62,9 +63,3 @@
 *   [2011-12-07] Tengine开发团队在Velocity大会上介绍了[《淘宝网Nginx定制实战》](http://velocity.oreilly.com.cn/2011/index.php?func=session&name=%E6%89%93%E9%80%A0%E5%AE%89%E5%85%A8%E3%80%81%E6%98%93%E8%BF%90%E7%BB%B4%E7%9A%84%E9%AB%98%E6%80%A7%E8%83%BDWeb%E5%B9%B3%E5%8F%B0%EF%BC%9A%E6%B7%98%E5%AE%9D%E7%BD%91Nginx%E5%AE%9A%E5%88%B6%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98)的一些经验
 *   [2011-12-06] [Tengine-1.2.1](download/tengine-1.2.1.tar.gz) 版本正式发布（[changelog](changelog_cn.html#1_2_1)）
 *   [2011-12-02] [Tengine宣布开源](opensource_cn.html)
-
-
-## 邮件列表
-
-*   中文：[http://code.taobao.org/mailman/listinfo/tengine-cn](http://code.taobao.org/mailman/listinfo/tengine-cn)
-*   英文：[http://code.taobao.org/mailman/listinfo/tengine](http://code.taobao.org/mailman/listinfo/tengine)
