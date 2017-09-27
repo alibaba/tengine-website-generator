@@ -44,6 +44,7 @@ Tengine完全兼容Nginx，因此可以参照Nginx的方式来配置Tengine。
 *   [后端长连接超时功能](document_cn/http_upstream_keepalive_timeout_cn.html)
 *   [变量](document_cn/variables_cn.html)
 *   [debug pool模块](document_cn/ngx_debug_pool_cn.html)
+*   [slab stat模块](document_cn/ngx_slab_stat_cn.html)
 
 ### 资料下载
 

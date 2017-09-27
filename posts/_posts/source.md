@@ -1,4 +1,4 @@
-#### Repository on Taocode (Subversion):
+#### Repository on GitHub :
 
 #### Repository
 

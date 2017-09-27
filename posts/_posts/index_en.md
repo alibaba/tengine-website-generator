@@ -5,7 +5,7 @@
 
 > Tengine has been an open source project since December 2011. It is being actively developed by the Tengine team, whose core members are from [Taobao](http://en.wikipedia.org/wiki/Taobao), [Sogou](http://en.wikipedia.org/wiki/Sogou) and other Internet companies. Tengine is a community effort and everyone is encouraged to [get involved](source.html).</div>
 
-[Download](download/tengine-2.2.0.tar.gz)
+[Download](download/tengine-2.2.1.tar.gz)
 
 ## Features
 
@@ -33,6 +33,7 @@
 
 ## News
 
+*   [09/27/2017] [Tengine-2.2.1](download/tengine-2.2.1.tar.gz) development version released ([changes](changelog.html#2_2_1)).
 *   [12/02/2016] [Tengine-2.2.0](download/tengine-2.2.0.tar.gz) development version released ([changes](changelog.html#2_2_0)).
 *   [12/31/2015] [Tengine-2.1.2](download/tengine-2.1.2.tar.gz) stable version released ([changes](changelog.html#2_1_2)).
 *   [08/12/2015] [Tengine-2.1.1](download/tengine-2.1.1.tar.gz) stable version released ([changes](changelog.html#2_1_1)).
@@ -64,9 +65,3 @@
 *   [12/07/2011] We gave a talk on [Hacking Nginx](http://velocity.oreilly.com.cn/2011/index.php?func=session&name=%E6%89%93%E9%80%A0%E5%AE%89%E5%85%A8%E3%80%81%E6%98%93%E8%BF%90%E7%BB%B4%E7%9A%84%E9%AB%98%E6%80%A7%E8%83%BDWeb%E5%B9%B3%E5%8F%B0%EF%BC%9A%E6%B7%98%E5%AE%9D%E7%BD%91Nginx%E5%AE%9A%E5%88%B6%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98) at Velocity China 2011.
 *   [12/06/2011] [Tengine-1.2.1](download/tengine-1.2.1.tar.gz) stable version released ([changes](changelog.html#1_2_1)).
 *   [12/02/2011] [Tengine goes open source.](opensource.html)
-
-
-## Mailing list
-
-*   Chinese: [http://code.taobao.org/mailman/listinfo/tengine-cn](http://code.taobao.org/mailman/listinfo/tengine-cn)
-*   English: [http://code.taobao.org/mailman/listinfo/tengine](http://code.taobao.org/mailman/listinfo/tengine)

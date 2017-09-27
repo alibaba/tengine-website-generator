@@ -29,12 +29,24 @@ When set to 'auto', which is also the default behavior, Tengine will create the 
 
 ---
 
+
+> Syntax: **master_env** variable[=value];
+> Default: -
+> Context: main
+
+If use master_env directive to set NGX_DNS_RESOLVE_BACKUP_PATH environment variable and dns cache will be enabled.
+When the dns server is unavailable, it's will use the last dns cache.
+
+For example 'master_env NGX_DNS_RESOLVE_BACKUP_PATH=/home/tengine/worker/dnscache/path', the domain A record results will be saved to the file and path depends on  'NGX_DNS_RESOLVE_BACKUP_PATH'.
+
+---
+
 > Syntax: **worker_cpu_affinity** [mask1 mask2 mask3 ... | auto | off]
 > Default: worker_cpu_affinity off
 > Context: main
 
 Bind worker processes to the sets of CPUs.
-When set to 'auto', Tengine will automatically bind each worker process to a specific CPU. If the number of worker processes is larger than the number of your CPUs, then the rest of worker processes will be bond in descendant order. For example, if there are 8 CPUs in your system: 
+When set to 'auto', Tengine will automatically bind each worker process to a specific CPU. If the number of worker processes is larger than the number of your CPUs, then the rest of worker processes will be bond in descendant order. For example, if there are 8 CPUs in your system:
 
 *   When the process number set to 4, the binding bitmap will be:
 
@@ -70,7 +82,7 @@ For example:
     }
 ```
 
-In this server block, the 404 error page will be set to Tengine's default 404 page. 
+In this server block, the 404 error page will be set to Tengine's default 404 page.
 
 ---
 
@@ -99,7 +111,7 @@ Specify the administrator's information, which will appear in a default 4xx/5xx 
 
 ---
 
-> Syntax: **server_info** on | off 
+> Syntax: **server_info** on | off
 > Default: server_info on
 > Context: http, server, location
 
@@ -107,7 +119,7 @@ Show up the server information in a default 4xx/5xx error response. The URL acce
 
 ---
 
-> Syntax: **server_tag** off | customized_tag 
+> Syntax: **server_tag** off | customized_tag
 > Default: none
 > Context: http, server, location
 
@@ -124,3 +136,37 @@ turn on support for SO_REUSEPORT socket option. This option is supported since L
 [benchmark](benchmark.html)
 <!-- [benchmark](../download/reuseport.pdf) -->
 
+---
+
+> Syntax: **pipe:rollback** [logpath] **interval=**[interval] **baknum=**[baknum] **maxsize=**[maxsize]
+> Default: none
+> Context: http, server, location
+
+log pipe module write log use special log proccess, it may not block worker, worker communicate with log proccess use pipe, rollback depend on log pipe module, it support log file auto rollback by tengine self. it support rollback by time and file size, also can configure backup file number. log rollback module will rename log file to backup filename, then reopen the log file and write again
+
+rollback configurge is built-in access_log and error_log：
+```
+access_log "pipe:rollback [logpath] interval=[interval] baknum=[baknum] maxsize=[maxsize]" proxyformat;
+
+error_log  "pipe:rollback [logpath] interval=[interval] baknum=[baknum] maxsize=[maxsize]" info;
+```
+
+logpath: log output file path and name
+
+interval：log rollback interval, default 0 (never)
+
+baknum：backup file number, default 1 (keep 1 backup file)
+
+maxsize：log file max size, default 0 (never)
+
+example：
+```
+error_log  "pipe:rollback logs/error_log interval=60m baknum=5 maxsize=2048M" info;
+
+http {
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+    access_log  "pipe:rollback logs/access_log interval=1h baknum=5 maxsize=2G"  main;
+}
+```

@@ -25,6 +25,15 @@ force_exit功能默认没有编译开启。需要编译时开启:
 
 ---
 
+> Syntax: **master_env** variable[=value];
+> Default: -
+> Context: core
+
+当使用master_env指令设置NGX_DNS_RESOLVE_BACKUP_PATH环境变量后将会开启dns缓存容灾逻辑。即当dns服务器不可用时，使用上次dns缓存的A记录。
+比如设置master_env NGX_DNS_RESOLVE_BACKUP_PATH=/home/tengine/worker/dnscache/path; 将会把配置中的域名解析结果缓存到NGX_DNS_RESOLVE_BACKUP_PATH所设置的路径下。
+
+---
+
 > Syntax: **worker_cpu_affinity** [mask1 mask2 mask3 ... | auto | off ]
 > Default: worker_cpu_affinity off
 > Context: core
@@ -103,7 +112,7 @@ server中的"error_page"指令将404的页面还原成系统默认。
 
 ---
 
-> Syntax: **server_info** on | off 
+> Syntax: **server_info** on | off
 > Default: server_info on
 > Context: http, server, location
 
@@ -111,7 +120,7 @@ server中的"error_page"指令将404的页面还原成系统默认。
 
 ---
 
-> Syntax: **server_tag** off | customized_tag 
+> Syntax: **server_tag** off | customized_tag
 > Default: none
 > Context: http, server, location
 
@@ -128,3 +137,38 @@ server中的"error_page"指令将404的页面还原成系统默认。
 当打开reuse_port的时候，支持SO_REUSEPORT套接字参数，Linux从3.9开始支持。
 
 [测试报告](benchmark_cn.html)
+
+---
+
+> Syntax: **pipe:rollback** [logpath] **interval=**[interval] **baknum=**[baknum] **maxsize=**[maxsize]
+> Default: none
+> Context: http, server, location
+
+日志pipe功能使用独立进程打印日志，不会阻塞worker进程，worker进程与独立日志进程间通过pipe进行通讯，rollback功能依赖日志pipe功能，提供基于tengine自身的日志回滚功能，支持，按照时间间隔、文件大小进行回滚，并支持配置，backup文件的个数。日志回滚模块会按照配置的条件将log文件rename成backup文件，然后重新写新日志文件
+
+该功能配置集成在access_log和error_log指令中：类似如下配置
+```
+access_log "pipe:rollback [logpath] interval=[interval] baknum=[baknum] maxsize=[maxsize]" proxyformat;
+
+error_log  "pipe:rollback [logpath] interval=[interval] baknum=[baknum] maxsize=[maxsize]" info;
+```
+
+logpath: 日志输出路径
+
+interval：日志回滚间隔，默认0（永不回滚）
+
+baknum：backup文件保留个数，默认1（保留1个）
+
+maxsize：log文件最大size，默认0（永不回滚）
+
+使用示例：
+```
+error_log  "pipe:rollback logs/error_log interval=60m baknum=5 maxsize=2048M" info;
+
+http {
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+    access_log  "pipe:rollback logs/access_log interval=1h baknum=5 maxsize=2G"  main;
+}
+```
