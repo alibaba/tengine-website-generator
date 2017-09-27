@@ -29,6 +29,7 @@
 *   Feature: 增加force_exit指令 [aholic, chobits]
 *   Feature: debug pool模块，该模块可以获取nginx内存池的内存使用情况 [chobits]
 *   Change: 合并HTTP/2模块，删除SPDY模块 [PeterDaveHello]
+*   Change: 合并nginx的syslog功能, 移除tengine的syslog功能.
 *   Change: 合并nginx-1.8.1版本的修改 [lhanjian, magicbear, chobits]
 *   Change: 支持EPOLL_EXCLUSIVE [cfsego]
 *   Change: 导出API: ngx_http_upstream_check_upstream_down [detailyang]
