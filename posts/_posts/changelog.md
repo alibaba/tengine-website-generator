@@ -6,7 +6,7 @@
 *   Security: range filter protect from total size overflows. (CVE–2017–7529)(hongxiaolong)
 *   Feature: added ngx_slab_stat module to show shared memory statistics. (hongxiaolong)
 *   Feature: added rollback parameter for pipe to support roll back log file by time or file size. (MengqiWu)
-*   Feature: added dns cache to avoid tengine reload、start or stop etc failed when dns server is unavailable. (wangfakang)
+*   Feature: added dns cache to avoid tengine reload, start or stop etc failed when dns server is unavailable. (wangfakang)
 *   Feature: added sysguard_cpu to protect the system by monitoring the CPU usage. (wangfakang)
 *   Change: Range filter: avoid negative range start. (jinjiu)
 *   Change: updated ngx_slab from nginx-1.13.4 to enable slab slots and free pages statistics. (hongxiaolong)
