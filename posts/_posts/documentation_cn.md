@@ -45,6 +45,7 @@ Tengine完全兼容Nginx，因此可以参照Nginx的方式来配置Tengine。
 *   [变量](document_cn/variables_cn.html)
 *   [debug pool模块](document_cn/ngx_debug_pool_cn.html)
 *   [slab stat模块](document_cn/ngx_slab_stat_cn.html)
+*   [异步openssl模块](document_cn/ngx_http_ssl_asynchronous_mode_cn.html)
 
 ### 资料下载
 
