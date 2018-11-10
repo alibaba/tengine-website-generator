@@ -31,6 +31,7 @@
 
 ## 动态
 
+*   [2018-11-11] [Tengine-2.2.3](download/tengine-2.2.3.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_2_3))
 *   [2018-01-25] [Tengine-2.2.2](download/tengine-2.2.2.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_2_2))
 *   [2017-09-27] [Tengine-2.2.1](download/tengine-2.2.1.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_2_1))
 *   [2016-12-02] [Tengine-2.2.0](download/tengine-2.2.0.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_2_0))

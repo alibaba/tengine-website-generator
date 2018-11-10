@@ -1,6 +1,10 @@
 ## ChangeLog
 
 
+#### Tengine-2.2.3 [11 Nov 2018]
+
+* Security: fixed CVE-2018-16843, CVE-2018-16844 and CVE-2018-16845. (chobits)
+
 #### Tengine-2.2.2 [26 Jan 2018]
 
 * Feature: support asynchronous SSL/TLS mode, Could use QAT to offload and accelerated SSL. (mrpre)
