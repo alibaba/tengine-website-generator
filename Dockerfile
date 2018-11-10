@@ -15,10 +15,9 @@ COPY ./themes /tengine-website-generator/themes
 COPY ./_config.yml /tengine-website-generator/_config.yml
 COPY ./ctl.sh /tengine-website-generator/ctl.sh
 COPY ./package.json /tengine-website-generator/package.json
+COPY ./node_modules /tengine-website-generator/node_modules
 
 WORKDIR /tengine-website-generator
-
-RUN ./bin/install.sh --use-cnpm-mirror
 
 EXPOSE 4000:4000
 
