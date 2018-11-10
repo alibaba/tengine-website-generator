@@ -1,5 +1,10 @@
 ## 变更列表
 
+#### Tengine-2.2.3 [2018-11-11]
+
+* Security: 修复安全漏洞CVE-2018-16843，CVE-2018-16844和CVE-2018-16845 [chobits]
+
+
 #### Tengine-2.2.2 [2018-01-26]
 
 * Feature: 支持异步OpenSSL，可使用相关硬件(如：QAT)进行SSL的卸载 [mrpre]
