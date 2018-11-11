@@ -78,6 +78,11 @@
                         到HTTP后端服务器或FastCGI服务器，大量减少机器的I/O压力；
                     </li>
                     <li>
+                        <a href="document_cn/ngx_http_ssl_asynchronous_mode_cn.html">支持异步OpenSSL</a>
+                        ，可使用硬件如:
+                        <a href="document_cn/tengine_qat_ssl_cn.html">QAT</a>
+                        进行HTTPS的加速与卸载；
+                    <li>
                         更加强大的负载均衡能力，包括<a href="document_cn/http_upstream_consistent_hash_cn.html">一致性hash模块</a>
                         、<a href="document_cn/http_upstream_session_sticky_cn.html">会话保持模块</a>
                         ，<a href="document_cn/http_upstream_check_cn.html">还可以对后端的服务器进行主动健康检查</a>
@@ -95,7 +100,6 @@
                         <a href="http://wiki.nginx.org/HttpLuaModule" target="_blank" rel="external">动态脚本语言Lua</a>
                         支持。扩展功能非常高效简单；
                     </li>
-
                 </ul>
             </div>
         </div>
@@ -103,10 +107,6 @@
         <div class="col-lg-12 info-item info-feature2">
             <div class="container">
                 <ul>
-                    <li>
-                        <a href="document_cn/http_log_cn.html">支持管道（pipe）和syslog（本地和远端）形式的日志以及日志抽样</a>
-                        ；
-                    </li>
                     <li>
                         支持按指定关键字(域名，url等)<a href="document_cn/http_reqstat_cn.html">收集Tengine运行状态</a>
                         ；
@@ -344,6 +344,12 @@
                     </li>
                     <li>Sends <a href="document/http_core.html">unbuffered upload</a> directly to HTTP and FastCGI
                         backend servers, which saves disk I/Os.
+                    </li>
+                    <li>Support
+                    <a
+                    href="document/ngx_http_ssl_asynchronous_mode.html">asynchronous SSL/TLS mode</a>
+                    , Could use 
+                    <a href="document/tengine_qat_ssl.html">QAT to offload and accelerated SSL</a>.
                     </li>
                     <li>More load balancing methods, e.g., <a href="document/http_upstream_consistent_hash.html">consistent
                             hashing</a>, <a href="document/http_upstream_session_sticky.html">session persistence</a>,
