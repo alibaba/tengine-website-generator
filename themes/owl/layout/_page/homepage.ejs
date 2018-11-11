@@ -104,7 +104,44 @@
             <div class="container">
                 <ul>
                     <li>
-                        <a href="document_cn/http_log_cn.html">支持管道（pipe）和syslog（本地和远端）形式的日志以及日志抽样</a>
+                        继承Nginx-1.8.1的所有特性，兼容Nginx的配置
+                        ；
+                    </li>
+                    <li>
+                        <a href="document_cn/dso_cn.html">动态模块加载（DSO）</a>支持。加入一个模块不再需要重新编译整个Tengine
+                        ；
+                    </li>
+                    <li>
+                        支持<a href="http://nginx.org/en/docs/http/ngx_http_v2_module.html">HTTP/2协议</a>，HTTP/2模块替代SPDY模块
+                        ；
+                    </li>
+                    <li>
+                        <a href="document_cn/http_core_cn.html">流式上传</a>到HTTP后端服务器或FastCGI服务器，大量减少机器的I/O压力
+                        ；
+                    </li>
+                    <li>
+                        <a href="document_cn/ngx_http_ssl_asynchronous_mode_cn.html">支持异步OpenSSL</a>，可使用硬件如:<a href="document_cn/tengine_qat_ssl_cn.html">QAT</a>进行HTTPS的加速与卸载
+                        ；
+                    </li>
+                    <li>
+                        更加强大的负载均衡能力，包括<a
+                        href="document_cn/http_upstream_consistent_hash_cn.html">一致性hash模块</a>、<a
+                        href="document_cn/http_upstream_session_sticky_cn.html">会话保持模块</a>，<a
+                        href="document_cn/http_upstream_check_cn.html">还可以对后端的服务器进行主动健康检查</a>，根据服务器状态自动上线下线，<a
+                        href="document_cn/http_upstream_dynamic_cn.html">以及动态解析upstream中出现的域名</a>
+                        ；
+                    </li>
+                    <li>
+                        <a href="http://blog.zhuzhaoyuan.com/2012/01/a-mechanism-to-help-write-web-application-firewalls-for-nginx/">输入过滤器机制</a>支持。通过使用这种机制Web应用防火墙的编写更为方便
+                        ；
+                    </li>
+                    <li>
+                        支持设置proxy、memcached、fastcgi、scgi、uwsgi<a href="document_cn/ngx_limit_upstream_tries_cn.html">在后端失败时的重试次数</a>
+                        ;
+                    </li>
+                    <li>
+                        <a
+                        href="https://github.com/alibaba/tengine/blob/master/modules/ngx_http_lua_module/README.markdown">动态脚本语言Lua</a>支持。扩展功能非常高效简单
                         ；
                     </li>
                     <li>
