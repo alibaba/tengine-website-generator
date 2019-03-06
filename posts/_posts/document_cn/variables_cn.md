@@ -28,6 +28,8 @@
 
 - `$sent_cookie_XXX`    响应Set-Cookie头中XXX的cookie值
 
-- `$host_comment`   主机名和时戳，内容类似于`<!-- localhost Thu, 29 Dec 2011 10:10:56 GMT -->`。
+- `$host_comment`   主机名和时戳，内容类似于`<!-- localhost Thu, 29 Dec 2011 10:10:56 GMT -->`
+
+- `$ssl_handshake_time`   用于统计SSL握手时间
 
   

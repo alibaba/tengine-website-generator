@@ -164,3 +164,14 @@ req_status_zone server "$host,$server_addr:$server_port" 10M;
 ```
 req_status_zone_recycle demo_zone 10 60;
 ```
+
+---
+
+**Syntax**: *req_status_lazy on|off*
+
+**Default**: *off*
+
+**Context**: *http、srv、loc*
+
+req_status_lazy指令用于控制req_status_zone指令中配置的变量是否在log阶段重新取值，用来解决部分变量（如upstream_xxx相关变量）作为key场景下获取是空的问题。
+

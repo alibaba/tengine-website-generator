@@ -44,6 +44,7 @@ For a full list of changes in Tengine, see the [ChangeLog](changelog.html).
 *   [Debug pool module](document/ngx_debug_pool.html)
 *   [slab stat module](document/ngx_slab_stat.html)
 *   [asynchronous SSL module](document/ngx_http_ssl_asynchronous_mode.html)
+*   [proxy connect module](document/proxy_connect.html)
 
 ### Articles
 

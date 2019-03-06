@@ -64,14 +64,11 @@
                 </div>
 
                 <ul>
-                    <li>继承Nginx-1.8.1的所有特性，兼容Nginx的配置；</li>
+                    <li>继承Nginx-1.15.9的所有特性，兼容Nginx的配置；</li>
+                    <li>支持HTTP的<a href="document_cn/proxy_connect_cn.html"> CONNECT </a> 方法，可用于正向代理场景；</li>
                     <li>
-                        <a href="document_cn/dso_cn.html">动态模块加载（DSO）</a>
-                        支持。加入一个模块不再需要重新编译整个Tengine；
-                    </li>
-                    <li>
-                        支持<a href="http://nginx.org/en/docs/http/ngx_http_v2_module.html" target="_blank" rel="external">HTTP/2协议</a>
-                        ，HTTP/2模块替代SPDY模块；
+                        <a href="document_cn/ngx_debug_pool_cn.html">debug_pool</a>
+                        模块协助分析内存使用状况；
                     </li>
                     <li>
                         <a href="document_cn/http_core_cn.html">流式上传</a>
@@ -88,10 +85,6 @@
                         ，<a href="document_cn/http_upstream_check_cn.html">还可以对后端的服务器进行主动健康检查</a>
                         ，根据服务器状态自动上线下线，以及<a href="document_cn/http_upstream_dynamic_cn.html">动态解析upstream中出现的域名</a>
                         ；
-                    </li>
-                    <li>
-                        <a href="http://blog.zhuzhaoyuan.com/2012/01/a-mechanism-to-help-write-web-application-firewalls-for-nginx/" target="_blank" rel="external">输入过滤器机制</a>
-                        支持。通过使用这种机制Web应用防火墙的编写更为方便；
                     </li>
                     <li>
                         支持设置proxy、memcached、fastcgi、scgi、uwsgi<a href="document_cn/ngx_limit_upstream_tries_cn.html">在后端失败时的重试次数</a>
@@ -150,6 +143,10 @@
                     </div>
                 </div>
                 <ul>
+                    <li>[03/20/2018] <a href="download/tengine-2.3.0.tar.gz">Tengine-2.3.0</a>
+                        开发版正式发布 (<a href="changelog_cn.html#2_3_0">changelog</a>
+                        )
+                    </li>
                     <li>[11/11/2018] <a href="download/tengine-2.2.3.tar.gz">Tengine-2.2.3</a>
                         开发版正式发布 (<a href="changelog_cn.html#2_2_3">changelog</a>
                         )
@@ -335,12 +332,11 @@
                 </div>
 
                 <ul>
-                    <li>All features of Nginx-1.8.1 are inherited, i.e., it is compatible with Nginx.</li>
-                    <li><a href="document/dso.html">Dynamic module loading support (DSO)</a>. You don't have to
-                        recompile Tengine when adding new modules to it.
-                    </li>
-                    <li><a href="http://nginx.org/en/docs/http/ngx_http_v2_module.html" target="_blank" rel="external">HTTP/2
-                            support</a>. The ngx_http_v2_module supersedes the ngx_http_spdy_module module.
+                    <li>All features of Nginx-1.15.9 are inherited, i.e., it is compatible with Nginx.</li>
+                    <li>Support the <a href="document/proxy_connect.html"> CONNECT </a> HTTP method. could be used in forward proxy scenarios.</li>
+                    <li>
+                        <a href="document/ngx_debug_pool.html">debug_pool</a>
+                        module could memory usage.
                     </li>
                     <li>Sends <a href="document/http_core.html">unbuffered upload</a> directly to HTTP and FastCGI
                         backend servers, which saves disk I/Os.
@@ -356,11 +352,6 @@
                         <a href="document/http_upstream_check.html">upstream health check</a>, and <a
                                 href="document/http_upstream_dynamic.html">resolving upstream domain names on the
                             fly</a>.
-                    </li>
-                    <li>
-                        <a href="http://blog.zhuzhaoyuan.com/2012/01/a-mechanism-to-help-write-web-application-firewalls-for-nginx/"
-                           target="_blank" rel="external">Input body filter</a> support. It's quite handy to write Web
-                        Application Firewalls using this mechanism.
                     </li>
                     <li><a href="http://wiki.nginx.org/HttpLuaModule" target="_blank" rel="external">Dynamic scripting
                             language (Lua)</a> support, which is very efficient and makes it easy to extend core
@@ -415,6 +406,9 @@
                     </div>
                 </div>
                 <ul>
+                    <li>[03/20/2019] <a href="download/tengine-2.3.0.tar.gz">Tengine-2.3.0</a> development version
+                        released (<a href="changelog.html#2_3_0">changes</a>).
+                    </li>
                     <li>[11/11/2018] <a href="download/tengine-2.2.3.tar.gz">Tengine-2.2.3</a> development version
                         released (<a href="changelog.html#2_2_3">changes</a>).
                     </li>

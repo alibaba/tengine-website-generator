@@ -14,6 +14,8 @@ force_exit功能默认没有编译开启。需要编译时开启:
  ./configure --with-force-exit
 ```
 
+注意：Tengine-2.3.0 版本后废弃force_exit指令,使用Nginx官方`worker_shutdown_timeout`指令替代，详细[文档](http://nginx.org/en/docs/ngx_core_module.html#worker_shutdown_timeout)
+
 
 ---
 
@@ -136,6 +138,8 @@ server中的"error_page"指令将404的页面还原成系统默认。
 
 当打开reuse_port的时候，支持SO_REUSEPORT套接字参数，Linux从3.9开始支持。
 
+注意：Tengine-2.3.0 版本后废弃reuse_port指令，使用Nginx官方的reuseport。升级方法：将events配置块里面的reuse_port on|off 释掉，在对应的监听端口后面加reuseport参数、详细参考[文档](https://www.nginx.com/blog/socket-sharding-nginx-release-1-9-1/)。
+
 [测试报告](benchmark_cn.html)
 
 ---
@@ -172,3 +176,28 @@ http {
     access_log  "pipe:rollback logs/access_log interval=1h baknum=5 maxsize=2G"  main;
 }
 ```
+
+> Syntax: **server_name** name;
+> Default: —
+> Context: server
+
+在Stream模块中，`server_name` 可以用来允许多个server块监听同一个ip:port。Tengine会根据TLS的SNI来决定请求连接匹配到哪个server块。这意味着，Stream模块的`server_name`必须用在SSL卸载的情况下（即`listen`指令后面有`ssl`这个参数）。
+
+Stream模块中的`server_name` 默认是不开启的. 你需要这么显示的编译:
+
+```
+ ./configure --with-stream_sni
+```
+
+注意:
+这个特性是实验性的。如果Nginx官方有类似的功能和该功能有冲突，那么改功能将被废弃。
+
+
+> Syntax: **ssl_sni_force** on | off
+> Default: ssl_sni_force off
+> Context: stream, server
+
+在Stream模块中，`ssl_sni_force`决定了如果TLS的SNI和配置的`server_name`不匹配，TLS握手是否被拒绝。
+
+注意:
+详见`server_name`的注意点.
