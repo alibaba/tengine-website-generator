@@ -201,3 +201,31 @@ Stream模块中的`server_name` 默认是不开启的. 你需要这么显示的�
 
 注意:
 详见`server_name`的注意点.
+
+
+---
+> Syntax: **http2** on |  off
+> Default: http2 off
+> Context: http
+
+可针对域名开启或者关闭 http2。
+监听相同ip:port的server块默认都同时开启或者同时关闭HTTP2。该指令可以针对某一个server块开启HTTP2。
+
+例子:
+```
+http {
+    server {
+        listen 443 http2;
+        server_name www.taobao.com;
+        ......
+    }
+ 
+    server {
+        listen 443;
+        server_name www.tmall.com;
+        #针对"www.tmall.com"关闭HTTP2
+        http2 off;
+        ......
+    }
+}
+```

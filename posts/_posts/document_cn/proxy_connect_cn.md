@@ -1,4 +1,4 @@
-## name
+## proxy_connect
 
 该模块提供对HTTP方法CONNECT的支持。（Tengine 2.3.0版本之后）  
 该方法主要用于[SSL请求隧道](https://en.wikipedia.org/wiki/HTTP_tunnel#HTTP_CONNECT_tunneling)。

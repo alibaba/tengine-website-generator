@@ -1,4 +1,4 @@
-## name
+## proxy_connect
 
 This module provides support for the CONNECT HTTP method after Tengine version 2.3.0.  
 This method is mainly used to [tunnel SSL requests](https://en.wikipedia.org/wiki/HTTP_tunnel#HTTP_CONNECT_tunneling) through proxy servers.
