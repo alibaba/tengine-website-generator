@@ -93,6 +93,11 @@
                         <a href="http://wiki.nginx.org/HttpLuaModule" target="_blank" rel="external">动态脚本语言Lua</a>
                         支持。扩展功能非常高效简单；
                     </li>
+                    <li>
+                        <a href="document_cn/ngx_log_pipe_cn.html">异步日志及日志自动回滚</a>，支持日志异步落盘，及日志按照时间或大小自动回滚
+                        ；
+                    </li>
+
                 </ul>
             </div>
         </div>
@@ -127,12 +132,7 @@
                     <li>
                         <a href="document_cn/commandline_cn.html">更方便的命令行参数，如列出编译的模块列表、支持的指令等</a>
                         ；
-                    </li>
-                    <li>
-                        <a href="document_cn/ngx_log_pipe_cn.html">异步日志及日志自动回滚</a>，支持日志异步落盘，及日志按照时间或大小自动回滚
-                        ；
-                    </li>
-
+                    </li> 
                     <li>可以根据访问文件类型设置过期时间；</li>
                     <li>支持将error_page设置为default</li>
                     <li>More</li>
@@ -364,7 +364,7 @@
                         functionalities.
                     </li>
                     <li>
-                        Support<a href="document/ngx_log_pipe.html">asyn log and auto rollback mode</a>
+                        Support <a href="document/ngx_log_pipe.html">asyn log and auto rollback mode</a>
                     </li>
                 </ul>
             </div>
@@ -398,9 +398,6 @@
                     </li>
                     <li><a href="document/commandline.html">More user-friendly command lines</a>, e.g., showing all
                         compiled-in modules and supported directives.
-                    </li>
-                    <li><a href="document/ngx_log_pipe.html">asyn log and auto rollback</a>, enhanced log module 
-                        include access and error logs
                     </li>
                     <li>Expiration times can be specified for certain MIME types.</li>
                     <li>Error pages can be reset to 'default'.</li>
