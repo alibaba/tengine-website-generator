@@ -203,3 +203,28 @@ This feature is experimental. We will deprecate this feature if there is any con
 Note:
 Same note in `server_name` above.
 
+---
+> Syntax: **http2** on |  off
+> Default: http2 off
+> Context: http
+
+It makes Tengine have the ability to start/stop HTTP2 for a certain server block which listen the same ip:port.
+
+example: 
+```
+http {
+    server {
+        listen 443 http2;
+        server_name www.taobao.com;
+        ......
+    }
+
+    server {
+        listen 443;
+        server_name www.tmall.com;
+        #Disable http2 for "www.tmall.com"
+        http2 off;
+        ......
+    }
+}
+```
