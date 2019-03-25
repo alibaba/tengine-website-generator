@@ -10,9 +10,9 @@
 ## 特性
 *   继承Nginx-1.15.9的所有特性，兼容Nginx的配置；
 *   支持HTTP的[CONNECT](document_cn/proxy_connect_cn.html)方法，可用于正向代理场景；
-*   [debug_pool](document_cn/ngx_debug_pool_cn.html)模块协助分析内存使用状况；
-*   [流式上传](document_cn/http_core_cn.html)到HTTP后端服务器或FastCGI服务器，大量减少机器的I/O压力；
 *   [支持异步OpenSSL](document_cn/ngx_http_ssl_asynchronous_mode_cn.html)，可使用硬件如:[QAT](document_cn/tengine_qat_ssl_cn.html)进行HTTPS的加速与卸载；
+*   增强相关运维、监控能力,比如[异步打印日志及回滚](document_cn/ngx_log_pipe_cn.html),[本地DNS缓存](document_cn/core_cn.html),[内存监控](document_cn/ngx_debug_pool_cn.html)等；
+*   Stream模块支持[server_name](document_cn/stream_sni_cn.html)指令；
 *   更加强大的负载均衡能力，包括[一致性hash模块](document_cn/http_upstream_consistent_hash_cn.html)、[会话保持模块](document_cn/http_upstream_session_sticky_cn.html)，[还可以对后端的服务器进行主动健康检查](document_cn/http_upstream_check_cn.html)，根据服务器状态自动上线下线，以及[动态解析upstream中出现的域名](document_cn/http_upstream_dynamic_cn.html)；
 *   [输入过滤器机制](http://blog.zhuzhaoyuan.com/2012/01/a-mechanism-to-help-write-web-application-firewalls-for-nginx/)支持。通过使用这种机制Web应用防火墙的编写更为方便；
 *   支持设置proxy、memcached、fastcgi、scgi、uwsgi[在后端失败时的重试次数](document_cn/ngx_limit_upstream_tries_cn.html)
@@ -31,7 +31,7 @@
 
 ## 动态
 
-*   [2019-03-20] [Tengine-2.2.3](download/tengine-2.3.0.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_3_0))
+*   [2019-03-25] [Tengine-2.3.0](download/tengine-2.3.0.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_3_0))
 *   [2018-11-11] [Tengine-2.2.3](download/tengine-2.2.3.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_2_3))
 *   [2018-01-25] [Tengine-2.2.2](download/tengine-2.2.2.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_2_2))
 *   [2017-09-27] [Tengine-2.2.1](download/tengine-2.2.1.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_2_1))

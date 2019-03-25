@@ -1,7 +1,7 @@
 ## ChangeLog
 
 
-#### Tengine-2.3.0 [20 Mar 2019]
+#### Tengine-2.3.0 [25 Mar 2019]
 
 * Feature: added proxy_connect module support for the CONNECT HTTP method. (chobits)
 * Feature: added server_name directive for Stream module. (mrpre)

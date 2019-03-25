@@ -22,7 +22,7 @@
                 等互联网企业。Tengine是社区合作的成果，我们欢迎大家<a href="source_cn.html">参与其中</a>
                 ，贡献自己的力量。
             <p>
-            <p><a class="btn btn-lg btn-success download-button" href="download/tengine-2.2.0.tar.gz" role="button">Download</a></p>
+            <p><a class="btn btn-lg btn-success download-button" href="download/tengine-2.3.0.tar.gz" role="button">Download</a></p>
         </div>
     </div>
     <div class="row">
@@ -46,7 +46,7 @@
 
         <p class="lead">Tengine has been an open source project since December 2011. It is being actively developed by the Tengine team, whose core members are from <a href="http://en.wikipedia.org/wiki/Taobao" target="_blank" rel="external">Taobao</a>, <a href="http://en.wikipedia.org/wiki/Sogou" target="_blank" rel="external">Sogou</a> and other Internet companies. Tengine is a community effort and everyone is encouraged to <a href="source.html">get involved</a>.</p>
 
-        <p><a class="btn btn-lg btn-success download-button" href="download/tengine-2.2.0.tar.gz" role="button">Download</a></p>
+        <p><a class="btn btn-lg btn-success download-button" href="download/tengine-2.3.0.tar.gz" role="button">Download</a></p>
     </div>
     <div id="particles-js-en"></div>
 </div>
@@ -67,8 +67,7 @@
                     <li>继承Nginx-1.15.9的所有特性，兼容Nginx的配置；</li>
                     <li>支持HTTP的<a href="document_cn/proxy_connect_cn.html"> CONNECT </a> 方法，可用于正向代理场景；</li>
                     <li>
-                        <a href="document_cn/ngx_debug_pool_cn.html">debug_pool</a>
-                        模块协助分析内存使用状况；
+                       增强相关运维监控能力,比如 <a href="document_cn/ngx_log_pipe_cn.html"> 异步打印日志及回滚 </a>, <a href="document_cn/core_cn.html"> 本地DNS缓存 </a>, <a href="document_cn/ngx_debug_pool_cn.html"> 内存监控 </a>, 等；
                     </li>
                     <li>
                         <a href="document_cn/http_core_cn.html">流式上传</a>
@@ -83,8 +82,7 @@
                         更加强大的负载均衡能力，包括<a href="document_cn/http_upstream_consistent_hash_cn.html">一致性hash模块</a>
                         、<a href="document_cn/http_upstream_session_sticky_cn.html">会话保持模块</a>
                         ，<a href="document_cn/http_upstream_check_cn.html">还可以对后端的服务器进行主动健康检查</a>
-                        ，根据服务器状态自动上线下线，以及<a href="document_cn/http_upstream_dynamic_cn.html">动态解析upstream中出现的域名</a>
-                        ；
+                        ，根据服务器状态自动上线下线，以及<a href="document_cn/http_upstream_dynamic_cn.html">动态解析upstream中出现的域名</a>；
                     </li>
                     <li>
                         支持设置proxy、memcached、fastcgi、scgi、uwsgi<a href="document_cn/ngx_limit_upstream_tries_cn.html">在后端失败时的重试次数</a>；
@@ -92,10 +90,6 @@
                     <li>
                         <a href="http://wiki.nginx.org/HttpLuaModule" target="_blank" rel="external">动态脚本语言Lua</a>
                         支持。扩展功能非常高效简单；
-                    </li>
-                    <li>
-                        <a href="document_cn/ngx_log_pipe_cn.html">异步日志及日志自动回滚</a>，支持日志异步落盘，及日志按照时间或大小自动回滚
-                        ；
                     </li>
                     <li>
                         <a href="document_cn/stream_sni_cn.html">Stream模块支持server_name指令</a>；
@@ -152,7 +146,7 @@
                     </div>
                 </div>
                 <ul>
-                    <li>[03/20/2018] <a href="download/tengine-2.3.0.tar.gz">Tengine-2.3.0</a>
+                    <li>[03/25/2019] <a href="download/tengine-2.3.0.tar.gz">Tengine-2.3.0</a>
                         开发版正式发布 (<a href="changelog_cn.html#2_3_0">changelog</a>
                         )
                     </li>
@@ -342,10 +336,9 @@
 
                 <ul>
                     <li>All features of Nginx-1.15.9 are inherited, i.e., it is compatible with Nginx.</li>
-                    <li>Support the <a href="document/proxy_connect.html"> CONNECT </a> HTTP method. could be used in forward proxy scenarios.</li>
+                    <li>Support the <a href="document/proxy_connect.html"> CONNECT </a> HTTP method for forward proxy.</li>
                     <li>
-                        <a href="document/ngx_debug_pool.html">debug_pool</a>
-                        module could memory usage.
+                        Enhanced operations monitoring, such as <a href="document/ngx_log_pipe.html"> asynchronous log & rollback </a>, <a href="document/core.html"> DNS caching </a>, <a href="document/ngx_debug_pool.html"> memory usage </a>, etc.
                     </li>
                     <li>Sends <a href="document/http_core.html">unbuffered upload</a> directly to HTTP and FastCGI
                         backend servers, which saves disk I/Os.
@@ -365,9 +358,6 @@
                     <li><a href="http://wiki.nginx.org/HttpLuaModule" target="_blank" rel="external">Dynamic scripting
                             language (Lua)</a> support, which is very efficient and makes it easy to extend core
                         functionalities.
-                    </li>
-                    <li>
-                        Support <a href="document/ngx_log_pipe.html">asyn log and auto rollback mode</a>.
                     </li>
                     <li>
                         Support <a href="document/stream_sni.html">server_name in Stream modlue</a>.
@@ -421,7 +411,7 @@
                     </div>
                 </div>
                 <ul>
-                    <li>[03/20/2019] <a href="download/tengine-2.3.0.tar.gz">Tengine-2.3.0</a> development version
+                    <li>[03/25/2019] <a href="download/tengine-2.3.0.tar.gz">Tengine-2.3.0</a> development version
                         released (<a href="changelog.html#2_3_0">changes</a>).
                     </li>
                     <li>[11/11/2018] <a href="download/tengine-2.2.3.tar.gz">Tengine-2.2.3</a> development version

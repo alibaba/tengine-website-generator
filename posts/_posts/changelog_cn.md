@@ -1,6 +1,6 @@
 ## 变更列表
 
-#### Tengine-2.3.0 [2019-03-20]
+#### Tengine-2.3.0 [2019-03-25]
 
 * Feature: 新增proxy_connect模块，可以支持HTTP的CONNECT方法 [chobits]
 * Feature: Stream模块server配置块支持server_name指令 [mrpre]
