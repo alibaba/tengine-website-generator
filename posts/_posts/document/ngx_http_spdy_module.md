@@ -57,4 +57,6 @@ Server can detect whether SPDY or HTTP is used directly, and also it can negotia
 ```
 listen 443 ssl spdy_detect spdy;
 ```
-  
+
+## Note
+Removed spdy module after the Tengine-2.2.0. 

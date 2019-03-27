@@ -5,15 +5,15 @@
 
 > Tengine has been an open source project since December 2011. It is being actively developed by the Tengine team, whose core members are from [Taobao](http://en.wikipedia.org/wiki/Taobao), [Sogou](http://en.wikipedia.org/wiki/Sogou) and other Internet companies. Tengine is a community effort and everyone is encouraged to [get involved](source.html).</div>
 
-[Download](download/tengine-2.2.2.tar.gz)
+[Download](download/tengine-2.3.0.tar.gz)
 
 ## Features
 
-*   All features of Nginx-1.8.1 are inherited, i.e., it is compatible with Nginx.
-*   [Dynamic module loading support (DSO)](document/dso.html). You don't have to recompile Tengine when adding new modules to it.
-*   [HTTP/2 support](http://nginx.org/en/docs/http/ngx_http_v2_module.html). The ngx_http_v2_module supersedes the ngx_http_spdy_module module.
-*   Sends [unbuffered upload](document/http_core.html) directly to HTTP and FastCGI backend servers, which saves disk I/Os.
+*   All features of Nginx-1.15.9 are inherited, i.e., it is compatible with Nginx.
+*   Support the [CONNECT](document/proxy_connect.html) HTTP method for forward proxy.
 *   Support [asynchronous SSL/TLS mode](document_cn/ngx_http_ssl_asynchronous_mode_cn.html), Could use [QAT to offload and accelerated SSL](document/tengine_qat_ssl.html).
+*   Enhanced operations monitoring, such as [asynchronous log & rollback](document/ngx_log_pipe.html), [DNS caching](document/core.html), memory usage(document/ngx_debug_pool.html), etc.
+*   Support [server_name](document/stream_sni.html) in Stream modlue.
 *   More load balancing methods, e.g., [consistent hashing](document/http_upstream_consistent_hash.html), [session persistence](document/http_upstream_session_sticky.html), [upstream health check](document/http_upstream_check.html), and [resolving upstream domain names on the fly](document/http_upstream_dynamic.html).
 *   [Input body filter](http://blog.zhuzhaoyuan.com/2012/01/a-mechanism-to-help-write-web-application-firewalls-for-nginx/) support. It's quite handy to write Web Application Firewalls using this mechanism.
 *   [Dynamic scripting language (Lua)](https://github.com/alibaba/tengine/blob/master/modules/ngx_http_lua_module/README.markdown) support, which is very efficient and makes it easy to extend core functionalities.
@@ -34,6 +34,7 @@
 
 ## News
 
+*   [03/25/2018] [Tengine-2.3.0](download/tengine-2.3.0.tar.gz) development version released ([changes](changelog.html#2_3_0)).
 *   [11/11/2018] [Tengine-2.2.3](download/tengine-2.2.3.tar.gz) development version released ([changes](changelog.html#2_2_3)).
 *   [01/25/2018] [Tengine-2.2.2](download/tengine-2.2.2.tar.gz) development version released ([changes](changelog.html#2_2_2)).
 *   [09/27/2017] [Tengine-2.2.1](download/tengine-2.2.1.tar.gz) development version released ([changes](changelog.html#2_2_1)).

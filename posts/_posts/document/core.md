@@ -17,6 +17,8 @@ The force_exit support is not enabled by default. You should compile it explicit
  ./configure --with-force-exit
 ```
 
+Note: Removed force_exit directive after the Tengine-2.3.0 version and use Nginx official `worker_shutdown_timeout` , detailed reference [worker_shutdown_timeout](http://nginx.org/en/docs/ngx_core_module.html#worker_shutdown_timeout)
+
 
 ---
 
@@ -133,6 +135,9 @@ Specify the customized 'Server' header in the HTTP responses, for example, 'Apac
 
 turn on support for SO_REUSEPORT socket option. This option is supported since Linux 3.9.
 
+Note: Removed reuse_port directive after the Tengine-2.3.0 version and use the official reuseport of Nginx, detailed reference [document](https://www.nginx.com/blog/socket-sharding-nginx-release-1-9-1/).
+
+
 [benchmark](benchmark.html)
 <!-- [benchmark](../download/reuseport.pdf) -->
 
@@ -168,5 +173,58 @@ http {
                       '$status $body_bytes_sent "$http_referer" '
                       '"$http_user_agent" "$http_x_forwarded_for"';
     access_log  "pipe:rollback logs/access_log interval=1h baknum=5 maxsize=2G"  main;
+}
+```
+
+
+---
+
+> Syntax: **server_name** name;
+> Default: —
+> Context: server
+
+`server_name` used in Stream module makes Tengine have the ability to listen same ip:port in multiply server blocks and. The connection will be attached to a certain server block by SNI extension in TLS. That means `server_name` should be used with SSL offloading(using `ssl` after `listen`).
+The `server_name` support in Stream module is not enabled by default. You should compile it explicitly:
+
+```
+ ./configure --with-stream_sni
+```
+Note:
+This feature is experimental. We will deprecate this feature if there is any conflict with similar feature of nginx official.
+
+---
+
+> Syntax: **ssl_sni_force** on | off
+> Default: ssl_sni_force off
+> Context: stream, server
+
+`ssl_sni_force` will determine whether the TLS handsheke is rejected or not if SNI is not matched with server name which we configure by `server_name` in Stream module.
+
+Note:
+Same note in `server_name` above.
+
+---
+> Syntax: **http2** on |  off
+> Default: http2 off
+> Context: http
+
+It makes Tengine have the ability to start/stop HTTP2 for a certain server block which listen the same ip:port.
+
+example: 
+```
+http {
+    server {
+        listen 443 http2;
+        server_name www.taobao.com;
+        ......
+    }
+
+    server {
+        listen 443;
+        server_name www.tmall.com;
+        #Disable http2 for "www.tmall.com"
+        http2 off;
+        ......
+    }
 }
 ```

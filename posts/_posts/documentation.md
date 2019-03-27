@@ -15,9 +15,9 @@ For a full list of changes in Tengine, see the [ChangeLog](changelog.html).
 
 *   [Core functionality](document/core.html)
 *   [Http core module](document/http_core.html)
-*   [DSO module](document/dso.html)
+*   [DSO module](document/dso.html)(deprecated)
 *   [Dyups module](document/http_dyups.html)
-*   [SPDY module](document/ngx_http_spdy_module.html)
+*   [SPDY module](document/ngx_http_spdy_module.html)(deprecated)
 *   [Proc module](document/proc.html)
 *   [Backtrace module](document/http_backtrace.html)
 *   [Concat module](document/http_concat.html)
@@ -29,7 +29,7 @@ For a full list of changes in Tengine, see the [ChangeLog](changelog.html).
 *   [Limit upstream tries](document/ngx_limit_upstream_tries.html)
 *   [Logging enhancement](document/http_log.html)
 *   [Reqstat module](document/http_reqstat.html)
-*   [Lua module(v0.7.19)](https://github.com/chaoslawful/lua-nginx-module/blob/master/README.markdown)
+*   [Lua module(v0.10.14rc4)](https://github.com/chaoslawful/lua-nginx-module/blob/master/README.markdown)
 *   [Slice module](document/http_slice.html)
 *   [SSL enhancement](document/http_ssl.html)
 *   [Stub status module](document/http_stub_status.html)
@@ -44,6 +44,9 @@ For a full list of changes in Tengine, see the [ChangeLog](changelog.html).
 *   [Debug pool module](document/ngx_debug_pool.html)
 *   [slab stat module](document/ngx_slab_stat.html)
 *   [asynchronous SSL module](document/ngx_http_ssl_asynchronous_mode.html)
+*   [proxy connect module](document/proxy_connect.html)
+*   [asyn log and rollback module](document/ngx_log_pipe.html)
+*   [Stream server name](document/stream_sni.html)
 
 ### Articles
 

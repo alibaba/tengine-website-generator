@@ -19,9 +19,9 @@ Tengine完全兼容Nginx，因此可以参照Nginx的方式来配置Tengine。
 
 *   [主功能](document_cn/core_cn.html)
 *   [HTTP核心模块](document_cn/http_core_cn.html)
-*   [动态加载模块功能](document_cn/dso_cn.html)
+*   [动态加载模块功能](document_cn/dso_cn.html)(已废弃)
 *   [Dyups模块](document_cn/http_dyups_cn.html)
-*   [SPDY模块功能](document_cn/ngx_http_spdy_module_cn.html)
+*   [SPDY模块功能](document_cn/ngx_http_spdy_module_cn.html)(已废弃)
 *   [独立进程模块功能](document_cn/proc_cn.html)
 *   [backtrace模块功能](document_cn/http_backtrace_cn.html)
 *   [concat模块功能](document_cn/http_concat_cn.html)
@@ -33,7 +33,7 @@ Tengine完全兼容Nginx，因此可以参照Nginx的方式来配置Tengine。
 *   [limit upstream tries功能](document_cn/ngx_limit_upstream_tries_cn.html)
 *   [log模块功能](document_cn/http_log_cn.html)
 *   [reqstat模块功能](document_cn/http_reqstat_cn.html)
-*   [lua模块(v0.7.19)](https://github.com/chaoslawful/lua-nginx-module/blob/master/README.markdown)
+*   [lua模块(v0.10.14rc4)](https://github.com/chaoslawful/lua-nginx-module/blob/master/README.markdown)
 *   [ssl模块功能](document_cn/http_ssl_cn.html)
 *   [stub_status模块功能](document_cn/http_stub_status_cn.html)
 *   [TFS模块功能](https://github.com/alibaba/nginx-tfs/blob/master/ReadMe.markdown)
@@ -46,6 +46,9 @@ Tengine完全兼容Nginx，因此可以参照Nginx的方式来配置Tengine。
 *   [debug pool模块](document_cn/ngx_debug_pool_cn.html)
 *   [slab stat模块](document_cn/ngx_slab_stat_cn.html)
 *   [异步openssl模块](document_cn/ngx_http_ssl_asynchronous_mode_cn.html)
+*   [proxy connect模块](document_cn/proxy_connect_cn.html)
+*   [异步日志和自动回滚模块](document_cn/ngx_log_pipe_cn.html)
+*   [Stream 模块支持server name](document_cn/stream_sni_cn.html)
 
 ### 资料下载
 

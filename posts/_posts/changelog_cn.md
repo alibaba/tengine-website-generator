@@ -1,5 +1,37 @@
 ## 变更列表
 
+#### Tengine-2.3.0 [2019-03-25]
+
+* Feature: 新增proxy_connect模块，可以支持HTTP的CONNECT方法 [chobits]
+* Feature: Stream模块server配置块支持server_name指令 [mrpre]
+* Feature: reqstat模块新增req_status_lazy指令 [taoyuanyuan]
+* Feature: 新增http2指令，可以在server配置块中控制http2开关 [jinjiu]
+* Feature: 新增ssl_handshake_time变量，统计SSL握手时间 [jinjiu]
+* Feature: limit_req_zone指令的rate参数支持变量模式 [Alaaask]
+* Change: 更新debug_pool模块，适配Nginx官方1.15.9 [chobits]
+* Change: 更新reuse_port, dso、limit_req指令使用文档 [chobits, wangfakang]
+* Change: 合并官方limit_req逻辑，当对应key所有的变量值为空才跳过统计 [chobits]
+* Change: 删除reuse_port, dso、slice指令，统一使用Nginx官方对应的功能 [wangfakang]
+* Change: 适配并合并官方1.15.9测试用列 [chobits, wangfakang]
+* Change: 对Tengine自身模块全部剥离到modules目录下，减少对core的入侵 [chobits, wangfakang]
+* Change: 升级合并官方1.15.9代码，并同步官方新功能如Stream, gRPC等 [chobits, wangfakang]
+* Change: 更新Lua模块至v0.10.14rc4 [wangfakang]
+* Change: 更新dyups文档 [lf1029698952]
+* Change: 对core代码的修改全部使用宏区分开 [chobits, wangfakang, fankeke, hongxiaolong, imkeeper]
+* Change: 恢复accpte_filter功能 [wangfakang]
+* Bugfix: 修复dyups模块在和高版本OpenSSL一起编译的报错问题 [wangfakang]
+* Bugfix: 修复dyups模块init_number初始化逻辑 [FengXingYuXin]
+* Bugfix: 修复rollback日志进程在reload时可能导致日志写到滚动后的文件里面 [MengqiWu]
+* Bugfix: 修复ssl_verify_client_exception指令导致的coredump问题 [chobits]
+* Bugfix: 修复dyups, session_sticky模块在升级core代码后导致的coredump问题 [wangfakang]
+* Bugfix: 修复limit_req, http2模块的编译错误 [hongxiaolong]
+* Bugfix: 修复日志pipe进程在关闭监听socket时误删除监听Unix domain文件 [wangfakang]
+* Bugfix: 修复静态加载OpenSSL库时导致async openssl无法检测 [mrpre]
+* Bugfix: 修复ngx_http_top_input_body_filter被删除的问题 [chobits]
+* Bugfix: 修复reuse_port和accept_mutex指令冲突问题 [innomentats]
+* Bugfix: 修复在高版本GCC下的编译报错问题 [wangfakang]
+
+
 #### Tengine-2.2.3 [2018-11-11]
 
 * Security: 修复安全漏洞CVE-2018-16843，CVE-2018-16844和CVE-2018-16845 [chobits]
@@ -22,7 +54,7 @@
 
 *   Security: Nginx range过滤器整形溢出漏洞(CVE–2017–7529) [hongxiaolong]
 *   Feature: 新增ngx_slab_stat模块，可获取NGINX/Tengine共享内存池的slab和空闲页状态信息 [hongxiaolong]
-*   Feature: pipe指令新增rollback参数，可基于时间、文件大小等维度进行日志回滚功能 [MengqiWu]
+*   Feature: pipe指令新增rollback参数，可基于时间, 文件大小等维度进行日志回滚功能 [MengqiWu]
 *   Feature: 新增dns cache功能，可避免dns服务不可用时导致Tengine无法正常启停 [wangfakang]
 *   Feature: 新增sysguard_cpu指令，基于cpu保护维度来限制用户的请求 [wangfakang]
 *   Change: 更新range filter模块，避免启始位置为负数 [jinjiu]
@@ -119,7 +151,7 @@
 #### Tengine-2.0.3 [2014-05-30]
 
 *   Feature: 支持按指定关键字(域名，url等)收集Tengine运行状态 [cfsego]
-*   Feature: 支持debian、ubuntu打包 [betetrpm, szepeviktor]
+*   Feature: 支持debian, ubuntu打包 [betetrpm, szepeviktor]
 *   Change: 合并nginx-1.4.7的修改 [chobits]
 *   Change: 使用红黑树优化upstream配置解析和查找 [SarahWang]
 *   Change: 更新版权信息
@@ -151,10 +183,10 @@
 #### Tengine-2.0.0 [2014-01-08]
 
 *   Feature: 增强DSO模块，编译动态模块不再依赖原始编译环境 [monadbobo]
-*   Feature: 支持SPDY v3协议，自动检测同一端口的SPDY请求和HTTP请求 [lilbedwin、chobits]
-*   Feature: 支持设置proxy、memcached、fastcgi、scgi、uwsgi在后端失败时的重试次数 [supertcy]
+*   Feature: 支持SPDY v3协议，自动检测同一端口的SPDY请求和HTTP请求 [lilbedwin, chobits]
+*   Feature: 支持设置proxy, memcached、fastcgi、scgi、uwsgi在后端失败时的重试次数 [supertcy]
 *   Feature: tfs模块在RcServer心跳时汇报访问统计 [zhcn381]
-*   Feature: if指令支持比较数值大小：'>'、'<'、'>='、'<=' [flygoast]
+*   Feature: if指令支持比较数值大小：'>', '<'、'>='、'<=' [flygoast]
 *   Feature: 健康检查模块支持长连接检查 [lilbedwin]
 *   Feature: trim模块支持SSI和ESI的注释 [taoyuanyuan]
 *   Feature: expires_by_types指令支持使用通配符，例如'text/*'匹配子类型 [zhcn381]
@@ -357,7 +389,7 @@
 *   Feature：增加变量$conn_requests，记录当前request是连接上的第几个 [lieyuan]
 *   Feature：增加变量$host_comment，插入注释功能，以说明哪台机器产生的请求 [yunxing]
 *   Feature：访问日志增加ratio参数，抽样功能，可以减少日志的记录量 [cfsego]
-*   Feature：增加server_admin、server_info指令，出错信息提示，更友好的错误页面 [lieyuan]
+*   Feature：增加server_admin, server_info指令，出错信息提示，更友好的错误页面 [lieyuan]
 *   Feature：增加命令行参数-d，把配置文件的内容全部打印出来 [piaoliang]
 *   Feature：增加指令expires_by_types，可以根据types来设置超时 [lifeibo]
 *   Feature：增加命令行参数-l，可以列出所有的directives [dinic]

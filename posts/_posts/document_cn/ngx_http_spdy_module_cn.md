@@ -56,4 +56,6 @@ listen 443 ssl spdy_detect;
 ```
 listen 443 ssl spdy_detect spdy;
 ```
-  
+
+## 注意
+在Tengine-2.2.0及其之后的版本中已经移除了spdy模块。
