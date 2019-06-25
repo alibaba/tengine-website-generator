@@ -6,7 +6,7 @@ RUN echo "185.31.17.249     github.com"                                 >> /etc/
 
 RUN sed -i s/archive.ubuntu.com/mirrors.aliyun.com/ /etc/apt/sources.list
 
-RUN apt-get update && apt-get install -y git
+#RUN apt-get update && apt-get install -y git
 
 COPY ./bin /tengine-website-generator/bin
 COPY ./posts /tengine-website-generator/posts
