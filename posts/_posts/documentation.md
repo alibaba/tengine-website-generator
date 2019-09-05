@@ -47,6 +47,8 @@ For a full list of changes in Tengine, see the [ChangeLog](changelog.html).
 *   [proxy connect module](document/proxy_connect.html)
 *   [asyn log and rollback module](document/ngx_log_pipe.html)
 *   [Stream server name](document/stream_sni.html)
+*   [dubbo pass module](document/ngx_http_dubbo_module.html)
+*   [vnswrr module](document/ngx_http_upstream_vnswrr_module.html)
 
 ### Articles
 

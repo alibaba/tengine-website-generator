@@ -49,6 +49,8 @@ Tengine完全兼容Nginx，因此可以参照Nginx的方式来配置Tengine。
 *   [proxy connect模块](document_cn/proxy_connect_cn.html)
 *   [异步日志和自动回滚模块](document_cn/ngx_log_pipe_cn.html)
 *   [Stream 模块支持server name](document_cn/stream_sni_cn.html)
+*   [支持后端Dubbo协议](document_cn/ngx_http_dubbo_module_cn.html)
+*   [upstream支持VNSWRR高效负载均衡算法](document_cn/ngx_http_upstream_vnswrr_module_cn.html)
 
 ### 资料下载
 
