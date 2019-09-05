@@ -4,11 +4,11 @@
 
 >   从2011年12月开始，Tengine成为一个开源项目，Tengine团队在积极地开发和维护着它。Tengine团队的核心成员来自于[淘宝](http://www.taobao.com/)、[搜狗](http://www.sogou.com/)等互联网企业。Tengine是社区合作的成果，我们欢迎大家[参与其中](source_cn.html)，贡献自己的力量。</div>
 
-[下载](download/tengine-2.3.1.tar.gz)
+[下载](download/tengine-2.3.2.tar.gz)
 
 
 ## 特性
-*   继承Nginx-1.16.0的所有特性，兼容Nginx的配置；
+*   继承Nginx-1.17.3的所有特性，兼容Nginx的配置；
 *   支持HTTP的[CONNECT](document_cn/proxy_connect_cn.html)方法，可用于正向代理场景；
 *   [支持异步OpenSSL](document_cn/ngx_http_ssl_asynchronous_mode_cn.html)，可使用硬件如:[QAT](document_cn/tengine_qat_ssl_cn.html)进行HTTPS的加速与卸载；
 *   增强相关运维、监控能力,比如[异步打印日志及回滚](document_cn/ngx_log_pipe_cn.html),[本地DNS缓存](document_cn/core_cn.html),[内存监控](document_cn/ngx_debug_pool_cn.html)等；
@@ -31,6 +31,7 @@
 
 ## 动态
 
+*   [2019-08-20] [Tengine-2.3.2](download/tengine-2.3.2.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_3_2))
 *   [2019-06-18] [Tengine-2.3.1](download/tengine-2.3.1.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_3_1))
 *   [2019-03-25] [Tengine-2.3.0](download/tengine-2.3.0.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_3_0))
 *   [2018-11-11] [Tengine-2.2.3](download/tengine-2.2.3.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_2_3))
