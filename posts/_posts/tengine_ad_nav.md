@@ -1,1 +1,1 @@
-[买服务器](http://click.aliyun.com/m/4339/)
+[买服务器](https://cn.aliyun.com/product/aliware/mse?spm=tengine-website.topbar.0.0.0)
