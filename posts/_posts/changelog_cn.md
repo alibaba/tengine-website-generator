@@ -1,6 +1,31 @@
 ## 变更列表
 
+#### Tengine-2.3.3 [2021-03-25]
+
+* Feature: 支持dtlsv1和dtlsv1.2 (mrpre)
+* Feature: ngx_http_upstream_check_module模块增加prometheus格式和json属性 (dkrutsko)
+* Feature: mod_dubbo模块支持dubbo_pass中使用变量 (spacewander)
+* Change: 升级core代码版本到Nginx-1.18.0 (lianglli)
+* Change: 文档README增加Tengine钉钉群号 (cnmade)
+* Change: 更新mod_dubbo模块的说明文档 (spacewander)
+* Bugfix: 修复mod_dubbo模块解码int32错误的问题 (spacewander)
+* Bugfix: 修复mod_dubbo模块解码整型payload出现core dump的问题(spacewander)
+* Bugfix: 修复ngx_http_lua_module模块在debug日志级别下的内存泄漏问题 (hawkxiang)
+* Bugfix: 修复ngx_multi_upstream_module模块未释放fake请求的问题 (spacewander)
+* Bugfix: 修复ngx_http_upstream_check_module模块中的共享内存互斥锁问题 (scriptkids)
+* Bugfix: 去除ngx_http_upstream_check_module模块中冗余的健康检查 (scriptkids)
+* Bugfix: 删除ngx_multi_upstream_module模块日志相关的重复代码 (spacewander)
+* Bugfix: 修复ngx_http_upstream_dyups_module读消息且打开健康检查导致CPU负载过高的问题 (zjd87)
+* Bugfix: 修复ngx_http_upstream_vnswrr_module不支持dynamic_resolve指令的问题 (wangfakang)
+* Bugfix: 修复limit_req_zone指令在多个变量中使用的问题 (wangfakang)
+* Bugfix: 修复master进程偶现core dump问题 (wangfakang)
+* Bugfix: 修复rewrite字符串含'\0'引起的内存泄漏问题 (hongxiaolong)
+* Bugfix: 删除mod_dubbo模块未使用的变量hex_str (Weiliang-Li)
+* Bugfix: 修复keep-alive请求未发送完整导致400错误响应的问题 (fishgege)
+
+
 #### Tengine-2.3.2 [2019-08-20]
+
 * Security: 修复HTTP2安全漏洞CVE-2019-9511, CVE-2019-9513和CVE-2019-9516 (wangfakang)
 * Feature: 支持后端Dubbo协议 (MenqqiWu)
 * Feature: upstream支持VNSWRR高效负载均衡算法 (wangfakang)
@@ -15,6 +40,7 @@
 
 
 #### Tengine-2.3.1 [2019-06-18]
+
 * Feature: stream ssl模块新增$ssl_handshakd_time变量 [mrpre]
 * Feature: upstream check模块支持websocket健康检查 (mrpre)
 * Change: round robin负载均衡算法采用随机起点 (wangfakang)
@@ -27,10 +53,10 @@
 * Change: 支持footer模块的dso编译 (wangfakang)
 * Change: 支持user_agent模块的dso编译 (wangfakang)
 * Change: 支持concat模块的dso编译 (mathieu-aubin)
-* Fix: 修复部分服务端返回的HTTP头部服务端版本信息  (AstroProfundis)
-* Fix: 修复"-m"参数显示dynamic module的问题 (wangfakang)
-* Fix：修复limit_req指令的参数检查 (wangfakang)
-* Fix: 修复reqstatus在macOS下的兼容性问题 (chobits)
+* Bugfix: 修复部分服务端返回的HTTP头部服务端版本信息  (AstroProfundis)
+* Bugfix: 修复"-m"参数显示dynamic module的问题 (wangfakang)
+* Bugfix: 修复limit_req指令的参数检查 (wangfakang)
+* Bugfix: 修复reqstatus在macOS下的兼容性问题 (chobits)
 
 
 #### Tengine-2.3.0 [2019-03-25]
@@ -98,12 +124,12 @@
 *   Change: 去掉在OS X系统中废弃使用OpenSSL library时的警告信息 [chobits]
 *   Change: 更新travis.yml配置文件 [PeterDaveHello]
 *   Bugfix: 修复proxy_upstream_tries，避免lua子请求会多重试一次后端 [wangfakang]
-*   Bugfix：修复reuse_port和accept_mutex的冲突 [gwtony]
-*   Bugfix：修复reuse_port在worker_processes设置为auto时不生效 [wangfakang]
+*   Bugfix: 修复reuse_port和accept_mutex的冲突 [gwtony]
+*   Bugfix: 修复reuse_port在worker_processes设置为auto时不生效 [wangfakang]
 *   Bugfix: 修复开启reuse_port后执行nginx -t失败问题 [chobits]
 *   Bugfix: 修复pipe模块返回值异常情况 [chobits]
 *   Bugfix: 修复configure检测报错 [chobits]
-*   Bugfix：修复aio选项在freebsd系统中缺少检查的问题 [chobits]
+*   Bugfix: 修复aio选项在freebsd系统中缺少检查的问题 [chobits]
 
 
 #### Tengine-2.2.0 [2016-12-02]
