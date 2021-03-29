@@ -7,8 +7,8 @@ $(function () {
             'FAQ': 'FAQ',
             'Contact': '联系我们',
             'Guide': '教程',
-            'Buy Server': '购买服务器',
-
+            'Buy Products': '购买云产品',
+            'Careers': '招聘',
             'Advertisement': '推广活动'
         };
 

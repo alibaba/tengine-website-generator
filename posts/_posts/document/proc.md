@@ -55,7 +55,7 @@ Priority is a value in the range -20 to 20. Lower priorities cause more favorabl
 ---
 
 > Syntax: **delay_start** `time`
-> Default: `0s`
+> Default: `300ms`
 > Context: `process`
 
 

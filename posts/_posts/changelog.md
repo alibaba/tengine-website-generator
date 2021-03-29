@@ -1,6 +1,31 @@
 ## ChangeLog
 
+#### Tengine-2.3.3 [25 Mar 2021]
+
+* Feature: tengine supports dtlsv1 and dtlsv1.2. (mrpre)
+* Feature: prometheus format and additional json properties was added to ngx_http_upstream_check_module. (dkrutsko)
+* Feature: the "dubbo_pass" directive can use the variables. (spacewander)
+* Change: all features of nginx-1.18.0 are inherited, i.e., it is 100% compatible with nginx. (lianglli)
+* Change: dingtalk user group was added to README. (cnmade)
+* Change: format document of the mod_dubbo. (spacewander)
+* Bugfix: int32 values are not decoded properly in the mod_dubbo. (spacewander)
+* Bugfix: a segmentation fault might occur in a worker process when decoding a dubbo payload with integer value in the mod_dubbo. (spacewander) 
+* Bugfix: memory leak in ngx_http_lua_module with debug log. (hawkxiang)
+* Bugfix: fake request was not freed in the ngx_multi_upstream_module. (spacewander)
+* Bugfix: shared memory mutex in the ngx_http_upstream_check_module. (scriptkids)
+* Bugfix: redundant upstream health check was removed in the ngx_http_upstream_check_module. (scriptkids)
+* Bugfix: duplicate log_ctx was deleted in the ngx_multi_upstream_module. (spacewander)
+* Bugfix: tengine hogged CPU during reading message in the ngx_http_upstream_dyups_module and when upstream check was used. (zjd87)
+* Bugfix: ngx_http_upstream_vnswrr_module did not support "dynamic_resolve" directive. (wangfakang)
+* Bugfix: "limit_req_zone" directive were used in multiple variables. (wangfakang)
+* Bugfix: a segmentation fault might occur in a master process. (wangfakang)
+* Bugfix: memory leak when rewrite string contains ASCII 0 character. (hongxiaolong)
+* Bugfix: variable hex_str was not used in the mod_dubbo. (Weiliang-Li)
+* Bugfix: keep-alive request did not transferred complete caused the 400 response. (fishgege)
+
+
 #### Tengine-2.3.2 [20 Aug 2019]
+
 * Security: fixed CVE-2019-9511, CVE-2019-9513 and CVE-2019-9516. (wangfakang)
 * Feature: added dubbo_pass directive to support the back-end HTTP to Dubbo protocol. (MenqqiWu)
 * Feature: added VNSWRR algorithm for upstream module. (wangfakang)
@@ -15,6 +40,7 @@
 
 
 #### Tengine-2.3.1 [18 Jun 2019]
+
 * Feature: add $ssl_handshakd_time variable for stream ssl module (mrpre)
 * Feature: support websocket check of upstream check module (mrpre)
 * Change: random index logical for round robin (wangfakang)
@@ -27,10 +53,10 @@
 * Change: support dynamic build for footer module (wangfakang)
 * Change: support dynamic build for user_agent module (wangfakang)
 * Change: support dynamic build for concat module (mathieu-aubin)
-* Fix: server version strings in http2 and stream response headers (AstroProfundis)
-* Fix: "-m" option to show dynamic module (wangfakang)
-* Fix：parameter number check for limit_req directive (wangfakang)
-* Fix: fixed compilation error on macOS for reqstatus (chobits)
+* Bugfix: server version strings in http2 and stream response headers (AstroProfundis)
+* Bugfix: "-m" option to show dynamic module (wangfakang)
+* Bugfix: parameter number check for limit_req directive (wangfakang)
+* Bugfix: fixed compilation error on macOS for reqstatus (chobits)
 
 
 #### Tengine-2.3.0 [25 Mar 2019]
@@ -68,6 +94,7 @@
 #### Tengine-2.2.3 [11 Nov 2018]
 
 * Security: fixed CVE-2018-16843, CVE-2018-16844 and CVE-2018-16845. (chobits)
+
 
 #### Tengine-2.2.2 [26 Jan 2018]
 
@@ -432,7 +459,6 @@
 *   Bugfix: fixed a bug in 'backtrace_max_stack_size'. (monadbobo)
 *   Bugfix: fixed a bug in the footer module when output body is empty. (dinic)
 *   Bugfix: fixed the last hostname letter omitted bug in syslog. (cfsego)
-
 
 
 #### Tengine-1.2.1 [06 Dev 2011]

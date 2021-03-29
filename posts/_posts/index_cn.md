@@ -4,33 +4,35 @@
 
 >   从2011年12月开始，Tengine成为一个开源项目，Tengine团队在积极地开发和维护着它。Tengine团队的核心成员来自于[淘宝](http://www.taobao.com/)、[搜狗](http://www.sogou.com/)等互联网企业。Tengine是社区合作的成果，我们欢迎大家[参与其中](source_cn.html)，贡献自己的力量。</div>
 
-[下载](download/tengine-2.3.2.tar.gz)
+[下载](download/tengine-2.3.3.tar.gz)
 
 
 ## 特性
-*   继承Nginx-1.17.3的所有特性，兼容Nginx的配置；
+*   继承Nginx-1.18.0的所有特性，兼容Nginx的配置；
 *   支持HTTP的[CONNECT](document_cn/proxy_connect_cn.html)方法，可用于正向代理场景；
 *   [支持异步OpenSSL](document_cn/ngx_http_ssl_asynchronous_mode_cn.html)，可使用硬件如:[QAT](document_cn/tengine_qat_ssl_cn.html)进行HTTPS的加速与卸载；
 *   增强相关运维、监控能力,比如[异步打印日志及回滚](document_cn/ngx_log_pipe_cn.html),[本地DNS缓存](document_cn/core_cn.html),[内存监控](document_cn/ngx_debug_pool_cn.html)等；
 *   Stream模块支持[server_name](document_cn/stream_sni_cn.html)指令；
 *   更加强大的负载均衡能力，包括[一致性hash模块](document_cn/http_upstream_consistent_hash_cn.html)、[会话保持模块](document_cn/http_upstream_session_sticky_cn.html)，[还可以对后端的服务器进行主动健康检查](document_cn/http_upstream_check_cn.html)，根据服务器状态自动上线下线，以及[动态解析upstream中出现的域名](document_cn/http_upstream_dynamic_cn.html)；
 *   [输入过滤器机制](http://blog.zhuzhaoyuan.com/2012/01/a-mechanism-to-help-write-web-application-firewalls-for-nginx/)支持。通过使用这种机制Web应用防火墙的编写更为方便；
-*   支持设置proxy、memcached、fastcgi、scgi、uwsgi[在后端失败时的重试次数](document_cn/ngx_limit_upstream_tries_cn.html)
+*   支持设置proxy、memcached、fastcgi、scgi、uwsgi[在后端失败时的重试次数](document_cn/ngx_limit_upstream_tries_cn.html)；
 *   [动态脚本语言Lua](https://github.com/alibaba/tengine/blob/master/modules/ngx_http_lua_module/README.markdown)支持。扩展功能非常高效简单；
 *   支持按指定关键字(域名，url等)[收集Tengine运行状态](document_cn/http_reqstat_cn.html)；
 *   [组合多个CSS、JavaScript文件的访问请求变成一个请求](document_cn/http_concat_cn.html)；
 *   [自动去除空白字符和注释](document_cn/http_trim_filter_cn.html)从而减小页面的体积
 *   自动根据CPU数目设置进程个数和绑定CPU亲缘性；
 *   [监控系统的负载和资源占用从而对系统进行保护](document_cn/http_sysguard_cn.html)；
-*   [显示对运维人员更友好的出错信息，便于定位出错机器；](document_cn/http_footer_filter_cn.html)
+*   [显示对运维人员更友好的出错信息，便于定位出错机器；](document_cn/http_footer_filter_cn.html)；
 *   [更强大的防攻击（访问速度限制）模块](document_cn/http_limit_req_cn.html)；
 *   [更方便的命令行参数，如列出编译的模块列表、支持的指令等](document_cn/commandline_cn.html)；
+*   [支持Dubbo协议](https://github.com/alibaba/tengine/blob/master/docs/modules/ngx_http_dubbo_module_cn.md)；
 *   可以根据访问文件类型设置过期时间；
 *   ……
 
 
 ## 动态
 
+*   [2021-03-25] [Tengine-2.3.3](download/tengine-2.3.3.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_3_3))
 *   [2019-08-20] [Tengine-2.3.2](download/tengine-2.3.2.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_3_2))
 *   [2019-06-18] [Tengine-2.3.1](download/tengine-2.3.1.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_3_1))
 *   [2019-03-25] [Tengine-2.3.0](download/tengine-2.3.0.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_3_0))
