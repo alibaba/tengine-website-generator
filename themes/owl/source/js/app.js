@@ -7,9 +7,7 @@ $(function () {
             'FAQ': 'FAQ',
             'Contact': '联系我们',
             'Guide': '教程',
-            'Buy Products': '购买云产品',
-            'Careers': '招聘',
-            'Advertisement': '推广活动'
+            'Buy Products': '购买云产品'
         };
 
         $('#nav-menu .menu-item').each(function (k, item) {

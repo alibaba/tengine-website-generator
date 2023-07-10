@@ -6,9 +6,9 @@ Tengine完全兼容Nginx，因此可以参照Nginx的方式来配置Tengine。
 
 关于详细的Tengine的相对于Nginx的差别，可以访问[变更列表](changelog_cn.html)。
 
-### Nginx官方文档中文版（不断翻译中）
+### Nginx官方文档中文版
 
-*   [Nginx文档](nginx_docs/cn/)
+*   [Nginx文档](nginx_docs/cn/)（不断翻译中）
 
 ### 使用
 
@@ -57,7 +57,3 @@ Tengine完全兼容Nginx，因此可以参照Nginx的方式来配置Tengine。
 *   [《淘宝网Nginx定制开发实战》](download/nginx@taobao.pdf)（Velocity China 2011.12）</a>
 *   [《淘宝网Nginx应用、定制与开发实战》](download/taobao_nginx_2012_06.pdf)（华东运维技术大会 2012.06）</a>
 *   [《淘宝Tengine--易运维的高性能Nginx服务器》](download/programmer-201209-Tengine.pdf)（《程序员》杂志, 2012年9月刊登）</a>
-
-### 开发文档
-
-*   [使用input filter开发应用](http://blog.zhuzhaoyuan.com/2012/01/a-mechanism-to-help-write-web-application-firewalls-for-nginx/)

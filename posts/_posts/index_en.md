@@ -1,15 +1,19 @@
 ## Introduction
 
 
-> Tengine is a web server originated by [Taobao](http://en.wikipedia.org/wiki/Taobao), the largest e-commerce website in Asia. It is based on the [Nginx](http://nginx.org) HTTP server and has many advanced features. Tengine has proven to be very stable and efficient on some of the top 100 websites in the world, including [taobao.com](http://www.taobao.com) and [tmall.com](http://www.tmall.com/). 
+> Tengine is a web server originated by [Taobao](http://en.wikipedia.org/wiki/Taobao), the largest e-commerce website in Asia. It is based on the [Nginx](https://nginx.org/) HTTP server and has many advanced features. Tengine has proven to be very stable and efficient on some popular websites in the world, including [Taobao.com](http://www.taobao.com), [Tmall.com](http://www.tmall.com/), [Youku](https://www.youku.tv/), [AliExpress](https://www.aliexpress.com/), [Lazada](https://www.lazada.com/) and [Alibaba Cloud](https://www.aliyun.com/). 
 
-> Tengine has been an open source project since December 2011. It is being actively developed by the Tengine team, whose core members are from [Taobao](http://en.wikipedia.org/wiki/Taobao), [Sogou](http://en.wikipedia.org/wiki/Sogou) and other Internet companies. Tengine is a community effort and everyone is encouraged to [get involved](source.html).</div>
+> Tengine has been an open source project since December 2011. It is being actively developed by the Tengine team, whose core members are from [Taobao](http://en.wikipedia.org/wiki/Taobao), [Ant Group](https://en.wikipedia.org/wiki/Ant_Group), [Alibaba Cloud](https://en.wikipedia.org/wiki/Alibaba_Cloud), [Sogou](http://en.wikipedia.org/wiki/Sogou) and other Internet companies. Tengine is a community effort and everyone is encouraged to [get involved](source.html).</div>
 
-[Download](download/tengine-2.3.3.tar.gz)
 
 ## Features
 
-*   All features of Nginx-1.18.0 are inherited, i.e., it is compatible with Nginx.
+*   All features of Nginx-1.24.0 are inherited, i.e., it is compatible with Nginx.
+*   [Dynamically reconfigure the servers, locations and upstreams without reloading or restarting worker processes](document_cn/ingress/ingress.html).
+*   [HTTP/3 support (QUIC v1 and draft-29)](document_cn/xquic.html).
+*   [High-speed UDP transmission with kernel-bypass](document_cn/xudp.html).
+*   [Dynamically reconfigure routing based on standard and custom HTTP headers, header value, and weights](document_cn/ingress/ingress_canary.html).
+*   [Dynamically reconfigure timeout setting, SSL Redirects, CORS and enabling/disabling robots for the server and location](document_cn/ingress/ingress_config_cn.html).
 *   Support the [CONNECT](document/proxy_connect.html) HTTP method for forward proxy.
 *   Support [asynchronous SSL/TLS mode](document_cn/ngx_http_ssl_asynchronous_mode_cn.html), Could use [QAT to offload and accelerated SSL](document/tengine_qat_ssl.html).
 *   Enhanced operations monitoring, such as [asynchronous log & rollback](document/ngx_log_pipe.html), [DNS caching](document/core.html), memory usage(document/ngx_debug_pool.html), etc.

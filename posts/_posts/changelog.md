@@ -1,5 +1,39 @@
 ## ChangeLog
 
+#### Tengine-3.0.0 [ Jul 2023]
+
+* Feature: dynamically reconfigure the servers, locations and upstreams without reloading or restarting worker processes [tengine-ingress] (drawing, lianglli)
+* Feature: HTTP/3 support (QUIC v1 and draft-29)[XQUIC] (lurker-Chen, Kulsk, lianglli)
+* Feature: high-speed UDP transmission with kernel-bypass [XUDP] (D-Wythe, fengidri)
+* Feature: dynamically reconfigure canary routing based on standard and custom HTTP headers, header value, and weights [tengine-ingress] (drawing, lianglli)  
+* Feature: dynamically reconfigure timeout setting, SSL Redirects, CORS and enabling/disabling robots for the ingress/path [tengine-ingress] (drawing, lianglli)
+* Change: update core to stable version Nginx-1.24.0 (lianglli)
+* Bugfix: fixed coredump caused by ngx_ssl_shutdown() with ssl_async enabled (foxriver1025)
+
+
+#### Tengine-2.4.1 [08 Jun 2023]
+
+* Change: updated ngx_http_proxy_connect_module to v0.0.4 (chobits)
+* Bugfix: fixed compilation error in stream_set module (chobits)
+* Bugfix: fixed NTLS cert check, move sign/enc certficate to upstream, add ngx_tongsuo_ntls module (dongbeiouba)
+* Bugfix: fixed bug that client cannot receive right packages with ssl_async enabled (oyaya)
+
+
+#### Tengine-2.4.0 [08 Feb 2023]
+
+* Feature: Update to nginx 1.22.1  (jiuzhoucui)
+
+
+#### Tengine-2.3.4 [18 Oct 2022]
+
+* Feature: added new module ngx_openssl_ntls to support NTLS protocol (dongbeiouba)
+* Change: updated SSL library from BabaSSL to Tongsuo in the ngx_openssl_ntls module (wa5i)
+* Bugfix: fixed CVE-2021-23017 (chobits)
+* Bugfix: fixed deadlock in the upstream check module with "zone" directive configured in upstream block (zjd87)
+* Bugfix：fixed compilation in the upstream check module (RocFang)
+* Bugfix: fixed compilation error in the dubbo module (MengqiWu)
+
+
 #### Tengine-2.3.3 [25 Mar 2021]
 
 * Feature: tengine supports dtlsv1 and dtlsv1.2. (mrpre)
