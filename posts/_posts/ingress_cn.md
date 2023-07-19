@@ -107,9 +107,7 @@ type IngressCheckSumSpec struct {
 	// `ids` describes which id will match this ingress.
 	Ids []string
 }
-```
 
-```go
 type SecretCheckSum struct {
 	metav1.ObjectMeta
 	Spec SecretCheckSumSpec
