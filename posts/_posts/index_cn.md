@@ -1,20 +1,23 @@
 ## 简介
 
->    Tengine是由淘宝网发起的Web服务器项目。它在[Nginx](http://nginx.org/)的基础上，针对大访问量网站的需求，添加了很多高级功能和特性。Tengine的性能和稳定性已经在大型的网站如[淘宝网](http://www.taobao.com/)，[天猫商城](http://www.tmall.com)等得到了很好的检验。它的最终目标是打造一个高效、稳定、安全、易用的Web平台。
+>    Tengine是由[淘宝](http://en.wikipedia.org/wiki/Taobao)发起的Web服务器项目。它在[Nginx](https://nginx.org/)的基础上，针对大访问量网站的需求，添加了很多高级功能和特性。Tengine的性能和稳定性已经在大型的网站如[淘宝网](https://www.taobao.com/)，[天猫](https://www.tmall.com/)，[优酷](https://www.youku.tv/)，[全球速卖通](https://www.aliexpress.com/)，[Lazada](https://www.lazada.com/)，[阿里云](https://www.aliyun.com/)等得到了很好的检验。它的最终目标是打造一个高效、稳定、安全、易用的Web平台。
 
->   从2011年12月开始，Tengine成为一个开源项目，Tengine团队在积极地开发和维护着它。Tengine团队的核心成员来自于[淘宝](http://www.taobao.com/)、[搜狗](http://www.sogou.com/)等互联网企业。Tengine是社区合作的成果，我们欢迎大家[参与其中](source_cn.html)，贡献自己的力量。</div>
-
-[下载](download/tengine-2.3.3.tar.gz)
+>   从2011年12月开始，Tengine成为一个开源项目，Tengine团队在积极地开发和维护着它。Tengine团队的核心成员来自于[淘宝](http://www.taobao.com/)，[蚂蚁](https://www.antgroup.com/)，[阿里云](https://www.aliyun.com/)，[搜狗](http://www.sogou.com/)等互联网企业。Tengine是社区合作的成果，我们欢迎大家[参与其中](source_cn.html)，贡献自己的力量。</div>
 
 
 ## 特性
-*   继承Nginx-1.18.0的所有特性，兼容Nginx的配置；
+*   继承Nginx-1.24.0的所有特性，兼容Nginx的配置；
+*   支持[域名，证书，路由的动态无损生效](document_cn/ingress/ingress_cn.html)；
+*   支持[HTTP/3 (QUIC v1和draft-29)](document_cn/xquic_cn.html)；
+*   支持[bypass内核的用户态高性能UDP转发](document_cn/xudp_cn.html)；
+*   支持[基于header，header值和服务权重的高级路由动态无损生效](document_cn/ingress/ingress_canary_cn.html)；
+*   支持[配置timeout，强制HTTPS，CORS和robots的动态无损生效](document_cn/ingress/ingress_config_cn.html)；
 *   支持HTTP的[CONNECT](document_cn/proxy_connect_cn.html)方法，可用于正向代理场景；
 *   [支持异步OpenSSL](document_cn/ngx_http_ssl_asynchronous_mode_cn.html)，可使用硬件如:[QAT](document_cn/tengine_qat_ssl_cn.html)进行HTTPS的加速与卸载；
 *   增强相关运维、监控能力,比如[异步打印日志及回滚](document_cn/ngx_log_pipe_cn.html),[本地DNS缓存](document_cn/core_cn.html),[内存监控](document_cn/ngx_debug_pool_cn.html)等；
 *   Stream模块支持[server_name](document_cn/stream_sni_cn.html)指令；
 *   更加强大的负载均衡能力，包括[一致性hash模块](document_cn/http_upstream_consistent_hash_cn.html)、[会话保持模块](document_cn/http_upstream_session_sticky_cn.html)，[还可以对后端的服务器进行主动健康检查](document_cn/http_upstream_check_cn.html)，根据服务器状态自动上线下线，以及[动态解析upstream中出现的域名](document_cn/http_upstream_dynamic_cn.html)；
-*   [输入过滤器机制](http://blog.zhuzhaoyuan.com/2012/01/a-mechanism-to-help-write-web-application-firewalls-for-nginx/)支持。通过使用这种机制Web应用防火墙的编写更为方便；
+*   支持输入过滤器机制，通过使用这种机制Web应用防火墙的编写更为方便；
 *   支持设置proxy、memcached、fastcgi、scgi、uwsgi[在后端失败时的重试次数](document_cn/ngx_limit_upstream_tries_cn.html)；
 *   [动态脚本语言Lua](https://github.com/alibaba/tengine/blob/master/modules/ngx_http_lua_module/README.markdown)支持。扩展功能非常高效简单；
 *   支持按指定关键字(域名，url等)[收集Tengine运行状态](document_cn/http_reqstat_cn.html)；
@@ -32,6 +35,10 @@
 
 ## 动态
 
+*   [2021-03-25] [Tengine-3.0.0](download/tengine-3.0.0.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#3_0_0))
+*   [2021-03-25] [Tengine-2.4.1](download/tengine-2.4.1.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_4_1))
+*   [2021-03-25] [Tengine-2.4.0](download/tengine-2.4.0.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_4_0))
+*   [2021-03-25] [Tengine-2.3.4](download/tengine-2.3.4.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_3_4))
 *   [2021-03-25] [Tengine-2.3.3](download/tengine-2.3.3.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_3_3))
 *   [2019-08-20] [Tengine-2.3.2](download/tengine-2.3.2.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_3_2))
 *   [2019-06-18] [Tengine-2.3.1](download/tengine-2.3.1.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_3_1))

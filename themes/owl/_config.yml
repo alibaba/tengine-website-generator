@@ -1,13 +1,13 @@
 # Header
 menu:
+  Tengine Docs: /documentation.html
+  Ingress Docs: /ingress.html
+  Guide: /guide.html
+  Blog: /blog.html
   Download: /download.html
   Source: /source.html
-  Document: /documentation.html
-  FAQ: /faq.html
   Contact: /contact.html
-  Guide: http://tengine.taobao.org/book/
-  Buy Products: https://cn.aliyun.com/product/aliware/mse?spm=tengine-website.topbar.0.0.0
-  Careers: https://job.alibaba.com/zhaopin/position_detail.htm?trace=qrcode_share&positionCode=GP708029
+  FAQ: /faq.html
 
 rss: /atom.xml
 
