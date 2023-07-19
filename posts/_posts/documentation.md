@@ -15,6 +15,8 @@ For a full list of changes in Tengine, see the [ChangeLog](changelog.html).
 
 *   [Core functionality](document/core.html)
 *   [Http core module](document/http_core.html)
+*   [XQUIC module](document/xquic.html)
+*   [XUDP module](document/xudp.html)
 *   [DSO module](document/dso.html)(deprecated)
 *   [Dyups module](document/http_dyups.html)
 *   [SPDY module](document/ngx_http_spdy_module.html)(deprecated)
@@ -49,7 +51,3 @@ For a full list of changes in Tengine, see the [ChangeLog](changelog.html).
 *   [Stream server name](document/stream_sni.html)
 *   [dubbo pass module](document/ngx_http_dubbo_module.html)
 *   [vnswrr module](document/ngx_http_upstream_vnswrr_module.html)
-
-### Articles
-
-[How  to write an input body filter module](http://blog.zhuzhaoyuan.com/2012/01/a-mechanism-to-help-write-web-application-firewalls-for-nginx/)

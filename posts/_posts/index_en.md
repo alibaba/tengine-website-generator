@@ -1,7 +1,7 @@
 ## Introduction
 
 
-> Tengine is a web server originated by [Taobao](http://en.wikipedia.org/wiki/Taobao), the largest e-commerce website in Asia. It is based on the [Nginx](https://nginx.org/) HTTP server and has many advanced features. Tengine has proven to be very stable and efficient on some popular websites in the world, including [Taobao.com](http://www.taobao.com), [Tmall.com](http://www.tmall.com/), [Youku](https://www.youku.tv/), [AliExpress](https://www.aliexpress.com/), [Lazada](https://www.lazada.com/) and [Alibaba Cloud](https://www.aliyun.com/). 
+> Tengine is a web server originated by [Taobao](http://en.wikipedia.org/wiki/Taobao), the largest e-commerce website in Asia. It is based on the [Nginx](https://nginx.org/) HTTP server and has many advanced features. Tengine has proven to be very stable and efficient on some popular websites in the world, including [Taobao.com](https://www.taobao.com/), [Tmall.com](https://www.tmall.com/), [Youku](https://www.youku.tv/), [AliExpress](https://www.aliexpress.com/), [Lazada](https://www.lazada.com/) and [Alibaba Cloud](https://www.aliyun.com/). 
 
 > Tengine has been an open source project since December 2011. It is being actively developed by the Tengine team, whose core members are from [Taobao](http://en.wikipedia.org/wiki/Taobao), [Ant Group](https://en.wikipedia.org/wiki/Ant_Group), [Alibaba Cloud](https://en.wikipedia.org/wiki/Alibaba_Cloud), [Sogou](http://en.wikipedia.org/wiki/Sogou) and other Internet companies. Tengine is a community effort and everyone is encouraged to [get involved](source.html).</div>
 
@@ -19,7 +19,7 @@
 *   Enhanced operations monitoring, such as [asynchronous log & rollback](document/ngx_log_pipe.html), [DNS caching](document/core.html), memory usage(document/ngx_debug_pool.html), etc.
 *   Support [server_name](document/stream_sni.html) in Stream modlue.
 *   More load balancing methods, e.g., [consistent hashing](document/http_upstream_consistent_hash.html), [session persistence](document/http_upstream_session_sticky.html), [upstream health check](document/http_upstream_check.html), and [resolving upstream domain names on the fly](document/http_upstream_dynamic.html).
-*   [Input body filter](http://blog.zhuzhaoyuan.com/2012/01/a-mechanism-to-help-write-web-application-firewalls-for-nginx/) support. It's quite handy to write Web Application Firewalls using this mechanism.
+*   Input body filter support. It's quite handy to write Web Application Firewalls using this mechanism.
 *   [Dynamic scripting language (Lua)](https://github.com/alibaba/tengine/blob/master/modules/ngx_http_lua_module/README.markdown) support, which is very efficient and makes it easy to extend core functionalities.
 *   Support [collecting the running status of Tengine](document/http_reqstat.html) according to specific key (domain, url, etc).
 *   [Limits retries for upstream servers](document/ngx_limit_upstream_tries.html) (proxy, memcached, fastcgi, scgi, uwsgi).

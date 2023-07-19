@@ -34,30 +34,22 @@ Tengine针对此模块进行了增强，下面列出了一些增加的指令。
 > Context: `http, server, location`
 
 指定当上传请求body时是否要将body缓存到磁盘。如果设成off，请求body只会被保存到内存，每当tengine接收到大于`client_body_postpone_size`的数据时，就发送这部分数据到后端服务器。
-
 默认情况下，当请求body大于`client_body_buffer_size`时，就会被保存到磁盘。这会增加磁盘IO，对于上传应用来说，服务器的负载会明显增加。
-
 需要注意的是，如果你配置成off且已经发出部分数据，tengine的重试机制就会失效。如果后端返回异常响应，tengine就会直接返回500。此时$request_body，$request_body_file也会不可用，他们保存的可能是不完整的内容。
-
 额外注意的是，当tengine开启了spdy时，`proxy_request_buffering off`不会起效。
 
 ---
 
 > Syntax: **fastcgi_request_buffering** `on | off`
-
 > Default: `on`
-
 > Context: `http, server, location`
-
 
 用法跟`proxy_request_buffering`指令一样。
 
 ---
 
 > Syntax: **resolver** `address ... [valid=time] [ipv6=on|off];`
-
 > Default: `--`
-
 > Context: `http, server, location`
 
 当没有配置该指令时，tengine会自动读取/etc/resolv.conf配置文件里面的nameserver作为DNS服务器。
@@ -67,6 +59,5 @@ Tengine针对此模块进行了增强，下面列出了一些增加的指令。
 > Syntax: **gzip_clear_etag** `on | off`
 > Default: `on`
 > Context: `http, server, location`
-
 
 压缩的时候是否删除"ETag"响应头。

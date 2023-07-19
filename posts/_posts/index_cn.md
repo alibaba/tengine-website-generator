@@ -17,7 +17,7 @@
 *   增强相关运维、监控能力,比如[异步打印日志及回滚](document_cn/ngx_log_pipe_cn.html),[本地DNS缓存](document_cn/core_cn.html),[内存监控](document_cn/ngx_debug_pool_cn.html)等；
 *   Stream模块支持[server_name](document_cn/stream_sni_cn.html)指令；
 *   更加强大的负载均衡能力，包括[一致性hash模块](document_cn/http_upstream_consistent_hash_cn.html)、[会话保持模块](document_cn/http_upstream_session_sticky_cn.html)，[还可以对后端的服务器进行主动健康检查](document_cn/http_upstream_check_cn.html)，根据服务器状态自动上线下线，以及[动态解析upstream中出现的域名](document_cn/http_upstream_dynamic_cn.html)；
-*   [输入过滤器机制](http://blog.zhuzhaoyuan.com/2012/01/a-mechanism-to-help-write-web-application-firewalls-for-nginx/)支持。通过使用这种机制Web应用防火墙的编写更为方便；
+*   支持输入过滤器机制，通过使用这种机制Web应用防火墙的编写更为方便；
 *   支持设置proxy、memcached、fastcgi、scgi、uwsgi[在后端失败时的重试次数](document_cn/ngx_limit_upstream_tries_cn.html)；
 *   [动态脚本语言Lua](https://github.com/alibaba/tengine/blob/master/modules/ngx_http_lua_module/README.markdown)支持。扩展功能非常高效简单；
 *   支持按指定关键字(域名，url等)[收集Tengine运行状态](document_cn/http_reqstat_cn.html)；
