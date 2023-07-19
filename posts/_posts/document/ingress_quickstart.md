@@ -207,7 +207,7 @@ spec:
 
 ### 1. 开启 `xudp`
 
-`xudp` 实现了内核的用户态的高性能 `UDP` 收发，可极大提升 `QUIC` 协议 `UDP` 传输性能，目前 xudp 能力仅在 [Anolis OS](https://hub.docker.com/r/openanolis/anolisos) 系统上支持。通过 `Configmap` 可以很方便的开启/关闭 `xudp`能力。
+`xudp` 实现了内核的用户态的高性能 `UDP` 收发，可极大提升 `QUIC` 协议 `UDP` 传输性能，目前 xudp 能力仅在 [Anolis OS](https://hub.docker.com/r/openanolis/anolisos) 系统上支持（**注意：需要宿主机和 docker 都是 Anolis OS 系统才能支持 xudp 特性**）：。通过 `Configmap` 可以很方便的开启/关闭 `xudp`能力。
 
 ``` yaml
 apiVersion: v1
