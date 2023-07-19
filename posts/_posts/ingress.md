@@ -57,28 +57,26 @@ Tengine-Ingress全面兼容K8s [ingress标准](https://kubernetes.io/docs/concep
 ○ For a StatefulSet with N replicas, each Pod in the StatefulSet will be assigned an integer ordinal, from 0 up through N-1, that is unique over the Set.
 值类型：number
 默认值：-1
-```
 
-```yaml
-1. secret灰度开关
+5. secret灰度开关
 ● annotation: nginx.ingress.kubernetes.io/secret-rollout
 注释：是否灰度secret
 值类型：bool
 默认值：false
 
-2. secret当前版本
+6. secret当前版本
 ● annotation: nginx.ingress.kubernetes.io/secret-rollout-current-revision
 注释：secret当前运行版本号
 值类型：string
 默认值：""
 
-3. secret升级版本
+7. secret升级版本
 ● annotation: nginx.ingress.kubernetes.io/secret-rollout-update-revision
 注释：secret升级版本号
 值类型：string
 默认值：""
 
-4. secret灰度范围
+8. secret灰度范围
 ● annotation: nginx.ingress.kubernetes.io/secret-rollout-index-id
 注释：只有Pod序号小于secret-rollout-index-id的Pod才会更新secret。
 ○ 0..N-1为Pod所在的序号，从0开始到N-1。
@@ -109,9 +107,7 @@ type IngressCheckSumSpec struct {
 	// `ids` describes which id will match this ingress.
 	Ids []string
 }
-```
 
-```go
 type SecretCheckSum struct {
 	metav1.ObjectMeta
 	Spec SecretCheckSumSpec

@@ -7,7 +7,7 @@ Tengine-Ingress完全兼容云原生[ingress](https://kubernetes.io/docs/concept
 *   [编译](document_cn/ingress_install_cn.html)
 
 ### 快速开始
-*   [快速开始]()
+*   [Tengine-Ingress快速开始](document_cn/ingress_quickstart.html)
 
 ### 配置文档
 *   [Configmap](document_cn/ingress_configmap_cn.html)
