@@ -1,20 +1,20 @@
 ## 教程
-
 Tengine-Ingress完全兼容云原生[ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)标准规范，用户可参照[kubernetes ingress-nginx](https://kubernetes.github.io/ingress-nginx/)相关文档。
+
 在此列出[Tengine-Ingress](https://github.com/alibaba/tengine-ingress)原生扩展和增强功能的使用和配置教程。 
 
 ### 编译
-
 *   [编译](document_cn/ingress_install_cn.html)
 
-### 配置文档
+### 快速开始
+*   [快速开始]()
 
+### 配置文档
 *   [Configmap](document_cn/ingress_configmap_cn.html)
 *   [Annotations](document_cn/ingress_annotations_cn.html)
 *   [CRD](document_cn/ingress_crd_cn.html)
 
 ### 使用教程
-
 *   [动态无损生效](document_cn/ingress_hotreload_cn.html)
 *   [ECC和RSA多证书](document_cn/ingress_certs_cn.html)
 *   [高级路由](document_cn/ingress_routes_cn.html) 
