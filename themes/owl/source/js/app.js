@@ -1,14 +1,15 @@
 $(function () {
     function swicthMenu() {
         var map = {
-            'Tengine Docs': 'Tengine文档',
-            'Ingress Docs': 'Ingress文档',
-            'Guide': '教程',
-            'Blog': '博客',
             'Download': '下载',
             'Source': '源码',
+            'Document': '文档',
+            'FAQ': 'FAQ',
             'Contact': '联系我们',
-            'FAQ': 'FAQ'
+            'Guide': '教程',
+            'Buy Products': '购买云产品',
+            'Careers': '招聘',
+            'Advertisement': '推广活动'
         };
 
         $('#nav-menu .menu-item').each(function (k, item) {

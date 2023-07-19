@@ -10,10 +10,14 @@ Ubuntu／Centos就比较简单了，随便安一个能起docker的内核和软�
 
 
 ```
+# 依赖工具
+sudo yum instal nodejs
 # 准备源码
 git clone git@github.com:soulteary/tengine-website-generator.git
+# 依赖组件
+sudo npm install --production --registry=https://registry.npm.taobao.org --silent
 # 构建镜像
-./ctl build-image
+sudo ./ctl.sh build-image
 ```
 
 
@@ -21,7 +25,7 @@ git clone git@github.com:soulteary/tengine-website-generator.git
 
 ```
 # 方便一边修改文档&脚本，一边预览网站结果
-./ctl dev
+./ctl.sh dev
 ```
 
 打开浏览器 localhost:4000
@@ -32,7 +36,7 @@ git clone git@github.com:soulteary/tengine-website-generator.git
 ## 生成模式
 
 ```
-./ctl release
+./ctl.sh release
 
 #进容器后输入
 hexo g
@@ -44,7 +48,7 @@ hexo g
 ## 部署网站
 
 ```
-./ctl deploy
+./ctl.sh deploy
 ```
 
 
