@@ -17,16 +17,15 @@ docker pull tengine-ingress-registry.cn-hangzhou.cr.aliyuncs.com/tengine/tengine
 
 [Alpine](https://hub.docker.com/_/alpine)
 ```bash
-docker pull tengine-ingress-registry.cn-hangzhou.cr.aliyuncs.com/tengine/tengine-ingress:1.0.0
+docker pull tengine-ingress-registry.cn-hangzhou.cr.aliyuncs.com/tengine/tengine-ingress:1.0.0-alpine
 ```
-
-|    | Tengine-Ingress Version | Tengine Version | K8s Supported Version | Anolis Linux Version | Alpine Linux Version | Helm Chart Version |
-|:--:|-------------------------|-----------------|-----------------------|----------------------|----------------------|--------------------|
-| 🔄 | **v1.0.0**              | v3.0.0          | 1.27,1.26,1.25,1.24<br>1.23,1.22,1.21,1.20   | 8.6                  | 3.18.2               |                    |
-| 🔄 |                         |                 |                       |                      |                      |                    |
+![image](/book/_images/tengine_ingress_vers_table.png)
 
 ## 自助编译镜像
+
 ### 第一步：构建tengine镜像
+* [Anolis](https://hub.docker.com/r/openanolis/anolisos): `BASE_IMAGE="docker.io/openanolis/anolisos:latest"`, `LINUX_RELEASE="anolisos"`
+* [Alpine](https://hub.docker.com/_/alpine): `BASE_IMAGE="alpine:latest"`, `LINUX_RELEASE="alpine"`
 ```bash
 # docker build --no-cache --build-arg BASE_IMAGE="docker.io/openanolis/anolisos:latest" --build-arg LINUX_RELEASE="anolisos" -t tengine:3.0.0 images/tengine/rootfs/
 ```
@@ -127,28 +126,24 @@ metadata:
 ```
 
 ---
-
 > 参数名称: `--annotations-prefix`
 > 默认值: `nginx.ingress.kubernetes.io`
 
 设置`Tengine-Ingress`注解的默认前缀，默认前缀为`nginx.ingress.kubernetes.io`。
 
 ---
-
 > 参数名称: `--v`
 > 参数值: `${log_level}`
 
 设置`Tengine-Ingress`的日志级别，日志级别范围1..5，最大日志级别5属于debug模式。
 
 ---
-
 > 参数名称: `--kubeconfig`
 > 参数值: `${ing_kubeconfig}`
 
 `Tengine-Ingress`支持K8s core集群与K8s ingress存储集群相隔离的高可靠性部署方案，将运行态和存储态相分离，独立K8s ingress集群可以保证自身API服务器和etcd性能稳定，并且在core集群核心组件API服务器和etcd不可用的高危场景下也能正常向外提供7层转发服务。
 
 ---
-
 > 参数名称: `--watch-namespace`
 > 参数值: `${watch_namespace}`
 
@@ -158,7 +153,6 @@ metadata:
 * 如果${watch_namespace}`为空，则监听所有命名空间下的资源对象。
 
 ---
-
 > 参数名称: `--ingress-class`
 > 参数值: `${ingress_class}`
 

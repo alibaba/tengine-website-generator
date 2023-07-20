@@ -12,21 +12,26 @@
 
 一个K8s标准secret资源对象如下所示，元数据name标识了secret资源对象的名称，通过末尾的自定义数字表示每个secret资源ID，自定义注解`nginx.ingress.kubernetes.io/version`则标识了secret证书配置的版本号。
 
-**注意：通过`Secret ID`，`Secret资源对象版本号`和`证书SHA-1 hashes值`可以唯一确定一个secret证书配置信息，即Secret证书配置ID。**
-**注意：`Secret ID`: secret name的ID号**
-**注意：`Version`: secret注解nginx.ingress.kubernetes.io/version的值，即`Secret资源对象版本号`**
-**注意：`PemSHA`: [证书SHA-1 hashes值](https://en.wikipedia.org/wiki/SHA-1)值**
-**注意：Secret证书配置ID的分隔符是'-'**
-|    |  Secret资源类型 |       Secret证书配置ID       |                                 示例                              |
-|:--:|--------------- |----------------------------|-------------------------------------------------------------------|
-|    |    secret      | "`Secret ID`-`Version`-`PemSHA`" | secret名称: alibaba-taobao-com-27555<br>secret注解 nginx.ingress.kubernetes.io/version: "1"<br>PemSHA: 44a72405d239fbffde3e0f49f1c0713636dcda60<br>Secret证书配置ID "27555-1-44a72405d239fbffde3e0f49f1c0713636dcda60" |
+### Secret证书配置ID
+> Secret证书配置ID: "`SecretID`-`Version`-`PemSHA`"
+> SecretID: Secret name的ID号
+> Version: Secret注解nginx.ingress.kubernetes.io/version的值，即`Secret资源对象版本号`
+> PemSHA: [证书SHA-1 hashes值](https://en.wikipedia.org/wiki/SHA-1)值
+**注意：`Secret证书配置ID`的分隔符是'-'**
+
+**`Secret资源对象版本号`和`证书SHA-1 hashes值`可以唯一确定一个secret证书配置信息，即Secret证书配置ID。**
+
+示例：
+* Secret名称: alibaba-taobao-com-27555
+* Secret注解: nginx.ingress.kubernetes.io/version: "1"
+* PemSHA: 44a72405d239fbffde3e0f49f1c0713636dcda60
+* Secret证书配置ID: "27555-1-44a72405d239fbffde3e0f49f1c0713636dcda60"
 
 基于上述示例，`SecretID`是"27555"，而`Secret资源对象版本号`是"1"，`PemSHA`是"44a72405d239fbffde3e0f49f1c0713636dcda60"，通过`Secret ID`，`Secret资源对象版本号`和`证书SHA-1 hashes值`可以唯一确定一个secret证书配置信息，即`Secret证书配置ID`（27555-1-44a72405d239fbffde3e0f49f1c0713636dcda60）。
-
-**注意：计算全局MD5**
-* md5.Sum("`Secret证书配置ID`1","`Secret证书配置ID`2",...)
-* secret证书配置ID之间的分隔符是','；
-* secret证书配置ID按照字符串顺序排序。
+### 计算全局MD5
+> 计算公式： md5.Sum("`Secret证书配置ID`1","`Secret证书配置ID`2",...)
+> secret证书配置ID之间的分隔符: `,`
+> secret证书配置ID按照字符串顺序排序
 
 数据面`Tengine-Ingress`基于上述公式计算secret全局一致性校验MD5值，通过匹配CRD secretchecksums资源实例的checksum值（即控制面计算得出的MD5值），从而决定是否更新本地缓存中的secret证书配置。在secret全局一致性校验失败的情况下，数据面会继续匹配CRD secretchecksums中的ids（即控制面本次计算secret全局一致性校验MD5对应的所有secret证书配置ID列表），从而找出不一致的单个secret资源对象信息。
 

@@ -4,6 +4,7 @@ Tengine完全兼容Nginx，因此可以参照Nginx的方式来配置Tengine。
 我们在此只列出Tengine中值得注意的功能。 
 关于详细的Tengine的相对于Nginx的差别，可以访问[变更列表](changelog_cn.html)。
 
+
 ### 使用
 
 *   [编译和安装](document_cn/install_cn.html)
@@ -30,10 +31,15 @@ Tengine完全兼容Nginx，因此可以参照Nginx的方式来配置Tengine。
 *   [log模块功能](document_cn/http_log_cn.html)
 *   [reqstat模块功能](document_cn/http_reqstat_cn.html)
 *   [lua模块(v0.10.14rc4)](https://github.com/chaoslawful/lua-nginx-module/blob/master/README.markdown)
+*   [Slice module](document/http_slice.html)
 *   [ssl模块功能](document_cn/http_ssl_cn.html)
 *   [stub_status模块功能](document_cn/http_stub_status_cn.html)
+*   [Sysguard module](document/http_sysguard.html)
 *   [TFS模块功能](https://github.com/alibaba/nginx-tfs/blob/master/ReadMe.markdown)
+*   [Upstream check module](document/http_upstream_check.html)
+*   [Upstream keepalive timeout](document/http_upstream_keepalive_timeout.html)
 *   [sysguard模块功能](document_cn/http_sysguard_cn.html)
+*   [Variables](document/variables.html)
 *   [一致性hash模块功能](document_cn/http_upstream_consistent_hash_cn.html)
 *   [session_sticky模块功能](document_cn/http_upstream_session_sticky_cn.html)
 *   [健康检查模块功能](document_cn/http_upstream_check_cn.html)

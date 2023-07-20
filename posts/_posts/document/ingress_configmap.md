@@ -13,21 +13,18 @@
 如果设置`https-allow-http: 'true'`，则在listen指令中添加https_allow_http选项，表示该端口允许在SSL开启的情况下接收HTTP请求。
 
 ---
-
 > Syntax: **tengine-reload** `false`;
 > Default: `false`
 
-默认设置`tengine-reload: 'false'`，则在新增，修改或删除ingress和secret资源对象时，都不再tengine reload，即开启配置动态无损生效模式。
+默认设置`tengine-reload: 'false'`，则在新增，修改或删除ingress和secret资源对象时，都**无需tengine reload**，即开启配置动态无损生效模式。
 
 ---
-
 > Syntax: **tengine-static-service-cfg** `false`;
 > Default: `false`
 
 默认设置`tengine-static-service-cfg: 'false'`，则在新增，修改或删除ingress和secret资源对象时，都不再更新nginx.conf配置文件，tengine仅从共享内存中获取应用域名和证书配置。
 
 ---
-
 > Syntax: **filelock-shm-service-cfg** `/etc/nginx/shm_service_cfg.lock`;
 > Default: `/etc/nginx/shm_service_cfg.lock`
 
@@ -42,7 +39,6 @@
 默认封禁应用域名的`/status.tengine`请求，tengine-proxy直接返回404。
 
 ---
-
 > Syntax: **max-canary-ing-num** `200`;
 > Default: `200`
 
@@ -50,7 +46,6 @@
 对于超过默认200个的Canary Ingress资源对象，都将被忽略梳理。
 
 ---
-
 > Syntax: **canary-referrer** `a,b,c`;
 > Default: -
 
@@ -58,7 +53,6 @@
 默认情况下`canary-referrer`为空，即允许所有应用创建高级路由Canary Ingress资源对象。
 
 ---
-
 > Syntax: **ingress-referrer** `a,b,c`;
 > Default: -
 
@@ -66,49 +60,42 @@
 默认情况下`ingress-referrer`为空，即允许所有应用创建Ingress资源对象。
 
 ---
-
 > Syntax: **ingress-shm-size** `268435456`;
 > Default: `268435456`
 
 设置Ingress共享内存大小，默认256MB共享内存可存储超过3万个Ingress资源对象。
 
 ---
-
 > Syntax: **tengine-ingress-app-name** `tengine-ingress`;
 > Default: `tengine-ingress`
 
 设置请求header `X-Request-From: tengine-ingress`，标识请求是通过网关`tengine-ingress`路由转发。  
 
 ---
-
 > Syntax: **use-ingress-storage-cluster** `true`;
 > Default: `false`
 
 Tengine-Ingress支持K8s core集群与K8s ingress存储集群相隔离的高可靠性部署方案，将运行态和存储态相分离，独立K8s ingress集群可以保证自身API服务器和etcd性能稳定，并且在core集群核心组件API服务器和etcd不可用的高危场景下也能正常向外提供7层转发服务。如果设置`use-ingress-storage-cluster: 'true'`，则tengine-ingress将通过启动命令行参数`--kubeconfig`中的kubeconfig从独立K8s ingress存储集群获取Ingress和Secret资源对象，而configmap仍然从tengine-ingress所在的K8s core集群中获取。
 
 ---
-
 > Syntax: **use-ingress-checksum** `true`;
 > Default: `false`
 
 Tengine-Ingress通过全局一致性校验机制保障内存中运行态持有的用户侧ingress域名的有效性和正确性，在域名配置不符合标准化k8s资源ingress规范及其相关RFC标准时，将不再更新本地缓存，保障运行态永远可正常向外提供7层转发服务。如果设置`use-ingress-checksum: 'true'`，Tengine-ingress基于ingress全局一致性校验算法计算全局MD5值，与CRD ingresschecksums资源对象中的MD5值相匹配，则表明本次更新的ingress资源对象是全局一致性，即可将ingress资源对象更新到本地缓存，并写入共享内存，开始使用最新的ingress域名配置对外提供HTTP(S)七层负载均衡，TLS卸载和路由转发功能；否则表明更新的ingress资源对象全局不一致，系统存在脏数据，不再更新本地缓存和共享内存，仍旧使用存量的ingress域名配置对外提供HTTP(S)接入服务，保证运行态域名接入和路由服务的正确性和可靠性。
 
 ---
-
 > Syntax: **use-secret-checksum** `true`;
 > Default: `false`
 
 Secret证书资源对象采用了类似的全局一致性方案。如果设置`use-secret-checksum: 'true'`，Tengine-Ingress通过全局一致性校验机制保障内存中运行态持有的用户侧secret证书的有效性和正确性，在证书信息不符合标准化k8s资源secret规范及其相关RFC标准时，将不再更新本地缓存，保障运行态永远可正常向外提供7层转发服务。
 
 ---
-
 > Syntax: **use-http3-xquic** `true`;
 > Default: `true`
 
 默认启用HTTP3/QUIC协议，如果设置`use-http3-xquic: 'false'`，则Tengine-Ingress将无法处理HTTP3/QUIC报文。
 
 ---
-
 > Syntax: **use-xquic-xudp** `true`;
 > Default: `false`
 
@@ -117,7 +104,6 @@ Tengine XUDP Module主要用于在服务端启用XUDP，支持bypass内核的用
 服务端启用HTTP3/QUIC监听服务，通过配合使用XUDP，可大幅提升HTTP3转发性能。
 
 ---
-
 > Syntax: **http3-xquic-default-port** `2443`;
 > Default: `2443`
 

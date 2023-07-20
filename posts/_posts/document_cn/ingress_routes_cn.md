@@ -1,6 +1,6 @@
 # 高级路由
 
-`Tengine-Ingress`在兼容[ingress canary注解](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary)的基础上，支持基于request header，header值，header值正则匹配，cookie和权重的流量切分，无需tengine reload，所有应用域名的ingress金丝雀规则实时动态无损生效。
+**`Tengine-Ingress`在兼容[ingress canary注解](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary)的基础上，支持基于request header，header值，header值正则匹配，cookie和权重的流量切分，无需tengine reload，所有应用域名的ingress金丝雀规则实时动态无损生效。**
 
 ## 基于请求Header的流量切分
 > 注解名称: `nginx.ingress.kubernetes.io/canary`
@@ -14,7 +14,6 @@
 * 一个Canary Ingress资源对象定义一个高级路由，必须包含有注解`nginx.ingress.kubernetes.io/canary: "true"`。
 
 ---
-
 > 注解名称: `nginx.ingress.kubernetes.io/canary-by-header`
 > 值类型: `string`
 > 默认值: ` `

@@ -1,6 +1,6 @@
 # 动态无损生效
 
-`Tengine-Ingress`在Tengine基础上新增很多新特性和功能，最显著的变化是配置动态无损生效，无论是应用域名新增和路由变更，还是证书新增和加签域名，都无需tengine reload，配置无损实时生效，长连接保持不变，成功率不受影响，应用变更效率提升翻倍，集群稳定性进一步得到增强。
+**`Tengine-Ingress`在Tengine基础上新增很多新特性和功能，最显著的变化是配置动态无损生效，无论是应用域名新增和路由变更，还是证书新增和加签域名，都无需tengine reload，配置无损实时生效，长连接保持不变，成功率不受影响，应用变更效率提升翻倍，集群稳定性进一步得到增强。**
 
 Tengine-Ingress由两部分组成：
 * [Tengine-Ingress控制器](https://github.com/alibaba/tengine-ingress)
@@ -19,5 +19,5 @@ Tengine-Ingress由两部分组成：
 ## 支持动态生效的场景
 * 新增，更新和删除Ingress资源对象
 * 新增，更新和删除Secret资源对象
-* 高级注解配置[Annotations](document/ingress_annotations.html)
-* 自定义资源定义[CRD](document/ingress_crd.html)
+* 高级注解配置[Annotations](document_cn/ingress_annotations_cn.html)
+* 自定义资源[CRD](document_cn/ingress_crd_cn.html)
