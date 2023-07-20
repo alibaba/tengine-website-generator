@@ -19,5 +19,5 @@ Tengine-Ingress由两部分组成：
 ## 支持动态生效的场景
 * 新增，更新和删除Ingress资源对象
 * 新增，更新和删除Secret资源对象
-* 高级注解配置[Annotations](document_cn/ingress_annotations_cn.html)
-* 自定义资源[CRD](document_cn/ingress_crd_cn.html)
+* 高级注解配置[Annotations](ingress_annotations_cn.html)
+* 自定义资源[CRD](ingress_crd_cn.html)
