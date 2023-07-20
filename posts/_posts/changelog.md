@@ -3,7 +3,7 @@
 #### Tengine-3.0.0 [21 Jul 2023]
 
 * Feature: dynamically reconfigure the servers, locations and upstreams without reloading or restarting worker processes [tengine-ingress] (drawing, lianglli)
-* Feature: HTTP/3 support (QUIC v1 and draft-29)[XQUIC] (lurker-Chen, Kulsk, lianglli)
+* Feature: HTTP/3 support (QUIC v1 and draft-29) [XQUIC] (lurker-Chen, Kulsk, lianglli)
 * Feature: high-speed UDP transmission with kernel-bypass [XUDP] (D-Wythe, fengidri)
 * Feature: dynamically reconfigure canary routing based on standard and custom HTTP headers, header value, and weights [tengine-ingress] (drawing, lianglli)  
 * Feature: dynamically reconfigure timeout setting, SSL Redirects, CORS and enabling/disabling robots for the ingress/path [tengine-ingress] (drawing, lianglli)

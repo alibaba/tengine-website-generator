@@ -7,7 +7,7 @@ Tengine-Ingress由两部分组成，[Tengine-Ingress控制器](https://github.co
 
 Tengine-Ingress控制器通过订阅和处理ingress域名资源和secret证书资源，基于tengine ingress模板转换为动态配置写入共享内存。Tengine-proxy订阅共享内存变化写入内部运行时共享内存，将终端用户的外部流量路由到K8s集群中的应用服务。
 
-Tengine-Ingress在Tengine基础上新增很多新特性和功能，最显著的变化是配置动态无损生效，无论是应用域名新增和路由变更，还是证书新增和加签域名，都无需tengine reload，配置无损实时生效，长连接保持不变，成功率不受影响，应用变更效率提升翻倍，集群稳定性进一步得到增强。支持分域名和单证书独立分批次逐级生效，用户可按需中断和继续变更，应用侧风险可控，变更影响面小。TLS加解密允许同时加载ECC，RSA和国密多证书。在应用域名灰度方面，支持基于request header，header值，header值正则匹配，cookie和权重的流量切分，满足应用在灰度发布，蓝绿部署和A/B测试不同场景的需求。在可观测性方面，支持应用分域名独立监控，用户可实时查看单域名QPS，成功率，RT和报文大小相关的监控信息。Tengine-Ingress复用k8s ingress注解（高级配置）规范，基于内部运行时共享内存，通过tengine ingress模板构造HTTP(S)高级功能，支持动态无损实时生效，满足用户基于不同应用场景下的HTTP(S)高级配置需求，例如用户可配置应用域名是否允许网络爬虫和应用域名CORS (跨域资源共享)。综上所述，Tengine-Ingress在应用配置更新模型，系统稳定性，TLS加解密，灰度路由，可观测，HTTP(S)高级配置等多方面得到了显著提升。
+Tengine-Ingress在Tengine基础上新增很多新特性和功能，最显著的变化是配置动态无损生效，无论是应用域名新增和路由变更，还是证书新增和加签域名，都**无需tengine reload**，配置无损实时生效，长连接保持不变，成功率不受影响，应用变更效率提升翻倍，集群稳定性进一步得到增强。支持分域名和单证书独立分批次逐级生效，用户可按需中断和继续变更，应用侧风险可控，变更影响面小。TLS加解密允许同时加载ECC，RSA和国密多证书。在应用域名灰度方面，支持基于request header，header值，header值正则匹配，cookie和权重的流量切分，满足应用在灰度发布，蓝绿部署和A/B测试不同场景的需求。在可观测性方面，支持应用分域名独立监控，用户可实时查看单域名QPS，成功率，RT和报文大小相关的监控信息。Tengine-Ingress复用k8s ingress注解（高级配置）规范，基于内部运行时共享内存，通过tengine ingress模板构造HTTP(S)高级功能，支持动态无损实时生效，满足用户基于不同应用场景下的HTTP(S)高级配置需求，例如用户可配置应用域名是否允许网络爬虫和应用域名CORS (跨域资源共享)。综上所述，Tengine-Ingress在应用配置更新模型，系统稳定性，TLS加解密，灰度路由，可观测，HTTP(S)高级配置等多方面得到了显著提升。
 
 ![image](/book/_images/tengine_ingress_container.png)
 
@@ -131,7 +131,7 @@ type SecretCheckSumSpec struct {
 
 5. Tengine-Ingress复用k8s ingress注解（高级配置）规范，基于内部运行时共享内存，通过tengine ingress模板构造HTTP(S)高级功能，支持ingress注解动态实时生效，满足用户基于不同应用场景下的HTTP(S)高级配置需求。
 
-6. Tengine-Ingress在兼容[ingress canary注解](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary)的基础上，支持基于request header，header值，header值正则匹配，cookie和权重的流量切分，无需tengine reload，所有应用域名的ingress金丝雀规则实时动态无损生效。
+6. Tengine-Ingress在兼容[ingress canary注解](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary)的基础上，支持基于request header，header值，header值正则匹配，cookie和权重的流量切分，**无需tengine reload**，所有应用域名的ingress金丝雀规则实时动态无损生效。
 
 ![image](/book/_images/tengine_ingress_canary.png)
 

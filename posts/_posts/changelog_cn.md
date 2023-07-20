@@ -3,7 +3,7 @@
 #### Tengine-3.0.0 [2023-07-21]
 
 * Feature: 支持域名，证书，路由的动态无损生效 [tengine-ingress] (drawing, lianglli)
-* Feature: 支持HTTP/3 (QUIC v1和draft-29)[XQUIC] (lurker-Chen, Kulsk, lianglli)
+* Feature: 支持HTTP/3 (QUIC v1和draft-29) [XQUIC] (lurker-Chen, Kulsk, lianglli)
 * Feature: 支持bypass内核的用户态高性能UDP转发 [XUDP] (D-Wythe, fengidri)
 * Feature: 支持基于header，header值和服务权重的高级路由动态无损生效 [tengine-ingress] (drawing, lianglli)
 * Feature: 支持配置timeout，强制HTTPS，CORS和robots的动态无损生效 [tengine-ingress] (drawing, lianglli)

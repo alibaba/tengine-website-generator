@@ -11,7 +11,7 @@
             </div>
 
             <p class="lead">
-                Tengine是由<a href="http://en.wikipedia.org/wiki/Taobao" target="_blank" rel="external">淘宝</a>发起的Web服务器项目。它在<a href="https://nginx.org/" target="_blank" rel="external">Nginx</a>的基础上，针对大访问量网站的需求，添加了很多高级功能和特性。Tengine的性能和稳定性已经在大型的网站如<a href="https://www.taobao.com/" target="_blank" rel="external">淘宝</a>，<a href="https://www.tmall.com" target="_blank" rel="external">天猫</a>，<a href="https://www.youku.tv/" target="_blank" rel="external">优酷</a>，<a href="https://www.aliexpress.com/" target="_blank" rel="external">全球速卖通</a>，<a href="https://www.lazada.com/" target="_blank" rel="external">Lazada</a>，<a href="https://www.aliyun.com/" target="_blank" rel="external">阿里云</a>等得到了很好的检验。它的最终目标是打造一个高效、稳定、安全、易用的Web平台。
+                Tengine是由<a href="http://en.wikipedia.org/wiki/Taobao" target="_blank" rel="external">淘宝</a>发起的Web服务器项目。它在<a href="https://nginx.org/" target="_blank" rel="external">Nginx</a>的基础上，针对大访问量网站的需求，添加了很多高级功能和特性。Tengine的性能和稳定性已经在大型的网站如<a href="https://www.taobao.com/" target="_blank" rel="external">淘宝</a>，<a href="https://www.tmall.com" target="_blank" rel="external">天猫</a>，<a href="https://www.youku.tv/" target="_blank" rel="external">优酷</a>，<a href="https://www.aliexpress.com/" target="_blank" rel="external">全球速卖通</a>，<a href="https://www.lazada.com/" target="_blank" rel="external">Lazada</a>，<a href="https://www.aliyun.com/" target="_blank" rel="external">阿里云</a>等得到了很好的检验。Tengine将向通用API网关方向持续演进和发展，在HTTP应用流量入口网关的基础上，逐步支持4/7层TLS，TCP，UDP和GRPC多协议路由能力，适配不同终端和不同应用，打造全场景通用网关，持续保持Tengine业界领先地位。
             </p>
             <p class="lead">
                 从2011年12月开始，Tengine成为一个开源项目，Tengine团队在积极地开发和维护着它。Tengine团队的核心成员来自于<a href="https://en.wikipedia.org/wiki/Taobao" target="_blank" rel="external">淘宝</a>，<a href="https://en.wikipedia.org/wiki/Ant_Group" target="_blank" rel="external">蚂蚁</a>，<a href="https://en.wikipedia.org/wiki/Alibaba_Cloud" target="_blank" rel="external">阿里云</a>，<a href="http://en.wikipedia.org/wiki/Sogou" target="_blank" rel="external">搜狗</a>等互联网企业。Tengine是社区合作的成果，我们欢迎大家<a href="source_cn.html">参与其中</a>，贡献自己的力量。
@@ -55,11 +55,11 @@
                 </div>
                 <ul>
                     <li>继承Nginx-1.24.0的所有特性，兼容Nginx的配置；</li>
-                    <li>支持<a href="document_cn/ingress_cn.html">域名，证书，路由的动态无损生效</a>；</li>
+                    <li>支持<a href="/ingress_cn.html">域名，证书，路由的动态无损生效</a>；</li>
                     <li>支持<a href="document_cn/xquic_cn.html">HTTP/3 (QUIC v1和draft-29)</a>；</li>
                     <li>支持<a href="document_cn/xudp_cn.html">bypass内核的用户态高性能UDP转发</a>；</li>
-                    <li>支持<a href="document_cn/ingress_canary_cn.html">基于header，header值和服务权重的高级路由动态无损生效</a>；</li>
-                    <li>支持<a href="document_cn/ingress_config_cn.html">配置timeout，强制HTTPS，CORS和robots的动态无损生效</a>；</li>
+                    <li>支持<a href="document_cn/ingress_routes_cn.html">基于header，header值和服务权重的高级路由动态无损生效</a>；</li>
+                    <li>支持<a href="document_cn/ingress_annotations_cn.html">配置timeout，强制HTTPS，CORS和robots的动态无损生效</a>；</li>
                     <li>支持HTTP的<a href="document_cn/proxy_connect_cn.html">CONNECT</a> 方法，可用于正向代理场景；</li>
                     <li>
                         增强相关运维监控能力,比如<a href="document_cn/ngx_log_pipe_cn.html">异步打印日志及回滚</a>，<a href="document_cn/core_cn.html">本地DNS缓存</a>，<a href="document_cn/ngx_debug_pool_cn.html">内存监控</a>等；
@@ -269,7 +269,7 @@
                 <ul>
                     <li>All features of Nginx-1.24.0 are inherited, i.e., it is compatible with Nginx.</li>
                     <li>
-                        <a href="document/ingress.html">Dynamically reconfigure the servers, locations and upstreams without reloading or restarting worker processes</a>.
+                        <a href="/ingress.html">Dynamically reconfigure the servers, locations and upstreams without reloading or restarting worker processes</a>.
                     </li>
                     <li>
                         <a href="document/xquic.html">HTTP/3 support (QUIC v1 and draft-29)</a>.
@@ -278,10 +278,10 @@
                         <a href="document/xudp.html">High-speed UDP transmission with kernel-bypass</a>.
                     </li>
                     <li>
-                        <a href="document/ingress_canary.html">Dynamically reconfigure routing based on standard and custom HTTP headers, header value, and weights</a>.
+                        <a href="document/ingress_routes.html">Dynamically reconfigure routing based on standard and custom HTTP headers, header value, and weights</a>.
                     </li>
                     <li>
-                        <a href="document/ingress_config.html">Dynamically reconfigure timeout setting, SSL Redirects, CORS and enabling/disabling robots for the server and location</a>.
+                        <a href="document/ingress_annotations.html">Dynamically reconfigure timeout setting, SSL Redirects, CORS and enabling/disabling robots for the server and location</a>.
                     </li>
                     <li>
                         Support the <a href="document/proxy_connect.html">CONNECT</a> HTTP method for forward proxy.

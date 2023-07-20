@@ -6,10 +6,8 @@ Tengine XUDP Module主要用于在服务端启用XUDP，支持bypass内核的用
 目前，xudp能力仅在[Anolis](https://hub.docker.com/r/openanolis/anolisos)系统上支持（**注意：需要宿主机和docker都是Anolis操作系统才能支持xudp特性**）。
 
 ## 配置示例
-
 配置文件: conf/nginx.conf
 ---
-
 ```
     # begin for xudp
     xudp_core_path /usr/lib64/xquic_xdp/kern_xquic.o;
@@ -27,7 +25,6 @@ Tengine XUDP Module主要用于在服务端启用XUDP，支持bypass内核的用
 ```
 
 ## 指令
-
 > Syntax: **listen** 2443 `reuseport xudp`;
 > Default: -
 > Context: `server`
@@ -36,7 +33,6 @@ Tengine XUDP Module主要用于在服务端启用XUDP，支持bypass内核的用
 配合xquic使用，可大幅提升HTTP3转发性能。
 
 ---
-
 > Syntax: **xudp_rcvnum** `2048`;
 > Default: `1024`
 > Context: `main`
@@ -44,7 +40,6 @@ Tengine XUDP Module主要用于在服务端启用XUDP，支持bypass内核的用
 配置XUDP套接字接收缓冲区大小。
 
 ---
-
 > Syntax: **xudp_sndnum** `4096`;
 > Default: `1024`
 > Context: `main`

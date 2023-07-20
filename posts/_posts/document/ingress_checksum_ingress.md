@@ -12,20 +12,26 @@
 
 一个K8s标准ingress资源对象如下所示，元数据name标识了ingress资源对象的名称，通过末尾的自定义数字表示每个ingress资源ID，自定义注解`nginx.ingress.kubernetes.io/version`则标识了ingress域名配置的版本号。
 
-**注意：通过`IngressID`和`Ingress资源对象版本号`可以唯一确定一个ingress域名配置信息，即`Ingress域名配置ID`。**
-**注意：`IngressID`: Ingress name的ID号**
-**注意：`Version`: ingress注解nginx.ingress.kubernetes.io/version的值，即`Ingress资源对象版本号`**
-**注意：Ingress域名配置ID的分隔符是'-'**
-|    | Ingress资源类型 |   `Ingress域名配置ID`   |                          示例                       |
-|:--:|----------------|---------------------|----------------------------------------------------|
-|    | ingress<br>canary ingress | "`IngressID`-`Version`" | ingress名称: alibaba-taobao-com-27555<br>ingress注解 nginx.ingress.kubernetes.io/version: "1"<br>Ingress域名配置ID "27555-1" |
+### Ingress域名配置ID
+> Ingress域名配置ID: "`IngressID`-`Version`"
+> IngressID: Ingress name的ID号**
+> Version: Ingress注解nginx.ingress.kubernetes.io/version的值，即`Ingress资源对象版本号`**
+> Ingress资源类型: `ingress`, `canary ingress`
+**注意：`Ingress域名配置ID`的分隔符是'-'**
+
+**通过`IngressID`和`Ingress资源对象版本号`可以唯一确定一个ingress域名配置信息，即`Ingress域名配置ID`。**
+
+示例: 
+* Ingress名称: alibaba-taobao-com-27555
+* Ingress注解: nginx.ingress.kubernetes.io/version: "1"
+* Ingress域名配置ID: "27555-1"
 
 基于上述示例，`IngressID`是"27555"，而`Ingress资源对象的版本号`是"1"，通过`IngressID`和`Ingress资源对象版本号`可以唯一确定一个ingress域名配置信息，即`Ingress域名配置ID`（"27555-1"）。
 
-**注意：计算全局MD5**
-* md5.Sum("`Ingress域名配置ID`1","`Ingress域名配置ID`2",...)
-* ingress域名配置ID之间的分隔符是','；
-* ingress域名配置ID按照字符串顺序排序。
+### 计算全局MD5
+> 计算公式: md5.Sum("`Ingress域名配置ID`1","`Ingress域名配置ID`2",...)
+> Ingress域名配置ID之间的分隔符: `,`
+> Ingress域名配置ID按照字符串顺序排序
 
 数据面`Tengine-Ingress`基于上述公式计算ingress全局一致性校验MD5值，通过匹配CRD ingresschecksums资源实例的checksum值（即控制面计算得出的MD5值），从而决定是否更新本地缓存中的ingress域名配置。在ingress全局一致性校验失败的情况下，数据面会继续匹配CRD ingresschecksums中的ids（即控制面本次计算ingress全局一致性校验MD5对应的所有ingress域名配置ID列表），从而找出不一致的单个ingress资源对象信息。
 

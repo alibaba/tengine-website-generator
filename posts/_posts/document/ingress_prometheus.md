@@ -11,7 +11,6 @@
 如果Ingress全局一致性校验成功，则累加指标。
 
 ---
-
 > 指标名称: `nginx_ingress_controller_ing_checksum_errors`
 > 指标类型: `Gauge`
 
@@ -19,14 +18,12 @@
 在Ingress全局一致性校验成功后，指标即刻清零。
 
 ---
-
 > 指标名称: `nginx_ingress_controller_secret_checksum_success`
 > 指标类型: `Counter`
 
 如果Secret全局一致性校验成功，则累加指标。
 
 ---
-
 > 指标名称: `nginx_ingress_controller_secret_checksum_errors`
 > 指标类型: `Gauge`
 
@@ -34,7 +31,6 @@
 在Secret全局一致性校验成功后，指标即刻清零。
 
 ---
-
 > 指标名称: `nginx_ingress_controller_sslcert_verify_fail`
 > 指标类型: `Counter`
 
@@ -42,7 +38,6 @@ SSL证书校验失败
 当Secret资源对象不符合[X509证书规范](https://datatracker.ietf.org/doc/html/rfc5280)，则证书校验失败，需要累加指标。
 
 ---
-
 > 指标名称: `nginx_ingress_controller_ing_referrer_verify_fail`
 > 指标类型: `Counter`
 
@@ -52,7 +47,6 @@ Ingress资源对象来源异常
 注解ingress-referrer值非空，且不在configmap配置`ingress-referrer`授权应用列表中，则Ingress资源对象来源异常，需要累加指标。
 
 ---
-
 > 指标名称: `nginx_ingress_controller_canary_referrer_verify_fail`
 > 指标类型: `Counter`
 
@@ -62,7 +56,6 @@ Canary Ingress资源对象来源异常
 注解canary-referrer值非空，且不在configmap配置`canary-referrer`授权应用列表中，则Canary Ingress资源对象来源异常，需要累加指标。 
 
 ---
-
 > 指标名称: `nginx_ingress_controller_canary_num_limit_exceeded`
 > 指标类型: `Counter`
 

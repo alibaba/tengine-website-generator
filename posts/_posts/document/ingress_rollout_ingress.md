@@ -13,10 +13,9 @@ K8s原生资源对象ingress域名在被写入etcd后，所有监听控制器默
 > 生效维度: `域名` 或 `域名/path`
 
 Ingress资源对象分批次滚动生效开关
-* 如果注解`nginx.ingress.kubernetes.io/ingress-rollout: "true"`，ingress资源对象将在网关`Tengine-Ingress`集群内部分批次滚动生效，无需tengine reload，实时动态无损生效。
+* 如果注解`nginx.ingress.kubernetes.io/ingress-rollout: "true"`，ingress资源对象将在网关`Tengine-Ingress`集群内部分批次滚动生效，**无需tengine reload**，实时动态无损生效。
 
 ---
-
 > 注解名称: `nginx.ingress.kubernetes.io/ingress-rollout-current-revision`
 > 值类型: `string`
 > 默认值: ` `
@@ -26,7 +25,6 @@ Ingress资源对象分批次滚动生效开关
 Ingress资源对象的当前运行版本号
 
 ---
-
 > 注解名称: `nginx.ingress.kubernetes.io/ingress-rollout-update-revision`
 > 值类型: `string`
 > 默认值: ` `
@@ -36,7 +34,6 @@ Ingress资源对象的当前运行版本号
 Ingress资源对象的升级版本号
 
 ---
-
 > 注解名称: `nginx.ingress.kubernetes.io/ingress-rollout-index-id`
 > 值类型: `number`
 > 默认值: `-1`
