@@ -3,7 +3,7 @@
 Tengine XUDP Module主要用于在服务端启用XUDP，支持bypass内核的用户态高性能UDP转发。
 服务端启用QUIC/HTTP3监听服务，通过配合使用XUDP，可大幅提升HTTP3转发性能。
 
-【注意】必须基于Anolis OS 8.8及其以上版本才能使用XUDP。
+目前，xudp能力仅在[Anolis](https://hub.docker.com/r/openanolis/anolisos)系统上支持（**注意：需要宿主机和docker都是Anolis操作系统才能支持xudp特性**）。
 
 ## 配置示例
 
