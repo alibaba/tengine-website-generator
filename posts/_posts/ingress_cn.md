@@ -30,7 +30,7 @@ Tengine-Ingress全面兼容K8s [ingress标准](https://kubernetes.io/docs/concep
 ```
 
 3. Tengine-Ingress在基于云原生ASI的基础上，利用标准化的k8s资源ingress和secret分别存储域名路由配置和TLS证书秘钥信息，在此基础上提出单个ingress域名和单张secret证书分批次逐级生效机制，这不仅满足了用户侧新增和修改应用域名和证书的灰度需求，同时保障接入层集群整体运行的稳定性和可靠性。新增下述ingress和secret注解，用于标识域名和证书逐级分批次灰度生效范围。
-【注意】为了使用Ingress域名和secret证书资源对象的分批次动态生效功能，Tengine-Ingress需要以statefulset形式部署发布。
+**注意：为了使用Ingress和Secret资源对象的分批次滚动生效功能，Tengine-Ingress需要以StatefulSet形式部署发布。**
 ```yaml
 1. ingress灰度开关
 ● annotation: nginx.ingress.kubernetes.io/ingress-rollout
@@ -86,7 +86,6 @@ Tengine-Ingress全面兼容K8s [ingress标准](https://kubernetes.io/docs/concep
 ```
 
 4. Tengine-Ingress通过全局一致性校验机制保障内存中运行态持有的用户侧ingress域名和secret证书的有效性和正确性，快速校验10w+域名和1000+泛证书，在域名配置和证书信息不符合标准化k8s资源ingress和secret规范及其相关RFC标准时，将不再更新本地缓存，并实时告警通知，保障运行态永远可正常向外提供7层转发服务。新增CRD IngressCheckSum和SecretCheckSum，用于定义全局一致性校验信息。
-
 ```go
 type IngressCheckSum struct {
 	metav1.ObjectMeta
@@ -145,7 +144,13 @@ K8s原生资源对象包括ingress域名，secret证书，configmap配置，serv
 
 Tengine-Ingress支持K8s core集群与K8s ingress存储集群相隔离的高可靠性部署方案，将运行态和存储态相分离，独立K8s ingress集群可以保证自身API服务器和etcd性能稳定，并且在core集群核心组件API服务器和etcd不可用的高危场景下也能正常向外提供7层转发服务。
 
-K8s分布式系统本身可以保障单个ingress资源的一致性，但分布式环境是无法保证用户存储在etcd中ingress域名配置的全局正确性和全局完整性，并且在API服务器和etcd不可用的情况下，ingress域名配置的可用性更是无法保障。因此，Tengine-ingress提出了一种分布式环境下ingress全局一致性方案，在新增和更新域名时，Tengine-ingress基于ingress全局一致性校验算法计算全局MD5值，与CRD ingresschecksums资源对象中的MD5值相匹配，则表明本次更新的ingress资源对象是全局一致性，即可将ingress资源对象更新到本地缓存，并写入共享内存，开始使用最新的ingress域名配置对外提供HTTP(S)七层负载均衡，TLS卸载和路由转发功能；否则表明更新的ingress资源对象全局不一致，系统存在脏数据，不再更新本地缓存和共享内存，仍旧使用存量的ingress域名配置对外提供HTTP(S)接入服务，保证运行态域名接入和路由服务的正确性和可靠性。
+![image](/book/_images/tengine_ingress_cluster.png)
+
+K8s分布式系统本身可以保障单个ingress资源的一致性，但分布式环境是无法保证用户存储在etcd中ingress域名配置的全局正确性和全局完整性，并且在API服务器和etcd不可用的情况下，ingress域名配置的可用性更是无法保障。因此，Tengine-Ingress提出了一种分布式环境下ingress全局一致性方案，在新增和更新域名时，Tengine-Ingress基于ingress全局一致性校验算法计算全局MD5值，与CRD ingresschecksums资源对象中的MD5值相匹配，则表明本次更新的ingress资源对象是全局一致性，即可将ingress资源对象更新到本地缓存，并写入共享内存，开始使用最新的ingress域名配置对外提供HTTP(S)七层负载均衡，TLS卸载和路由转发功能；否则表明更新的ingress资源对象全局不一致，系统存在脏数据，不再更新本地缓存和共享内存，仍旧使用存量的ingress域名配置对外提供HTTP(S)接入服务，保证运行态域名接入和路由服务的正确性和可靠性。
+
+![image](/book/_images/tengine_ingress_checksum_mod.png)
+
+K8s分布式系统本身可以保障单个ingress资源的一致性，但分布式环境是无法保证用户存储在etcd中ingress域名配置的全局正确性和全局完整性，并且在API服务器和etcd不可用的情况下，ingress域名配置的可用性更是无法保障。因此，Tengine-ingress提出了一种分布式环境下ingress全局一致性方案，在新增和更新域名时，Tengine-ingress基于ingress全局一致性校验算法计算全局MD5值，与CRD ingresschecksums资源对象中的MD5值相匹配，则表明本次更新的ingress资源对象是全局一致性，即可将ingress资源对象更新到本地缓存，并写入共享内存，开始使用最新的ingress域名配置对外提供HTTP(S)七层负载均衡，TLS卸载和路由转发功能；否则表明更新的ingress资源对象全局不一致，系统存在脏数据，不再更新本地缓存和共享内存，仍旧使用存量的ingress域名配置对外提供HTTP(S)接入服务，保证运行态域名接入和路由服务的正确性和可靠性。Secret证书资源对象采用了类似的全局一致性方案。
 
 ![image](/book/_images/tengine_ingress_checksum.png)
 

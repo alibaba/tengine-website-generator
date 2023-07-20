@@ -1,6 +1,6 @@
 # Tengine-Ingress
 
-Tengine-Ingress完全兼容云原生[ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)标准规范，用户可参照[kubernetes ingress-nginx](https://kubernetes.github.io/ingress-nginx/)相关文档。
+`Tengine-Ingress`完全兼容云原生[ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)标准规范，用户可参照[kubernetes ingress-nginx](https://kubernetes.github.io/ingress-nginx/)相关文档。
 
 在此列出[Tengine-Ingress](https://github.com/alibaba/tengine-ingress)原生扩展和增强功能的Annotations。 
 
@@ -197,7 +197,7 @@ Tengine-Ingress完全兼容云原生[ingress](https://kubernetes.io/docs/concept
 > 生效维度: `域名` 或 `域名/path`
 
 Ingress资源对象分批次滚动生效开关
-* 为了使用Ingress域名资源对象的分批次滚动生效功能，Tengine-Ingress需要以statefulset形式部署发布。
+* **注意：为了使用Ingress域名资源对象的分批次滚动生效功能，Tengine-Ingress需要以StatefulSet形式部署发布。**
 * 如果注解`nginx.ingress.kubernetes.io/ingress-rollout: "true"`，ingress资源对象将在网关`Tengine-Ingress`集群内部分批次滚动生效，无需tengine reload，实时动态无损生效。
 
 ---
@@ -242,7 +242,7 @@ Ingress资源对象的生效范围
 > 生效维度: `域名` 或 `域名/path`
 
 Secret资源对象分批次滚动生效开关
-* 为了使用Secret域名资源对象的分批次滚动生效功能，Tengine-Ingress需要以statefulset形式部署发布。
+* **注意：为了使用Ingress域名资源对象的分批次滚动生效功能，Tengine-Ingress需要以StatefulSet形式部署发布。**
 * 如果注解`nginx.ingress.kubernetes.io/secret-rollout: "true"`，secret资源对象将在网关`Tengine-Ingress`集群内部分批次滚动生效，无需tengine reload，实时动态无损生效。
 
 ---
@@ -275,7 +275,7 @@ Secret资源对象的升级版本号
 
 Secret资源对象的生效范围
 * 网关`Tengine-Ingress`集群需要以statefulset形式部署发布，0..N-1为Tengine-Ingress的Pod序号，从0开始到N-1结束。
-* 只有Pod序号小于`ingress-rollout-index-id`的Tengine-Ingress实例才会动态更新secret资源对象。
+* 只有Pod序号小于`secret-rollout-index-id`的Tengine-Ingress实例才会动态更新secret资源对象。
 
 ### 全局一致性校验
 
@@ -293,7 +293,7 @@ Ingress资源对象的ID号：唯一标识一个ingress资源对象。
 > 值类型: `number`
 > 默认值: `0`
 > 注解类型: `secret注解`
-> 生效维度: `域名` 或 `域名/path`
+> 生效维度: `证书`
 
 Secret资源对象的ID号：唯一标识一个secret资源对象。
 

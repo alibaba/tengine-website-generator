@@ -1,6 +1,6 @@
 ## ChangeLog
 
-#### Tengine-3.0.0 [15 Jul 2023]
+#### Tengine-3.0.0 [21 Jul 2023]
 
 * Feature: dynamically reconfigure the servers, locations and upstreams without reloading or restarting worker processes [tengine-ingress] (drawing, lianglli)
 * Feature: HTTP/3 support (QUIC v1 and draft-29)[XQUIC] (lurker-Chen, Kulsk, lianglli)

@@ -1,9 +1,9 @@
 # Tengine-Ingress
 
-Tengine-Ingress完全兼容云原生[ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)标准规范，用户可参照[kubernetes ingress-nginx](https://kubernetes.github.io/ingress-nginx/)相关文档。
+`Tengine-Ingress`完全兼容云原生[ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)标准规范，用户可参照[kubernetes ingress-nginx](https://kubernetes.github.io/ingress-nginx/)相关文档。
 在此列出[Tengine-Ingress](https://github.com/alibaba/tengine-ingress)原生扩展和增强功能的Configmap。 
 
-【注意】Tengine-Ingress基于默认初始化的Configmap可以正常运行，如果需要修改Configmap中的配置，则必须tengine reload生效配置。
+**注意：Tengine-Ingress基于默认初始化的Configmap可以正常运行，如果需要修改Configmap中的配置，则必须tengine reload生效配置。**
 
 ## Configmap
 
@@ -112,7 +112,7 @@ Secret证书资源对象采用了类似的全局一致性方案。如果设置`u
 > Syntax: **use-xquic-xudp** `true`;
 > Default: `false`
 
-默认不启用XUDP，如果设置`use-xquic-xudp: 'true'`，操作系统必须是Anolis OS 8.8及其以上版本才能使用XUDP。
+默认不启用XUDP，如果设置`use-xquic-xudp: 'true'`，容器和宿主机的操作系统都必须是[Anolis](https://hub.docker.com/r/openanolis/anolisos)才能使用XUDP。
 Tengine XUDP Module主要用于在服务端启用XUDP，支持bypass内核的用户态高性能UDP转发。
 服务端启用HTTP3/QUIC监听服务，通过配合使用XUDP，可大幅提升HTTP3转发性能。
 
