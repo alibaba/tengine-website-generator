@@ -25,7 +25,7 @@ sudo ./ctl.sh build-image
 
 ```
 # 方便一边修改文档&脚本，一边预览网站结果
-./ctl.sh dev
+sudo ./ctl.sh dev
 ```
 
 打开浏览器 localhost:4000
@@ -36,7 +36,7 @@ sudo ./ctl.sh build-image
 ## 生成模式
 
 ```
-./ctl.sh release
+sudo ./ctl.sh release
 
 #进容器后输入
 hexo g
@@ -48,7 +48,7 @@ hexo g
 ## 部署网站
 
 ```
-./ctl.sh deploy
+sudo ./ctl.sh deploy
 ```
 
 
