@@ -22,14 +22,15 @@ jobs:
 
       - name: Install Dependency
         run: |
-          npm install --production --registry=https://registry.npm.taobao.org --silent
+          npm install --production --silent
           sed -i '46,51d' node_modules/hexo/lib/plugins/generator/post.js
 
       - name: Build Web
         run: |
           sh bin/release.sh
-          cp -r ./posts/book ./public
-          cat public/index_en.html
+          cp -r ./resource/* ./public/
+          cp -r ./posts/book ./public/
+          test -s public/index_en.html
 
       - name: Deploy Web
         uses: peaceiris/actions-gh-pages@v3
