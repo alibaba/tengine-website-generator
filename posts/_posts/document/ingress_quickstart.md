@@ -205,7 +205,91 @@ spec:
 
 ## 三、增强功能示例
 
-### 1. 开启 `xudp`
+### 1. 新增证书
+
+新证书可写入 k8s `secret` 资源，示例使用 `kubectl` 写入
+
+```shell
+kubectl create secret tls https-server-1 --key certs/server_1.key --cert certs/server_1.crt
+```
+
+写入名为 `https-server-1` 的 `secret`，通过 `ingress` 资源指定证书：
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-ingress
+spec:
+  rules:
+  - host: echo.test.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: echo-service
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - echo.test.com
+    secretName: https-server-1
+```
+
+指定以后，访问域名 `echo.test.com` 即可使用证书 `https-server-1`。
+
+### 2. 使用 HTTP3
+
+镜像中 HTTP3 默认监听端口为 2443，如果使用浏览器访问，需要配置四层负载均衡VIP，对外映射为 443 端口，例如
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/backend-type: "eni"
+    service.beta.kubernetes.io/alicloud-loadbalancer-address-type: internet
+    service.beta.kubernetes.io/alibaba-cloud-loadbalancer-spec: slb.s2.small
+  name: tengine
+spec:
+  externalTrafficPolicy: Cluster
+  ports:
+  - port: 80
+    name: tengine-tcp-80
+    protocol: TCP
+    targetPort: 80
+  - port: 443
+    name: tengine-tcp-443
+    protocol: TCP
+    targetPort: 443
+  - port: 443
+    name: tengine-udp-443
+    protocol: UDP
+    targetPort: 2443
+  selector:
+    app: tengine
+  type: LoadBalancer
+```
+
+额外的，`tenigne` 在返回 `header` 的 `Alt-Svc` 需要改为 `443` 端口，指引浏览器进行协议切换，通过 `configmap` 中的 `http3-xquic-default-port` 配置：
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tengine-ingress-configuration
+  namespace: default
+data:
+  http3-xquic-default-port: "443"
+```
+
+配置完成后，浏览器访问时，通过感知回包包头 `Alt-Svc`，进行协议切换。
+
+### 3. 开启 `xudp`
+
+**注：xudp仅为了性能优化，没有相关配置并不影响HTTP3功能使用。**
 
 `xudp` 实现了内核的用户态的高性能 `UDP` 收发，可极大提升 `QUIC` 协议 `UDP` 传输性能，目前 xudp 能力仅在 [Anolis OS](https://hub.docker.com/r/openanolis/anolisos) 系统上支持（**注意：需要宿主机和 docker 都是 Anolis OS 系统才能支持 xudp 特性**）：。通过 `Configmap` 可以很方便的开启/关闭 `xudp`能力。
 
@@ -225,7 +309,7 @@ data:
 
 加载成功后可以看到 `listen` 指令增加了 `xudp` 的选项，同时 `main` 配置段增加了 `xudp_core_path` 配置。
 
-### 2. 强制跳转 `https`
+### 4. 强制跳转 `https`
 
 在 `ingress` 资源增加 `Annotations` 可以控制路由转发的部分逻辑，如通过 `nginx.ingress.kubernetes.io/ssl-redirect` 可以控制是否强制调整 `https`，默认开启，先增加示例关闭此功能：
 
