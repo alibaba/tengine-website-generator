@@ -201,7 +201,7 @@ spec:
               number: 80
 ```
 
-执行生效后，可以通过 `curl -k "https://${INGRESS_IP}/" -H "host:echo.test.com"` 验证可用性，得到结果 `hello world`。
+执行生效后，可以通过 `curl -k "https://${POD_IP}/" -H "host:echo.test.com"` 验证可用性，得到结果 `hello world`。其中 `${POD_IP}` 为监听处理这个 `ingress` 资源对象的 `tengine-ingress` Pod 的 IP。
 
 ## 三、增强功能示例
 
@@ -245,50 +245,11 @@ spec:
 **注意1：仅在`Tengine-Ingress 1.0.1`版本以上有效。**
 **注意2：如用浏览器访问，需要确保使用证书可信**
 
-镜像中 HTTP3 默认监听端口为 2443，如果使用浏览器访问，需要配置四层负载均衡VIP，对外映射为 443 端口，例如
+镜像中 HTTP3 默认监听端口为 443，默认会下发 `Alt-Svc` 切换 443 端口的 HTTP3。如证书受信，启动后默认开启 HTTP3 无需额外配置。
 
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  annotations:
-    service.beta.kubernetes.io/backend-type: "eni"
-    service.beta.kubernetes.io/alicloud-loadbalancer-address-type: internet
-    service.beta.kubernetes.io/alibaba-cloud-loadbalancer-spec: slb.s2.small
-  name: tengine
-spec:
-  externalTrafficPolicy: Cluster
-  ports:
-  - port: 80
-    name: tengine-tcp-80
-    protocol: TCP
-    targetPort: 80
-  - port: 443
-    name: tengine-tcp-443
-    protocol: TCP
-    targetPort: 443
-  - port: 443
-    name: tengine-udp-443
-    protocol: UDP
-    targetPort: 2443
-  selector:
-    app: tengine
-  type: LoadBalancer
-```
+浏览器访问时，第一个请求为 HTTP1.1 / HTTP2 请求，`tenigne` 返回 `header` 的 `Alt-Svc` 指引浏览器进行协议切换，后续请求会切换为 HTTP3。
 
-额外的，`tenigne` 在返回 `header` 的 `Alt-Svc` 需要改为 `443` 端口，指引浏览器进行协议切换，通过 `configmap` 中的 `http3-xquic-default-port` 配置：
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: tengine-ingress-configuration
-  namespace: default
-data:
-  http3-xquic-default-port: "443"
-```
-
-配置完成后，浏览器访问时，通过感知回包包头 `Alt-Svc`，进行协议切换。
+如需修改 xquic 默认端口，可通过 `configmap` 中的 `http3-xquic-default-port` 配置。
 
 ### 3. 开启 `xudp`
 
