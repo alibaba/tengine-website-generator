@@ -163,7 +163,7 @@ spec:
         image: hashicorp/http-echo:latest
         ports:
         - containerPort: 80
-        args: ["-text", "hello world"]
+        args: ["-listen", ":80", "-text", "hello world"]
 ---
 apiVersion: v1
 kind: Service
