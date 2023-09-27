@@ -6,7 +6,7 @@ Enhance the ngx_http_upstream_keepalive_module to support setting keepalive time
 upstream backend {
     server 127.0.0.1:8080;
     keepalive 32;
-    keepalive_timeout 30s; # 设置后端连接的最大idle时间为30s
+    keepalive_timeout 30s; # Set the maximum idle time of the backend connection to 30s
 }
 ```
 
