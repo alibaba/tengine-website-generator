@@ -1,8 +1,8 @@
 ## GitHub
 
 ### Repository
-* Tengine [https://github.com/alibaba/tengine](https://github.com/alibaba/tengine)
 * Tengine-Ingress [https://github.com/alibaba/tengine-ingress](https://github.com/alibaba/tengine-ingress)
+* Tengine [https://github.com/alibaba/tengine](https://github.com/alibaba/tengine)
 
 ### Get involved
 * Reporting issues and pulling requests to improve Tengine are very welcome, and encouraged.

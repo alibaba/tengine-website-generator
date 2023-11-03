@@ -2,12 +2,13 @@
 
 ## 一、Ingress 镜像
 
-开发者可以直接使用 Tengine-Ingress 提供的镜像，镜像基于  [Anolis OS](https://hub.docker.com/r/openanolis/anolisos) ，支持 AMD64 和 ARM64 架构。
+开发者可以直接使用 Tengine-Ingress 提供的镜像，镜像基于[Anolis OS](https://hub.docker.com/r/openanolis/anolisos)和[Alpine OS](https://hub.docker.com/_/alpine) ，支持 AMD64 和 ARM64 架构。
 
 镜像拉取方式：
 
 ```shell
-docker pull tengine-ingress-registry.cn-hangzhou.cr.aliyuncs.com/tengine/tengine-ingress:1.0.0
+docker pull tengine-ingress-registry.cn-hangzhou.cr.aliyuncs.com/tengine/tengine-ingress:1.1.0
+docker pull tengine-ingress-registry.cn-hangzhou.cr.aliyuncs.com/tengine/tengine-ingress:1.1.0-alpine
 ```
 
 如需额外增加功能，可以基于此镜像二次开发；也可通过源码重新编译构建，参考 [building-from-source](https://github.com/alibaba/tengine-ingress#building-from-source)
@@ -35,7 +36,7 @@ spec:
     spec:
       containers:
       - name: tengine
-        image: tengine-ingress-registry.cn-hangzhou.cr.aliyuncs.com/tengine/tengine-ingress:1.0.0
+        image: tengine-ingress-registry.cn-hangzhou.cr.aliyuncs.com/tengine/tengine-ingress:1.1.0
         ports:
         - containerPort: 80
         command: ["/usr/bin/dumb-init"]
@@ -43,6 +44,7 @@ spec:
         - "--"
         - "/tengine-ingress-controller"
         - "--configmap=default/tengine-ingress-configuration"
+        - "--controller-class=k8s.io/tengine-ingress"
         - "--annotations-prefix=nginx.ingress.kubernetes.io"
         - "--v=1"
         env:
@@ -117,7 +119,7 @@ rules:
   resources: ["secrets", "configmaps", "endpoints", "services"]
   verbs: [ "get", "list", "watch"]
 - apiGroups: ["networking.k8s.io"]
-  resources: ["ingresses"]
+  resources: ["ingresses", "ingressclasses"]
   verbs: [ "get", "list", "watch"]
 - apiGroups: ["networking.k8s.io"]
   resources: ["ingresses/status"]
@@ -138,6 +140,21 @@ subjects:
 ```
 
 通过 `kubectl apply -f auth.yaml` 执行生效。
+
+### 3. IngressClass
+
+创建默认 IngressClass 资源对象
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  annotations:
+    ingressclass.kubernetes.io/is-default-class: "true"
+  name: default-ingress-class
+spec:
+  controller: k8s.io/tengine-ingress
+```
 
 ### 4. 后端服务
 
@@ -242,7 +259,7 @@ spec:
 
 ### 2. 使用 HTTP3
 
-**注意1：仅在`Tengine-Ingress 1.0.1`版本以上有效。**
+**注意1：仅在`Tengine-Ingress 1.1.0`版本以上有效。**
 **注意2：如用浏览器访问，需要确保使用证书可信**
 
 镜像中 HTTP3 默认监听端口为 443，默认会下发 `Alt-Svc` 切换 443 端口的 HTTP3。如证书受信，启动后默认开启 HTTP3 无需额外配置。

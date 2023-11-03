@@ -19,12 +19,12 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    kubernetes.io/ingress.class: alibaba-ingress-tao
     nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
   name: alibaba-tao-tengine-taobao-org-ingress
   namespace: alibaba-ingress-tao
 spec:
+  ingressClassName: default-ingress-class
   rules:
   - host: tengine.taobao.org
     http:
