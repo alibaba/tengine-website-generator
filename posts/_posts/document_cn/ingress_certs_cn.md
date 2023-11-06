@@ -1,4 +1,4 @@
-# ECC和RSA多证书
+# Tengine-Ingress ECC和RSA多证书
 
 `Tengine-Ingress`支持域名同时使用ECC和RSA双证书，默认原生系统只能使用单张证书，Tengine-Ingress扩展标准ingress规范，在兼容单证书的场景下，满足ECC和RSA双证书同时动态生效的应用场景，且可以继续扩展为ECC，RSA和国密的三证书复杂场景。
 

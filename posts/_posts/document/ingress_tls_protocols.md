@@ -1,4 +1,4 @@
-# 分域名TLS协议多版本
+# Tengine-Ingress 分域名TLS协议多版本
 
 `Tengine-Ingress`支持不同域名配置不同的TLS协议版本，以满足分域名的不同安全级别和需求。
 

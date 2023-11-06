@@ -1,4 +1,4 @@
-# Ingress全局一致性校验
+# Tengine-Ingress Secret全局一致性校验
 
 
 ## 背景
@@ -168,7 +168,7 @@ data:
 kind: Secret
 metadata:
   annotations:
-    fs.ingress.alibaba/version: "5792"
+    nginx.ingress.kubernetes.io/version: "5792"
   name: alibaba-com-ecc-118
   namespace: alibaba-ingress-tao
 type: kubernetes.io/tls
@@ -180,7 +180,7 @@ data:
 kind: Secret
 metadata:
   annotations:
-    fs.ingress.alibaba/version: "5793"
+    nginx.ingress.kubernetes.io/version: "5793"
   name: alibaba-com-rsa-119
   namespace: alibaba-ingress-tao
 type: kubernetes.io/tls

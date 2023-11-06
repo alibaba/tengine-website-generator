@@ -1,4 +1,4 @@
-# TLS端口映射默认证书
+# Tengine-Ingress TLS端口映射默认证书
 
 `Tengine-Ingress`支持证书端口映射，通过不同的TLS端口与根域名的映射关系，动态匹配对应证书。
 
@@ -35,8 +35,7 @@ custom-port-domain: '443: a.com, 4431: b.com, 4432: c.com'
         }
 ```
 
-###
-* `证书1`: 加签域名包含根域名a.com
+### `证书1`: 加签域名包含根域名a.com
 ```
 CN: [
 a.com
@@ -49,8 +48,7 @@ a.com
 ```
 * 在客户端向`Tengine-Ingress`服务端口443建链请求，如果客户端Client Hello未携带SNI，则`Tengine-Ingress`默认使用`证书1`完成TLS握手
 
-###
-* `证书2`: 加签域名包含根域名b.com
+### `证书2`: 加签域名包含根域名b.com
 ```
 CN: [
 b.com
@@ -63,8 +61,8 @@ b.com
 ```
 * 在客户端向`Tengine-Ingress`服务端口4432建链请求，如果客户端Client Hello未携带SNI，则`Tengine-Ingress`默认使用`证书2`完成TLS握手
 
-###
-* `证书3`: 加签域名包含根域名c.com
+### `证书3`: 加签域名包含根域名c.com
+```
 CN: [
 c.com
 *.c1.c.com
