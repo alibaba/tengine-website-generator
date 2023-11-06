@@ -1,8 +1,8 @@
 ## GitHub
 
 ### 代码仓库
-* Tengine [https://github.com/alibaba/tengine](https://github.com/alibaba/tengine)
 * Tengine-Ingress [https://github.com/alibaba/tengine-ingress](https://github.com/alibaba/tengine-ingress)
+* Tengine [https://github.com/alibaba/tengine](https://github.com/alibaba/tengine)
 
 ### 参与开发
 * 我们非常欢迎也很鼓励您在Tengine的项目的GitHub上报告issue或者pull request。

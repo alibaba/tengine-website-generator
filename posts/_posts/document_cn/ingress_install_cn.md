@@ -12,12 +12,12 @@
 
 [Anolis](https://hub.docker.com/r/openanolis/anolisos)
 ```bash
-docker pull tengine-ingress-registry.cn-hangzhou.cr.aliyuncs.com/tengine/tengine-ingress:1.0.0
+docker pull tengine-ingress-registry.cn-hangzhou.cr.aliyuncs.com/tengine/tengine-ingress:1.1.0
 ```
 
 [Alpine](https://hub.docker.com/_/alpine)
 ```bash
-docker pull tengine-ingress-registry.cn-hangzhou.cr.aliyuncs.com/tengine/tengine-ingress:1.0.0-alpine
+docker pull tengine-ingress-registry.cn-hangzhou.cr.aliyuncs.com/tengine/tengine-ingress:1.1.0-alpine
 ```
 ![image](/book/_images/tengine_ingress_vers_table.png)
 
@@ -27,13 +27,13 @@ docker pull tengine-ingress-registry.cn-hangzhou.cr.aliyuncs.com/tengine/tengine
 * [Anolis](https://hub.docker.com/r/openanolis/anolisos): `BASE_IMAGE="docker.io/openanolis/anolisos:latest"`, `LINUX_RELEASE="anolisos"`
 * [Alpine](https://hub.docker.com/_/alpine): `BASE_IMAGE="alpine:latest"`, `LINUX_RELEASE="alpine"`
 ```bash
-# docker build --no-cache --build-arg BASE_IMAGE="docker.io/openanolis/anolisos:latest" --build-arg LINUX_RELEASE="anolisos" -t tengine:3.0.0 images/tengine/rootfs/
+# docker build --no-cache --build-arg BASE_IMAGE="docker.io/openanolis/anolisos:latest" --build-arg LINUX_RELEASE="anolisos" -t tengine:3.1.0 images/tengine/rootfs/
 ```
 
 ### 第二步：构建tengine-ingress镜像
 在tengine镜像基础上，构建tengine-ingress镜像
 ```bash
-# docker build --no-cache --build-arg BASE_IMAGE="tengine:3.0.0" --build-arg VERSION="1.0.0" -f build/Dockerfile -t tengine-ingress:1.0.0 .
+# docker build --no-cache --build-arg BASE_IMAGE="tengine:3.1.0" --build-arg VERSION="1.1.0" -f build/Dockerfile -t tengine-ingress:1.1.0 .
 ```
 
 ### 最后，使用tengine-ingress镜像部署您的网关。
@@ -153,10 +153,9 @@ metadata:
 * 如果${watch_namespace}`为空，则监听所有命名空间下的资源对象。
 
 ---
-> 参数名称: `--ingress-class`
-> 参数值: `${ingress_class}`
+> 参数名称: `--controller-class`
+> 参数值: `${controller_class}`
 
-设置`Tengine-Ingress`监听处理Ingress资源对象的类别
-* `Tengine-Ingress`只监听处理环境变量`ingress_class`指定类别的Ingress资源对象。
-* Ingress资源对象通过注解`kubernetes.io/ingress.class`标识其类别。
-* 如果`${ingress_class}`为空，则监听所有类别的Ingress资源对象。
+设置`Tengine-Ingress`的类别
+* 在Kubernetes 1.19.0及其更高版本，通过IngressClass资源对象定义Ingress资源对象的类别。
+* IngressClass的.spec.controller值与`Tengine-Ingress`启动参数${controller_class}值保持一致，则`Tengine-Ingress`才会监听处理对应的Ingress资源对象。

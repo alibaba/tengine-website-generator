@@ -16,8 +16,10 @@ Tengine-Ingress完全兼容云原生[ingress](https://kubernetes.io/docs/concept
 
 ### 使用教程
 *   [动态无损生效](document_cn/ingress_hotreload_cn.html)
-*   [ECC和RSA多证书](document_cn/ingress_certs_cn.html)
 *   [高级路由](document_cn/ingress_routes_cn.html) 
+*   [ECC和RSA多证书](document_cn/ingress_certs_cn.html)
+*   [分域名TLS协议多版本](document_cn/ingress_tls_protocols_cn.html) 
+*   [TLS端口映射默认证书](document_cn/ingress_tls_port_cert_cn.html) 
 *   [Ingress分批次动态生效](document_cn/ingress_rollout_ingress_cn.html)
 *   [Secret分批次动态生效](document_cn/ingress_rollout_secret_cn.html)
 *   [Ingress全局一致性校验](document_cn/ingress_checksum_ingress_cn.html)

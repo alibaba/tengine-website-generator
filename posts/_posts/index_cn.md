@@ -35,6 +35,7 @@
 
 ## 动态
 
+*   [2021-03-25] [Tengine-3.0.0](download/tengine-3.1.0.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#3_1_0))
 *   [2021-03-25] [Tengine-3.0.0](download/tengine-3.0.0.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#3_0_0))
 *   [2021-03-25] [Tengine-2.4.1](download/tengine-2.4.1.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_4_1))
 *   [2021-03-25] [Tengine-2.4.0](download/tengine-2.4.0.tar.gz) 开发版正式发布 ([changelog](changelog_cn.html#2_4_0))

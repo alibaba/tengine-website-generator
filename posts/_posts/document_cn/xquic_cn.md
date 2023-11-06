@@ -42,7 +42,6 @@ Tengine XQUIC Module主要用于在服务端启用QUIC/HTTP3监听服务。
 该配置项强依赖xquic证书配置项启用tls/1.3握手和证书校验。
 
 ---
-
 > (必选项)
 > Syntax: **xquic_ssl_certificate** `/certificate/file path`;
 > Default: -
@@ -51,7 +50,6 @@ Tengine XQUIC Module主要用于在服务端启用QUIC/HTTP3监听服务。
 从配置的指定目录读取quic(tls/1.3)加密握手需要的证书文件。
 
 ---
-
 > (必选项)
 > Syntax: **xquic_ssl_certificate_key** `/certificate key/file path`;
 > Default: -
@@ -60,7 +58,6 @@ Tengine XQUIC Module主要用于在服务端启用QUIC/HTTP3监听服务。
 从配置的指定目录读取quic(tls/1.3)加密握手需要的证书私钥文件，私钥与证书公钥配套。
 
 ---
-
 > Syntax: **xquic_ssl_session_ticket_key** `/ticket/file path`;
 > Default: -
 > Context: `http`
@@ -68,7 +65,6 @@ Tengine XQUIC Module主要用于在服务端启用QUIC/HTTP3监听服务。
 从配置的指定目录读取quic(tls/1.3)加密session ticket需要的秘钥文件，格式与ssl_session_ticket_key相同，配置后才可以启用session ticket功能。
 
 ---
-
 > Syntax: **xquic_log** `"pipe:rollback /home/admin/tengine/logs/tengine-xquic.log baknum=10 maxsize=1G interval=1d adjust=600" info`;
 > Default: -
 > Context: `main`
@@ -85,7 +81,6 @@ Tengine XQUIC Module主要用于在服务端启用QUIC/HTTP3监听服务。
 Debug日志等级会包含大量调试日志，对性能有影响，一般在日常测试启用，生产环境切勿启用。
 
 ---
-
 > Syntax: **xquic_congestion_control** `bbr`;
 > Default: `cubic`
 > Context: `http`
@@ -97,7 +92,6 @@ Debug日志等级会包含大量调试日志，对性能有影响，一般在日
 BBR当前对应的是BBR v1，默认值为cubic（与TCP默认congestion control算法对齐）。
 
 ---
-
 > Syntax: **xquic_socket_rcvbuf** `5242880`;
 > Default: `1048576`
 > Context: `http`
@@ -105,7 +99,6 @@ BBR当前对应的是BBR v1，默认值为cubic（与TCP默认congestion control
 xquic使用socket rcvbuf大小设置，默认是1M大小，配置后会使用socket option设置到内核。
 
 ---
-
 > Syntax: **xquic_socket_sndbuf** `5242880`;
 > Default: `1048576`
 > Context: `http`
@@ -113,7 +106,6 @@ xquic使用socket rcvbuf大小设置，默认是1M大小，配置后会使用soc
 xquic使用socket rcvbuf大小设置，默认是1M大小，配置后会使用socket option设置到内核。
 
 ---
-
 > Syntax: **xquic_anti_amplification_limit** `5`;
 > Default: `5`
 > Context: `http`

@@ -13,6 +13,13 @@
 如果设置`https-allow-http: 'true'`，则在listen指令中添加https_allow_http选项，表示该端口允许在SSL开启的情况下接收HTTP请求。
 
 ---
+> Syntax: **custom-port-domain** `443: aaa.com, 2443: bbb.com, 3443: ccc.com`;
+> Default: ``
+
+设置证书端口映射表，通过不同的TLS端口与根域名的映射关系，动态匹配对应的证书。
+当客户端TLS建链Client Hello请求不携带SNI，Tengine-Ingress通过端口匹配对应的证书用于TLS握手。
+
+---
 > Syntax: **tengine-reload** `false`;
 > Default: `false`
 
@@ -31,33 +38,11 @@
 通过配置`filelock-shm-service-cfg`设置共享内存文件锁的路径。Tengine-Ingress控制器通过订阅和处理ingress域名资源和secret证书资源，基于tengine ingress模板转换为动态配置写入共享内存。Tengine-proxy订阅共享内存变化写入内部运行时共享内存，将终端用户的外部流量路由到K8s集群中的应用服务。
 
 ---
-
 > Syntax: **filepath-status-tengine** `/etc/nginx/htdocs/status.tengine`;
 > Default: `/etc/nginx/htdocs/status.tengine`
 
 对tengine设置HTTP健康检查的文件路径，通过默认80和443端口请求`/status.tengine`，如果tengine-proxy健康状态正常，则返回`/etc/nginx/htdocs/status.tengine`。
 默认封禁应用域名的`/status.tengine`请求，tengine-proxy直接返回404。
-
----
-> Syntax: **max-canary-ing-num** `200`;
-> Default: `200`
-
-默认每个Ingress域名允许最多创建200个高级路由，每个高级路由都是独立的Canary Ingress资源对象。
-对于超过默认200个的Canary Ingress资源对象，都将被忽略梳理。
-
----
-> Syntax: **canary-referrer** `a,b,c`;
-> Default: -
-
-设置高级路由Canary Ingress资源对象的来源范围，仅允许`canary-referrer`中的应用列表创建高级路由Canary Ingress资源对象。
-默认情况下`canary-referrer`为空，即允许所有应用创建高级路由Canary Ingress资源对象。
-
----
-> Syntax: **ingress-referrer** `a,b,c`;
-> Default: -
-
-设置Ingress资源对象的来源范围，仅允许`ingress-referrer`中的应用列表创建Ingress资源对象。
-默认情况下`ingress-referrer`为空，即允许所有应用创建Ingress资源对象。
 
 ---
 > Syntax: **ingress-shm-size** `268435456`;
@@ -104,9 +89,105 @@ Tengine XUDP Module主要用于在服务端启用XUDP，支持bypass内核的用
 服务端启用HTTP3/QUIC监听服务，通过配合使用XUDP，可大幅提升HTTP3转发性能。
 
 ---
-> Syntax: **http3-xquic-default-port** `2443`;
-> Default: `2443`
+> Syntax: **http3-xquic-default-port** `443`;
+> Default: `443`
 
-Tengine-Ingress默认设置HTTP3/QUIC监听端口号2443。Tengine-Ingress通过响应消息头`Alt-Svc: h3=":2443"`协商通知客户端，客户端如果支持HTTP3，将通过端口2443建立UDP连接。
-如果需要修改`http3-xquic-default-port`，因tengine worker进程的权限限制，HTTP3/QUIC监听端口号必须大于1024，且必须同步更新tengine-ingress的启动命令行参数`--quic-port int`。
+Tengine-Ingress默认设置HTTP3/QUIC监听端口号443。Tengine-Ingress通过响应消息头`Alt-Svc: h3=":443"`协商通知客户端，客户端如果支持HTTP3，将通过端口443建立UDP连接。
+如果需要修改`http3-xquic-default-port`，则必须同步更新tengine-ingress的启动命令行参数`--quic-port int`。
 例如：设置`http3-xquic-default-port: 3443`，tengine-ingress启动命令行参数`--quic-port 3443`。
+
+---
+> Syntax: **canary-referrer** `a,b,c`;
+> Default: -
+
+设置高级路由Canary Ingress资源对象的来源范围，仅允许`canary-referrer`中的应用列表创建高级路由Canary Ingress资源对象。
+默认情况下`canary-referrer`为空，即允许所有应用创建高级路由Canary Ingress资源对象。
+
+---
+> Syntax: **ingress-referrer** `a,b,c`;
+> Default: -
+
+设置Ingress资源对象的来源范围，仅允许`ingress-referrer`中的应用列表创建Ingress资源对象。
+默认情况下`ingress-referrer`为空，即允许所有应用创建Ingress资源对象。
+
+---
+> Syntax: **max-canary-ing-num** `200`;
+> Default: `200`
+
+默认每个Ingress域名允许最多创建200个高级路由，每个高级路由都是独立的Canary Ingress资源对象。
+对于超过默认200个的Canary Ingress资源对象，都将被忽略梳理。
+
+---
+> Syntax: **max-canary-action-num** `10`;
+> Default: `10`
+
+每个基于Canary Ingress高级路由的流量染色默认最大规则数量。
+对于单个Canary Ingress，超过默认10条的流量染色规则都将被忽略梳理。
+流量染色规则包括：向后端upstream转发的HTTP请求头中增加Header，在已有Header中追加Header值，或者是增加Query参数；以及向客户端转发的HTTP响应头中增加Header。
+
+---
+> Syntax: **default-canary-weight-total** `100`;
+> Default: `100`
+
+基于Canary Ingress高级路由的默认服务权重总和。
+
+---
+> Syntax: **max-canary-weight-total** `10000`;
+> Default: `100`
+
+基于Canary Ingress高级路由的最大服务权重总和。
+
+---
+> Syntax: **max-canary-header-val-num** `20`;
+> Default: `20`
+
+基于Header值的Canary Ingress高级路由默认允许匹配的Header值个数。
+
+---
+> Syntax: **max-canary-cookie-val-num** `20`;
+> Default: `20`
+
+基于Cookie值的Canary Ingress高级路由默认允许匹配的Cookie值个数。
+
+---
+> Syntax: **max-canary-query-val-num** `20`;
+> Default: `20`
+
+基于Query参数值的Canary Ingress高级路由默认允许匹配的Query参数值个数。
+
+---
+> Syntax: **max-canary-req-add-header-num** `2`;
+> Default: `2`
+
+基于Canary Ingress高级路由，向后端upstream转发HTTP请求中默认允许增加的Header个数。
+
+---
+> Syntax: **max-canary-req-append-header-num** `2`;
+> Default: `2`
+
+基于Canary Ingress高级路由，向后端upstream转发HTTP请求中默认允许追加的Header个数。
+
+---
+> Syntax: **max-canary-req-add-query-num** `2`;
+> Default: `2`
+
+基于Canary Ingress高级路由，向后端upstream转发HTTP请求中默认允许增加的Query参数个数。
+
+---
+> Syntax: **max-canary-resp-add-header-num** `2`;
+> Default: `2`
+
+基于Canary Ingress高级路由，向客户端转发HTTP响应中默认允许增加的Header个数。
+
+---
+> Syntax: **user** `root`;
+> Default: `root`
+
+默认启动tengine进程的用户角色。
+
+---
+> Syntax: **max-stop-sleep-time-for-stop** `35`;
+> Default: `35`
+
+Tengine进程停止阶段，等待4层负载均衡流量清零的时间。
+在4层负载均衡流量清零，4层LB不再转发报文到Tengine后，再优雅关停Tengine进程。

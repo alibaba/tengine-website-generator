@@ -395,10 +395,10 @@ metadata:
     nginx.ingress.kubernetes.io/version: "1"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    kubernetes.io/ingress.class: alibaba-ingress-tao
   name: alibaba-dt-com-123992
   namespace: alibaba-ingress-tao
 spec:
+  ingressClassName: default-ingress-class
   rules:
   - host: dt.alibaba.com
     http:
@@ -425,10 +425,10 @@ metadata:
     nginx.ingress.kubernetes.io/version: "1"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    kubernetes.io/ingress.class: alibaba-ingress-tao
   name: alibaba-work-alilang-hermes-alibaba-inc-com-143379
   namespace: alibaba-ingress-tao
 spec:
+  ingressClassName: default-ingress-class
   rules:
   - host: hermes.alibaba.com
     http:

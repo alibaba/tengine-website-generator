@@ -17,7 +17,7 @@
                 从2011年12月开始，Tengine成为一个开源项目，Tengine团队在积极地开发和维护着它。Tengine团队的核心成员来自于<a href="https://en.wikipedia.org/wiki/Taobao" target="_blank" rel="external">淘宝</a>，<a href="https://en.wikipedia.org/wiki/Ant_Group" target="_blank" rel="external">蚂蚁</a>，<a href="https://en.wikipedia.org/wiki/Alibaba_Cloud" target="_blank" rel="external">阿里云</a>，<a href="http://en.wikipedia.org/wiki/Sogou" target="_blank" rel="external">搜狗</a>等互联网企业。Tengine是社区合作的成果，我们欢迎大家<a href="source_cn.html">参与其中</a>，贡献自己的力量。
             <p>
 
-            <p><a class="btn btn-lg btn-success download-button" href="download/tengine-3.0.0.tar.gz" role="button">Download</a></p>
+            <p><a class="btn btn-lg btn-success download-button" href="download/tengine-3.1.0.tar.gz" role="button">Download</a></p>
         </div>
     </div>
     <div class="row">
@@ -38,7 +38,7 @@
         <p class="lead">Tengine is a web server originated by <a href="http://en.wikipedia.org/wiki/Taobao" target="_blank" rel="external">Taobao</a>, the largest e-commerce website in Asia. It is based on the <a href="https://nginx.org" target="_blank" rel="external">Nginx</a> HTTP server and has many advanced features. Tengine has proven to be very stable and efficient on some of the top 100 websites in the world, including <a href="https://www.taobao.com" target="_blank" rel="external">Taobao.com</a>, <a href="https://www.tmall.com/" target="_blank" rel="external">Tmall.com</a>, <a href="https://www.youku.tv/" target="_blank" rel="external">Youku</a>, <a href="https://www.aliexpress.com/" target="_blank" rel="external">AliExpress</a>, <a href="https://www.lazada.com/" target="_blank" rel="external">Lazada</a> and <a href="https://www.aliyun.com/" target="_blank" rel="external">Alibaba Cloud</a>.</p>
         <p class="lead">Tengine has been an open source project since December 2011. It is being actively developed by the Tengine team, whose core members are from <a href="https://en.wikipedia.org/wiki/Taobao" target="_blank" rel="external">Taobao</a>, <a href="https://en.wikipedia.org/wiki/Ant_Group" target="_blank" rel="external">Ant Group</a>, <a href="https://en.wikipedia.org/wiki/Alibaba_Cloud" target="_blank" rel="external">Alibaba Cloud</a>, <a href="http://en.wikipedia.org/wiki/Sogou" target="_blank" rel="external">Sogou</a> and other Internet companies. Tengine is a community effort and everyone is encouraged to <a href="source.html">get involved</a>.</p>
 
-        <p><a class="btn btn-lg btn-success download-button" href="download/tengine-3.0.0.tar.gz" role="button">Download</a></p>
+        <p><a class="btn btn-lg btn-success download-button" href="download/tengine-3.1.0.tar.gz" role="button">Download</a></p>
     </div>
     <div id="particles-js-en"></div>
 </div>
@@ -58,8 +58,9 @@
                     <li>支持<a href="/ingress_cn.html">域名，证书，路由的动态无损生效</a>；</li>
                     <li>支持<a href="document_cn/xquic_cn.html">HTTP/3 (QUIC v1和draft-29)</a>；</li>
                     <li>支持<a href="document_cn/xudp_cn.html">bypass内核的用户态高性能UDP转发</a>；</li>
-                    <li>支持<a href="document_cn/ingress_routes_cn.html">基于header，header值和服务权重的高级路由动态无损生效</a>；</li>
-                    <li>支持<a href="document_cn/ingress_annotations_cn.html">配置timeout，强制HTTPS，CORS和robots的动态无损生效</a>；</li>
+                    <li>支持<a href="document_cn/ingress_routes_cn.html">基于header，cookie，query和服务权重的高级路由动态无损生效</a>；</li>
+                    <li>支持<a href="document_cn/ingress_routes_cn.html">基于高级路由的请求和响应流量染色动态无损生效</a>；</li>
+                    <li>支持<a href="document_cn/ingress_annotations_cn.html">配置分域名TLS多版本，timeout，强制HTTPS，CORS和robots的动态无损生效</a>；</li>
                     <li>支持HTTP的<a href="document_cn/proxy_connect_cn.html">CONNECT</a> 方法，可用于正向代理场景；</li>
                     <li>
                         增强相关运维监控能力,比如<a href="document_cn/ngx_log_pipe_cn.html">异步打印日志及回滚</a>，<a href="document_cn/core_cn.html">本地DNS缓存</a>，<a href="document_cn/ngx_debug_pool_cn.html">内存监控</a>等；
@@ -126,7 +127,9 @@
                     </div>
                 </div>
                 <ul>
-                    <li>[07/21/2023] <a href="download/tengine-3.0.0.tar.gz">Tengine-3.0.0</a>开发版正式发布 (<a href="changelog_cn.html#3_0_0">changelog</a>)
+                    <li>[11/06/2023] <a href="download/tengine-ingress-1.1.0.tar.gz">Tengine-Ingress-1.1.0</a>(<a href="changelog_ingress_cn.html#1_1_0">changelog</a>) and <a href="download/tengine-3.1.0.tar.gz">Tengine-3.1.0</a>(<a href="changelog_cn.html#3_1_0">changelog</a>) 开发版正式发布
+                    </li>
+                    <li>[07/21/2023] <a href="download/tengine-ingress-1.0.0.tar.gz">Tengine-Ingress-1.0.0</a>(<a href="changelog_ingress_cn.html#1_0_0">changelog</a>) and <a href="download/tengine-3.0.0.tar.gz">Tengine-3.0.0</a>(<a href="changelog_cn.html#3_0_0">changelog</a>) 开发版正式发布
                     </li>
                     <li>[06/08/2023] <a href="download/tengine-2.4.1.tar.gz">Tengine-2.4.1</a>开发版正式发布 (<a href="changelog_cn.html#2_4_1">changelog</a>)
                     </li>
@@ -278,10 +281,16 @@
                         <a href="document/xudp.html">High-speed UDP transmission with kernel-bypass</a>.
                     </li>
                     <li>
-                        <a href="document/ingress_routes.html">Dynamically reconfigure routing based on standard and custom HTTP headers, header value, and weights</a>.
+                        <a href="document/ingress_routes.html">Dynamically reconfigure routing based on standard and custom HTTP header, cookie, query and weights</a>.
                     </li>
                     <li>
-                        <a href="document/ingress_annotations.html">Dynamically reconfigure timeout setting, SSL Redirects, CORS and enabling/disabling robots for the server and location</a>.
+                        <a href="document/ingress_routes.html">Dynamically reconfigure routing to add/append custom headers or add query parameter to the HTTP request</a>.
+                    </li>
+                    <li>
+                        <a href="document/ingress_routes.html">Dynamically reconfigure routing to add custom headers to the HTTP response without tengine reload</a>.
+                    </li>
+                    <li>
+                        <a href="document/ingress_annotations.html">Dynamically reconfigure TLS versions, timeout setting, SSL Redirects, CORS and enabling/disabling robots for the server and location</a>.
                     </li>
                     <li>
                         Support the <a href="document/proxy_connect.html">CONNECT</a> HTTP method for forward proxy.
@@ -356,7 +365,10 @@
                 </div>
                 <ul>
                     <li>
-                        [07/21/2023] <a href="download/tengine-3.0.0.tar.gz">Tengine-3.0.0</a> development version released (<a href="changelog.html#3_0_0">changes</a>).
+                        [11/06/2023] <a href="download/tengine-ingress-1.1.0.tar.gz">Tengine-Ingress-1.1.0</a>(<a href="changelog_ingress.html#1_1_0">changes</a>) and <a href="download/tengine-3.1.0.tar.gz">Tengine-3.1.0</a>(<a href="changelog.html#3_1_0">changes</a>) development version released.
+                    </li>
+                    <li>
+                        [07/21/2023] <a href="download/tengine-ingress-1.0.0.tar.gz">Tengine-Ingress-1.0.0</a>(<a href="changelog_ingress.html#1_0_0">changes</a>) and <a href="download/tengine-3.0.0.tar.gz">Tengine-3.0.0</a>(<a href="changelog.html#3_0_0">changes</a>) development version released.
                     </li>
                     <li>
                         [06/08/2023] <a href="download/tengine-2.4.1.tar.gz">Tengine-2.4.1</a> development version released (<a href="changelog.html#2_4_1">changes</a>).
