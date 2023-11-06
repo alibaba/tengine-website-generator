@@ -1,4 +1,4 @@
-# 高级路由
+# Tengine-Ingress 高级路由
 
 **`Tengine-Ingress`在兼容[ingress canary注解](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary)的基础上，支持基于请求header，header值，header取模，cookie，cookie值，cookie取模，query参数，query参数值，query参数取模，服务权重的流量切分，并且支持对请求和响应流量染色，无需tengine reload，所有应用域名的ingress金丝雀规则实时动态无损生效。**
 

@@ -1,4 +1,4 @@
-## ChangeLog
+## 变更列表
 
 #### Tengine-Ingress-1.1.0 [2023-11-06]
 

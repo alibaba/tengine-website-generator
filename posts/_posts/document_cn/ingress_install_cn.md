@@ -1,4 +1,4 @@
-# 简介
+# Tengine-Ingress 编译
 
 `Tengine-Ingress`由两部分组成，[Tengine-Ingress控制器](https://github.com/alibaba/tengine-ingress)和[Tengine-proxy](https://github.com/alibaba/tengine)。Tengine-Ingress控制器是一个基于Tengine-proxy的ingress控制器，在兼容云原生[ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)标准规范的基础上扩展了Server，Backend，TLS，Location和Canary。
 

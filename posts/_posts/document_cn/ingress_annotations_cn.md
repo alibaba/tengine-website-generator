@@ -1,4 +1,4 @@
-# Tengine-Ingress
+# Tengine-Ingress 高级注解配置Annotations
 
 `Tengine-Ingress`完全兼容云原生[ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/)标准规范，用户可参照[kubernetes ingress-nginx](https://kubernetes.github.io/ingress-nginx/)相关文档。
 
