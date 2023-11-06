@@ -1,11 +1,9 @@
 ## Download
 
 * [Tengine-Ingress-1.1.0.tar.gz](https://github.com/alibaba/tengine-ingress/releases/tag/Tengine-Ingress-v1.1.0), [Tengine-3.1.0.tar.gz](download/tengine-3.1.0.tar.gz)
-    *  MD5: f5af7f5739e38f50873fa74752682401 (tengine-ingress)
-    *  MD5: fb61abe468234ae8018b6494b13fe1c9 (tengine)
+    *  MD5: fb61abe468234ae8018b6494b13fe1c9
 * [Tengine-Ingress-1.0.0.tar.gz](https://github.com/alibaba/tengine-ingress/releases/tag/Tengine-Ingress-v1.0.0), [Tengine-3.0.0.tar.gz](download/tengine-3.0.0.tar.gz)
-    *  MD5: d6555cdf28814c3b7a149f88018a9db7 (tengine-ingress)
-    *  MD5: d5b344309dccd7ef86e766d26245d857 (tengine)
+    *  MD5: d5b344309dccd7ef86e766d26245d857
 * [Tengine-2.4.1.tar.gz](download/tengine-2.4.1.tar.gz)
     *  MD5: 8a3c754741539723af977246dfb260dd
 * [Tengine-2.4.0.tar.gz](download/tengine-2.4.0.tar.gz)
