@@ -3,6 +3,8 @@ Tengine-Ingress完全兼容云原生[ingress](https://kubernetes.io/docs/concept
 
 在此列出[Tengine-Ingress](https://github.com/alibaba/tengine-ingress)原生扩展和增强功能的使用和配置教程。 
 
+关于详细的[Tengine-Ingress](https://github.com/alibaba/tengine-ingress)与ingress-nginx的差别，可以访问[变更列表](changelog_ingress.html)。
+
 ### 编译
 *   [编译](document/ingress_install.html)
 

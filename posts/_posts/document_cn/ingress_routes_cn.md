@@ -1,8 +1,15 @@
 # 高级路由
 
-**`Tengine-Ingress`在兼容[ingress canary注解](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary)的基础上，支持基于request header，header值，header值正则匹配，cookie和权重的流量切分，无需tengine reload，所有应用域名的ingress金丝雀规则实时动态无损生效。**
+**`Tengine-Ingress`在兼容[ingress canary注解](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/#canary)的基础上，支持基于请求header，header值，header取模，cookie，cookie值，cookie取模，query参数，query参数值，query参数取模，服务权重的流量切分，并且支持对请求和响应流量染色，无需tengine reload，所有应用域名的ingress金丝雀规则实时动态无损生效。**
 
-## 基于请求Header的流量切分
+* 基于Canary Ingress，支持多个Header值，Cookie值，Query参数值的灰度路由，动态无损生效
+* 基于Canary Ingress，支持Header值取模，Cookie值取模，Query参数值取模的灰度路由，动态无损生效
+* 基于Canary Ingress，支持请求流量染色，在向后端upstream转发请求中增加Header和追加Header值，动态无损生效
+* 基于Canary Ingress，支持响应流量染色，在向客户端转发响应中增加Header，动态无损生效
+* 基于服务权重的灰度路由，支持服务权重总和的动态配置更新
+
+## Canary ingress
+---
 > 注解名称: `nginx.ingress.kubernetes.io/canary`
 > 值类型: `true` 或 `false`
 > 默认值: `false`
@@ -13,6 +20,7 @@
 * 如果Ingress资源对象有注解`nginx.ingress.kubernetes.io/canary: "true"`，则实际为Canary Ingress资源对象，专用于HTTP高级路由。
 * 一个Canary Ingress资源对象定义一个高级路由，必须包含有注解`nginx.ingress.kubernetes.io/canary: "true"`。
 
+## 基于请求Header的流量切分 (canary ingress)
 ---
 > 注解名称: `nginx.ingress.kubernetes.io/canary-by-header`
 > 值类型: `string`
@@ -60,7 +68,7 @@ spec:
     secretName: alibaba-taobao-rsa
 ```
 
-## 基于请求Header值的流量切分
+## 基于请求Header值的流量切分 (canary ingress)
 > 注解名称: `nginx.ingress.kubernetes.io/canary-by-header-value`
 > 值类型: `string`
 > 默认值: ` `
@@ -109,7 +117,7 @@ spec:
     secretName: alibaba-taobao-rsa
 ```
 
-## 基于请求cookie的流量切分
+## 基于请求cookie的流量切分 (canary ingress)
 > 注解名称: `nginx.ingress.kubernetes.io/canary-by-cookie`
 > 值类型: `string`
 > 默认值: ` `
@@ -156,7 +164,7 @@ status:
     - {}
 ```
 
-## 基于请求cookie值的流量切分
+## 基于请求cookie值的流量切分 (canary ingress)
 > 注解名称: `nginx.ingress.kubernetes.io/canary-by-cookie-value`
 > 值类型: `string`
 > 默认值: ` `
@@ -206,7 +214,7 @@ status:
     - {}
 ```
 
-## 基于请求query参数的流量切分
+## 基于请求query参数的流量切分 (canary ingress)
 > 注解名称: `nginx.ingress.kubernetes.io/canary-by-query`
 > 值类型: `string`
 > 默认值: ` `
@@ -253,7 +261,7 @@ status:
     - {}
 ```
 
-## 基于请求query参数值的流量切分
+## 基于请求query参数值的流量切分 (canary ingress)
 > 注解名称: `nginx.ingress.kubernetes.io/canary-by-query-value`
 > 值类型: `string`
 > 默认值: ` `
@@ -303,7 +311,7 @@ status:
     - {}
 ```
 
-## 基于header/cookie/query参数取模的流量切分
+## 基于header/cookie/query参数取模的流量切分 (canary ingress)
 > 注解名称: `nginx.ingress.kubernetes.io/canary-mod-divisor`
 > 值类型: `number`
 > 值范围: `[2, 100]`
@@ -331,7 +339,7 @@ status:
 
 基于Header取模/Cookie取模/Query参数取模的高级路由，设置对应的取模余数
 
-### 基于header取模的流量切分
+### 基于header取模的流量切分 (canary ingress)
 * 基于请求header取模的流量切分，可以指定具体匹配的header，当header值取模运算得到余数满足关系运算符的匹配条件，则将请求转发到指定的后端upstream。
 * 如果 [header值] mod [除数] 关系运算符 [余数] 为真，那么路由规则生效，请求就会被转发到指定的后端upstream。
 * 如果除数，关系运算符和余数的取值范围非法，则路由规则降级为基于请求header的流量切分。
@@ -374,7 +382,7 @@ status:
     - {}
 ```
 
-### 基于cookie取模的高级路由**
+### 基于cookie取模的高级路由 (canary ingress)
 * 基于请求cookie取模的流量切分，可以指定具体匹配的cookie，当cookie值取模运算得到余数满足关系运算符的匹配条件，则将请求转发到指定的后端upstream。
 * 如果 [cookie值] mod [除数] 关系运算符 [余数] 为真，那么路由规则生效，请求就会被转发到指定的后端upstream。
 * 如果除数，关系运算符和余数的取值范围非法，则路由规则降级为基于请求cookie的流量切分。
@@ -417,7 +425,7 @@ status:
     - {}
 ```
 
-### 基于query参数取模的高级路由**
+### 基于query参数取模的高级路由 (canary ingress)
 * 基于请求query参数取模的流量切分，可以指定具体匹配的query参数，当query参数值取模运算得到余数满足关系运算符的匹配条件，则将请求转发到指定的后端upstream。
 * 如果 [query参数值] mod [除数] 关系运算符 [余数] 为真，那么路由规则生效，请求就会被转发到指定的后端upstream。
 * 如果除数，关系运算符和余数的取值范围非法，则路由规则降级为基于请求query参数的流量切分。
@@ -461,7 +469,7 @@ status:
 ```
 
 ## 流量染色
-### 在请求消息中增加header
+### 在请求消息中增加header (canary ingress)
 > 注解名称: `nginx.ingress.kubernetes.io/canary-request-add-header`
 > 值类型: `string`
 > 值格式: `<header name>:<header value>[||<header name>:<header value>]*`
@@ -514,7 +522,7 @@ status:
     - {}
 ```
 
-### 在请求消息的header中追加header值
+### 在请求消息的header中追加header值 (canary ingress)
 > 注解名称: `nginx.ingress.kubernetes.io/canary-request-append-header`
 > 值类型: `string`
 > 值格式: `<header name>:<header value>[||<header name>:<header value>]*`
@@ -566,7 +574,7 @@ status:
     - {}
 ```
 
-### 在请求消息中增加query参数
+### 在请求消息中增加query参数 (canary ingress)
 > 注解名称: `nginx.ingress.kubernetes.io/canary-request-add-query`
 > 值类型: `string`
 > 值格式: `<query name>=<query value>[&<query name>=<query value>]*`
@@ -617,7 +625,7 @@ status:
     - {}
 ```
 
-### 在响应消息中增加header
+### 在响应消息中增加header (canary ingress)
 > 注解名称: `nginx.ingress.kubernetes.io/canary-response-add-header`
 > 值类型: `string`
 > 值格式: `<header name>:<header value>[||<header name>:<header value>]*`
@@ -668,7 +676,7 @@ status:
     - {}
 ```
 
-## 基于服务权重的流量切分
+## 基于服务权重的流量切分 (canary ingress)
 > 注解名称: `nginx.ingress.kubernetes.io/canary-weight`
 > 值类型: `string`
 > 默认值: ` `
@@ -717,6 +725,7 @@ spec:
     secretName: alibaba-taobao-rsa
 ```
 
+## 服务权重总和 (针对Ingress注解)
 > 注解名称: `nginx.ingress.kubernetes.io/canary-weight-total`
 > 值类型: `number`
 > 值范围: `[100, 10000]`
@@ -725,7 +734,7 @@ spec:
 > 生效维度: `域名`
 
 服务权重总和
-* 如果调整服务权重总和，域名的所有基于服务权重的高级路由将重新基于新的服务权重总和计算其服务权重值。
+* 如果调整Ingress域名的服务权重总和，则所有相同域名的基于服务权重的高级路由 (canary ingress) 将重新基于新的服务权重总和计算其服务权重值。
 * 例如：域名tengine.taobao.org，service=tengine-taobao-org-service-c；基于服务权重的高级路由：服务权重=20，service=tengine-taobao-org-service-canary-c
 * 默认服务权重总和=100，则20%请求被转发到service=tengine-taobao-org-service-canary-c，其它99%请求会被转发到主域名对应的service=tengine-taobao-org-service-c
 * 如果修改服务权重总和=1000，则2%请求被转发到service=tengine-taobao-org-service-canary-c，其它98%请求会被转发到主域名对应的service=tengine-taobao-org-service-c
