@@ -1,8 +1,7 @@
 # Header
 menu:
   Tengine: /documentation.html
-  Ingress: /ingress.html
-  Guide: /guide.html
+  Tengine-Ingress: /guide.html
   Blog: /blog.html
   Download: /download.html
   Source: /source.html
