@@ -188,6 +188,7 @@ Tengine-Ingress默认设置HTTP3/QUIC监听端口号443。Tengine-Ingress通过�
 ---
 > Syntax: **max-stop-sleep-time-for-stop** `35`;
 > Default: `35`
+> Unit: `second`
 
 Tengine进程停止阶段，等待4层负载均衡流量清零的时间。
 在4层负载均衡流量清零，4层LB不再转发报文到Tengine后，再优雅关停Tengine进程。
