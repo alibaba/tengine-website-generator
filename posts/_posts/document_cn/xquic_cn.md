@@ -89,7 +89,7 @@ Debug日志等级会包含大量调试日志，对性能有影响，一般在日
 * reno
 * cubic
 * bbr
-BBR当前对应的是BBR v1，默认值为cubic（与TCP默认congestion control算法对齐）。
+BBR当前对应的是BBR v1，默认值为 bbr（tengine 3.1.0 以及之前版本默认为 cubic）。
 
 ---
 > Syntax: **xquic_socket_rcvbuf** `5242880`;
@@ -103,7 +103,7 @@ xquic使用socket rcvbuf大小设置，默认是1M大小，配置后会使用soc
 > Default: `1048576`
 > Context: `http`
 
-xquic使用socket rcvbuf大小设置，默认是1M大小，配置后会使用socket option设置到内核。
+xquic使用socket sndbuf大小设置，默认是1M大小，配置后会使用socket option设置到内核。
 
 ---
 > Syntax: **xquic_anti_amplification_limit** `5`;
