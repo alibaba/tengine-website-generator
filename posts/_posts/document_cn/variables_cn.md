@@ -32,4 +32,4 @@
 
 - `$ssl_handshake_time`   用于统计SSL握手时间
 
-  
+- `$request_start_time` 开始处理请求时间，通用日志格式（格式同 $time_local）.
