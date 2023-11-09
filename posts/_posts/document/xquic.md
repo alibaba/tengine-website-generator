@@ -1,11 +1,12 @@
 # ngx_http_xquic_module
 
-Tengine XQUIC Module主要用于在服务端启用QUIC/HTTP3监听服务。
-配置主要由HTTP main conf和listen配置两部分组成，标注「必选项」为启用QUIC的必选配置项，未标注则为可选配置项（不配则启用默认配置）。
+Tengine XQUIC Module is used to enable QUIC/HTTP3 listening service on the server side.
 
-## 配置示例
+The configuration consists of two parts: HTTP main conf and listen configuration. Marked "required options" are required configuration items to enable QUIC, while unmarked ones are optional configuration items (if not qualified, the default configuration is enabled).
 
-配置文件: conf/nginx.conf
+## Configuration example
+
+Configuration file: conf/nginx.conf
 ---
 
 ```
@@ -31,45 +32,49 @@ Tengine XQUIC Module主要用于在服务端启用QUIC/HTTP3监听服务。
     }
 ```
 
-## 指令
+## Command
 
-> (必选项)
+> (required)
 > Syntax: **listen** 2443 `reuseport xquic`;
 > Default: -
 > Context: `server`
 
-在listen指令中添加xquic选项，表示该端口启用quic/http3监听检查，一般和reuseport搭配使用。
-该配置项强依赖xquic证书配置项启用tls/1.3握手和证书校验。
+Adding the xquic option to the listen command indicates that the port enables quic/http3 listening and checking, and is generally used with reuseport.
+
+This configuration item strongly relies on the xquic certificate configuration item to enable TLS/1.3 handshake and certificate verification.
 
 ---
-> (必选项)
+> (required)
 > Syntax: **xquic_ssl_certificate** `/certificate/file path`;
 > Default: -
 > Context: `http`
 
-从配置的指定目录读取quic(tls/1.3)加密握手需要的证书文件。
+Read the certificate file required for the quic (tls/1.3) encryption handshake from the specified directory in the configuration.
 
 ---
-> (必选项)
+> (required)
 > Syntax: **xquic_ssl_certificate_key** `/certificate key/file path`;
 > Default: -
 > Context: `http`
 
-从配置的指定目录读取quic(tls/1.3)加密握手需要的证书私钥文件，私钥与证书公钥配套。
+Read the certificate private key file required for the quic (tls/1.3) encryption handshake from the specified directory in the configuration. The private key is matched with the certificate public key.
 
 ---
 > Syntax: **xquic_ssl_session_ticket_key** `/ticket/file path`;
 > Default: -
 > Context: `http`
 
-从配置的指定目录读取quic(tls/1.3)加密session ticket需要的秘钥文件，格式与ssl_session_ticket_key相同，配置后才可以启用session ticket功能。
+Read the secret key file required for quic (tls/1.3) encrypted session ticket from the specified directory in the configuration. The format is the same as ssl_session_ticket_key. The session ticket function can be enabled only after configuration.
 
 ---
 > Syntax: **xquic_log** `"pipe:rollback /home/admin/tengine/logs/tengine-xquic.log baknum=10 maxsize=1G interval=1d adjust=600" info`;
 > Default: -
 > Context: `main`
 
-向配置的指定目录打印xquic协议栈统计日志，支持滚动日志方式（可与rollback模块联动），可用xquic日志等级控制日志信息，日志等级可选范围为:
+Print xquic protocol stack statistical logs to the configured specified directory. It supports rolling log mode (can be linked with the rollback module). The xquic log level can be used to control log information.
+
+The optional range of log levels is:
+
 * report
 * fatal
 * error
@@ -77,38 +82,42 @@ Tengine XQUIC Module主要用于在服务端启用QUIC/HTTP3监听服务。
 * stats
 * info
 * debug
-和Tengine日志等级类似，日志等级>=配置等级的日志内容都会被打印出来，生产环境建议配置到info. 
-Debug日志等级会包含大量调试日志，对性能有影响，一般在日常测试启用，生产环境切勿启用。
+
+Similar to the Tengine log level, log content with log level >= configuration level will be printed. For production environments, it is recommended to configure it to info.
+The Debug log level will contain a large number of debugging logs, which will have an impact on performance. It is generally enabled for daily testing and should not be enabled in production environments.
 
 ---
 > Syntax: **xquic_congestion_control** `bbr`;
-> Default: `cubic`
+> Default: `bbr`
 > Context: `http`
 
-配置xquic使用的congestion control算法，当前支持的算法类型有:
+Configure the congestion control algorithm used by xquic. The currently supported algorithm types are:
+
 * reno
 * cubic
 * bbr
-BBR当前对应的是BBR v1，默认值为cubic（与TCP默认congestion control算法对齐）。
+
+BBR currently corresponds to BBR v1, and the default value is bbr.(The default for Tengine 3.1.0 and previous versions is cubic.)
 
 ---
 > Syntax: **xquic_socket_rcvbuf** `5242880`;
 > Default: `1048576`
 > Context: `http`
 
-xquic使用socket rcvbuf大小设置，默认是1M大小，配置后会使用socket option设置到内核。
+xquic uses socket rcvbuf size setting. The default size is 1M. After configuration, it will use socket option to set it to the kernel.
 
 ---
 > Syntax: **xquic_socket_sndbuf** `5242880`;
 > Default: `1048576`
 > Context: `http`
 
-xquic使用socket rcvbuf大小设置，默认是1M大小，配置后会使用socket option设置到内核。
+xquic uses socket sndbuf size setting. The default size is 1M. After configuration, it will use socket option to set it to the kernel.
 
 ---
 > Syntax: **xquic_anti_amplification_limit** `5`;
 > Default: `5`
 > Context: `http`
 
-xquic在握手期间限制的反射放大倍数，这个参数用于在握手未完成地址校验前，限制服务端返回的数据量倍数N（即服务端返回的数据量 <= 收到客户端发送的数据量 * N）。
-这个参数在RFC草案中的建议是不超过3倍，由于考虑到实际握手返回的证书大小，一般最大设置为5倍（从安全性角度不建议更大）。
+The reflection amplification factor limited by xquic during the handshake. This parameter is used to limit the amount of data returned by the server by N before the handshake completes address verification. (that is, the amount of data returned by the server <= the amount of data sent by the client * N).
+
+The recommendation in the RFC draft for this parameter is not to exceed 3 times. Considering the size of the certificate returned by the actual handshake, the maximum setting is generally 5 times (larger is not recommended from a security perspective).
