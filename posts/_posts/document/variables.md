@@ -31,3 +31,5 @@
 - `$host_comment`  Host and the timestamp, e.g. `“<!-- localhost Thu, 29 Dec 2011 10:10:56 GMT -->”.`
 
 - `$ssl_handshake_time` used for monitoring SSL handshake time.
+
+- `$request_start_time` The start time when the request was received, in the Common Log Format.
