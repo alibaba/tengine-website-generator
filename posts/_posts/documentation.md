@@ -43,9 +43,9 @@ For a full list of changes in Tengine, see the [ChangeLog](changelog.html).
 *   [Variables](document/variables.html)
 *   [Consistent hash module](document/http_upstream_consistent_hash.html)
 *   [Session sticky module](document/http_upstream_session_sticky.html)
-*   [健康检查模块功能](document_cn/http_upstream_check_cn.html)
-*   [后端长连接超时功能](document_cn/http_upstream_keepalive_timeout_cn.html)
-*   [变量](document_cn/variables_cn.html)
+*   [upstream health check module](document/http_upstream_check.html)
+*   [upstream keepalive module](document/http_upstream_keepalive_timeout.html)
+*   [Variables](document/variables.html)
 *   [Debug pool module](document/ngx_debug_pool.html)
 *   [slab stat module](document/ngx_slab_stat.html)
 *   [asynchronous SSL module](document/ngx_http_ssl_asynchronous_mode.html)
@@ -56,6 +56,6 @@ For a full list of changes in Tengine, see the [ChangeLog](changelog.html).
 *   [vnswrr module](document/ngx_http_upstream_vnswrr_module.html)
 ### Download Doc
 
-*   [《淘宝网Nginx定制开发实战》](download/nginx@taobao.pdf)（Velocity China 2011.12）</a>
-*   [《淘宝网Nginx应用、定制与开发实战》](download/taobao_nginx_2012_06.pdf)（华东运维技术大会 2012.06）</a>
-*   [《淘宝Tengine--易运维的高性能Nginx服务器》](download/programmer-201209-Tengine.pdf)（《程序员》杂志, 2012年9月刊登）</a>
+*   [Taobao Nginx custom development practice(Chinese version)](download/nginx@taobao.pdf)（Velocity China 2011.12)</a>
+*   [Taobao Nginx Application, Customization and Development Practice(Chinese version)](download/taobao_nginx_2012_06.pdf)(East China Operation and Maintenance Technology Conference 2012.06)</a>
+*   [Taobao Tengine--a high-performance Nginx server(Chinese version)](download/programmer-201209-Tengine.pdf)（"Programmer" magazine, published in September 2012）</a>
